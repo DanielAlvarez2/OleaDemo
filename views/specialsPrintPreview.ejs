@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="manager.css">
+    <script
+      src="https://kit.fontawesome.com/21ef82ed30.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      
+      .quarter{
+        width:4.25in;
+        height:5.5in;
+      }
+      #specials h1{
+            text-align: left;
+        }
+
+        @media print{
+            .no-print{
+                display: none !important;  
+            }
+        }
+        h1{
+            
+            padding-bottom:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'h1paddingBottom'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+            font-size:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'todaysSpecialsFontSize'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+        }
+        h2{
+            padding-bottom:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'headingsPaddingBottom'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+            font-size:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'headingsFontSize'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+        }
+        #entree-heading, #dessert-heading{
+            padding-top: 
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'headingsPadding'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+        }
+        .quarter li{
+            padding-top:            
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'menuItemsPadding'){ 
+                        let half=(info[i].pixels).substring(0,info[i].pixels.length-2)/2
+                        %>
+                        <%= half%>px
+            <%
+                    } 
+                } 
+            %>;
+            padding-bottom:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'menuItemsPadding'){ 
+                        let half=(info[i].pixels).substring(0,info[i].pixels.length-2)/2
+                        %>
+                        <%= half%>px
+            <%
+                    } 
+                } 
+            %>;
+            line-height:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'lineHeight'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+            font-size:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'menuItemsFontSize'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+        }
+        #legal-disclaimer{
+            position:absolute;
+            bottom:0;
+            padding-bottom:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'legalBottomPadding'){ 
+                        
+                        %>
+                        <%= info[i].pixels %>
+            <%
+                    } 
+                } 
+            %>;
+
+            left:0px;
+            padding-left: inherit;
+            padding-right: inherit;
+            font-size:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'legalDisclaimerFontSize'){ 
+                        
+                        %>
+                        <%= info[i].pixels %>
+            <%
+                    } 
+                } 
+            %>;
+
+        }
+        .hidden{
+            visibility:hidden;
+        }
+        .remove{
+            display:none;
+        }
+
+        .quarter{   
+            width:4.25in;
+            height:5.5in;
+            position: relative;
+            display:inline-block;
+            padding-top:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'padding-top'){ 
+                        
+                        %>
+                        <%= info[i].pixels %>
+            <%
+                    } 
+                } 
+            %>;
+
+            padding-left:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'padding-sides'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+            
+            padding-right:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'padding-sides'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+            
+
+        }
+        body{
+            background-color: lightgray;
+        }
+        #specials{
+            background-color: white;
+        }
+    </style>
+</head>
+
+
+
+
+<% 
+let appetizerCount=0
+let entreeCount=0
+let dessertCount=0
+for (let i=0; i<info.length; i++){
+    if (info[i].category == "SPECIALS: Appetizer" && info[i].sequence != "0") appetizerCount++ 
+    if (info[i].category == "SPECIALS: Entrée" && info[i].sequence != "0") entreeCount++ 
+    if (info[i].category == "SPECIALS: Dessert" && info[i].sequence != "0") dessertCount++ 
+}
+
+%>
+<script>
+let appetizerCount = <%=appetizerCount%>
+let entreeCount = <%=entreeCount%>
+let dessertCount = <%=dessertCount%>
+</script>
+
+
+
+
+
+<body>
+    <div id="wrapper">
+    <div id="content">
+
+    <nav class="no-print">
+        <h1>
+            olea
+            <span id="content-manager">Content Manager</span></h1>
+        
+
+        <ul>
+            <li class="active-page">Specials</li>
+            <a href="/dinnerUpdateCuredMeats"><li>Dinner</li></a>
+            <li>Dessert</li>
+            <li>Wine/Drinks</li>
+            <li id="archive">Archive</li>
+        </ul>
+        <ul>
+            <li id="specials-edit">Edit Menu Items</li>
+            <li id="specials-format-layout">Format Layout</li>
+            <li class="active-page">Print Preview</li>
+        </ul>
+    </nav>
+    <main>
+        <div id="specials" style="width:8.5in;height:11in;
+                                     display:flex;
+                                    flex-wrap:wrap;
+                                    flex-direction: row;
+                                    ">
+            <div class="quarter">
+                <h1 id="todays-specials">today's specials</h1>
+        
+                <% if (appetizerCount == 1) { %>
+                    <h2 id="appetizer-heading">appetizer</h2>
+                <% } %>
+                <% if (appetizerCount > 1) { %>
+                    <h2 id="appetizer-heading">appetizers</h2>
+                <% } %>    
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "SPECIALS: Appetizer"){ 
+                        if (info[i].sequence != "0"){ %>
+                    <li class="special">
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].description %></span>
+                        <span class="price"><%= info[i].price %></span>
+                    </li>
+                    <% } 
+                     } 
+                 } %>
+                </ul>
+            
+                <% if (entreeCount == 1) { %>
+                    <h2 id="entree-heading">entrée</h2>
+                <% } %>
+                <% if (entreeCount > 1) { %>
+                    <h2 id="entree-heading">entrées</h2>
+                <% } %>
+                <ul>
+                    <% for(let i=0; i<info.length;i++){ %>
+                        <% if (info[i].category == "SPECIALS: Entrée"){ 
+                            if (info[i].sequence != "0"){ %>
+                        <li class="special">
+                            <span class="name"><%= info[i].name %></span>
+                            <span><%= info[i].description %></span>
+                            <span class="price"><%= info[i].price %></span>
+                        </li>
+                        <% } 
+                        }
+                    } %>
+                </ul>
+             
+                <% if (dessertCount == 1) { %>
+                    <h2 id="dessert-heading">dessert</h2>
+                <% } %>
+                <% if (dessertCount > 1) { %>
+                    <h2 id="dessert-heading">desserts</h2>
+                <% } %>
+            
+                <ul>
+                    <% for(let i=0; i<info.length;i++){ %>
+                        <% if (info[i].category == "SPECIALS: Dessert"){ 
+                            if (info[i].sequence != "0"){ %>
+                        <li class="special">
+                            <span class="name"><%= info[i].name %></span>
+                            <span><%= info[i].description %></span>
+                            <span class="price"><%= info[i].price %></span>
+                        </li>
+                        <% } 
+                        }
+                    } %>
+                </ul>
+            
+                <script>let legalDisclaimerBoolean;</script>
+                <div id="legal-disclaimer"
+            
+                <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
+                        if (info[i].display == 'false' ){ %>
+                            class="hidden"
+                        <%
+                        }    
+                    } 
+                } 
+                %>
+                >
+                <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
+                        if (info[i].display == 'false' ){ %>
+                            <script>legalDisclaimerBoolean = false;</script>
+                        <%
+                        }else{ %>
+                            <script>legalDisclaimerBoolean = true;</script>
+                        <%
+                        }    
+                    } 
+                } 
+                %>
+                    
+                    Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                    or seafood may increase the risk of food-borne illnesses. Please 
+                    alert your server if you have special dietary requirements.
+                
+                </div><!--#legal-disclaimer-->
+               
+            </div><!--.quarter-->
+            <div class="quarter">
+                <h1 id="todays-specials">today's specials</h1>
+        
+                <% if (appetizerCount == 1) { %>
+                    <h2 id="appetizer-heading">appetizer</h2>
+                <% } %>
+                <% if (appetizerCount > 1) { %>
+                    <h2 id="appetizer-heading">appetizers</h2>
+                <% } %>    
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "SPECIALS: Appetizer"){ 
+                        if (info[i].sequence != "0"){ %>
+                    <li class="special">
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].description %></span>
+                        <span class="price"><%= info[i].price %></span>
+                    </li>
+                    <% } 
+                     } 
+                 } %>
+                </ul>
+            
+                <% if (entreeCount == 1) { %>
+                    <h2 id="entree-heading">entrée</h2>
+                <% } %>
+                <% if (entreeCount > 1) { %>
+                    <h2 id="entree-heading">entrées</h2>
+                <% } %>
+                <ul>
+                    <% for(let i=0; i<info.length;i++){ %>
+                        <% if (info[i].category == "SPECIALS: Entrée"){ 
+                            if (info[i].sequence != "0"){ %>
+                        <li class="special">
+                            <span class="name"><%= info[i].name %></span>
+                            <span><%= info[i].description %></span>
+                            <span class="price"><%= info[i].price %></span>
+                        </li>
+                        <% } 
+                        }
+                    } %>
+                </ul>
+             
+                <% if (dessertCount == 1) { %>
+                    <h2 id="dessert-heading">dessert</h2>
+                <% } %>
+                <% if (dessertCount > 1) { %>
+                    <h2 id="dessert-heading">desserts</h2>
+                <% } %>
+            
+                <ul>
+                    <% for(let i=0; i<info.length;i++){ %>
+                        <% if (info[i].category == "SPECIALS: Dessert"){ 
+                            if (info[i].sequence != "0"){ %>
+                        <li class="special">
+                            <span class="name"><%= info[i].name %></span>
+                            <span><%= info[i].description %></span>
+                            <span class="price"><%= info[i].price %></span>
+                        </li>
+                        <% } 
+                        }
+                    } %>
+                </ul>
+            
+                
+                <div id="legal-disclaimer"
+            
+                <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
+                        if (info[i].display == 'false' ){ %>
+                            class="hidden"
+                        <%
+                        }    
+                    } 
+                } 
+                %>
+                >
+                <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
+                        if (info[i].display == 'false' ){ %>
+                            <script>legalDisclaimerBoolean = false;</script>
+                        <%
+                        }else{ %>
+                            <script>legalDisclaimerBoolean = true;</script>
+                        <%
+                        }    
+                    } 
+                } 
+                %>
+                    
+                    Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                    or seafood may increase the risk of food-borne illnesses. Please 
+                    alert your server if you have special dietary requirements.
+                
+                </div><!--#legal-disclaimer-->
+            </div><!--.quarter-->
+            <div class="quarter">
+                <h1 id="todays-specials">today's specials</h1>
+        
+                <% if (appetizerCount == 1) { %>
+                    <h2 id="appetizer-heading">appetizer</h2>
+                <% } %>
+                <% if (appetizerCount > 1) { %>
+                    <h2 id="appetizer-heading">appetizers</h2>
+                <% } %>    
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "SPECIALS: Appetizer"){ 
+                        if (info[i].sequence != "0"){ %>
+                    <li class="special">
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].description %></span>
+                        <span class="price"><%= info[i].price %></span>
+                    </li>
+                    <% } 
+                     } 
+                 } %>
+                </ul>
+            
+                <% if (entreeCount == 1) { %>
+                    <h2 id="entree-heading">entrée</h2>
+                <% } %>
+                <% if (entreeCount > 1) { %>
+                    <h2 id="entree-heading">entrées</h2>
+                <% } %>
+                <ul>
+                    <% for(let i=0; i<info.length;i++){ %>
+                        <% if (info[i].category == "SPECIALS: Entrée"){ 
+                            if (info[i].sequence != "0"){ %>
+                        <li class="special">
+                            <span class="name"><%= info[i].name %></span>
+                            <span><%= info[i].description %></span>
+                            <span class="price"><%= info[i].price %></span>
+                        </li>
+                        <% } 
+                        }
+                    } %>
+                </ul>
+             
+                <% if (dessertCount == 1) { %>
+                    <h2 id="dessert-heading">dessert</h2>
+                <% } %>
+                <% if (dessertCount > 1) { %>
+                    <h2 id="dessert-heading">desserts</h2>
+                <% } %>
+            
+                <ul>
+                    <% for(let i=0; i<info.length;i++){ %>
+                        <% if (info[i].category == "SPECIALS: Dessert"){ 
+                            if (info[i].sequence != "0"){ %>
+                        <li class="special">
+                            <span class="name"><%= info[i].name %></span>
+                            <span><%= info[i].description %></span>
+                            <span class="price"><%= info[i].price %></span>
+                        </li>
+                        <% } 
+                        }
+                    } %>
+                </ul>
+            
+                
+                <div id="legal-disclaimer"
+            
+                <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
+                        if (info[i].display == 'false' ){ %>
+                            class="hidden"
+                        <%
+                        }    
+                    } 
+                } 
+                %>
+                >
+                <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
+                        if (info[i].display == 'false' ){ %>
+                            <script>legalDisclaimerBoolean = false;</script>
+                        <%
+                        }else{ %>
+                            <script>legalDisclaimerBoolean = true;</script>
+                        <%
+                        }    
+                    } 
+                } 
+                %>
+                    
+                    Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                    or seafood may increase the risk of food-borne illnesses. Please 
+                    alert your server if you have special dietary requirements.
+                
+                </div><!--#legal-disclaimer-->
+            </div><!--.quarter-->
+        
+            <div class="quarter">
+                <h1 id="todays-specials">today's specials</h1>
+        
+                <% if (appetizerCount == 1) { %>
+                    <h2 id="appetizer-heading">appetizer</h2>
+                <% } %>
+                <% if (appetizerCount > 1) { %>
+                    <h2 id="appetizer-heading">appetizers</h2>
+                <% } %>    
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "SPECIALS: Appetizer"){ 
+                        if (info[i].sequence != "0"){ %>
+                    <li class="special">
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].description %></span>
+                        <span class="price"><%= info[i].price %></span>
+                    </li>
+                    <% } 
+                     } 
+                 } %>
+                </ul>
+            
+                <% if (entreeCount == 1) { %>
+                    <h2 id="entree-heading">entrée</h2>
+                <% } %>
+                <% if (entreeCount > 1) { %>
+                    <h2 id="entree-heading">entrées</h2>
+                <% } %>
+                <ul>
+                    <% for(let i=0; i<info.length;i++){ %>
+                        <% if (info[i].category == "SPECIALS: Entrée"){ 
+                            if (info[i].sequence != "0"){ %>
+                        <li class="special">
+                            <span class="name"><%= info[i].name %></span>
+                            <span><%= info[i].description %></span>
+                            <span class="price"><%= info[i].price %></span>
+                        </li>
+                        <% } 
+                        }
+                    } %>
+                </ul>
+             
+                <% if (dessertCount == 1) { %>
+                    <h2 id="dessert-heading">dessert</h2>
+                <% } %>
+                <% if (dessertCount > 1) { %>
+                    <h2 id="dessert-heading">desserts</h2>
+                <% } %>
+            
+                <ul>
+                    <% for(let i=0; i<info.length;i++){ %>
+                        <% if (info[i].category == "SPECIALS: Dessert"){ 
+                            if (info[i].sequence != "0"){ %>
+                        <li class="special">
+                            <span class="name"><%= info[i].name %></span>
+                            <span><%= info[i].description %></span>
+                            <span class="price"><%= info[i].price %></span>
+                        </li>
+                        <% } 
+                        }
+                    } %>
+                </ul>
+            
+                
+                <div id="legal-disclaimer"
+            
+                <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
+                        if (info[i].display == 'false' ){ %>
+                            class="hidden"
+                        <%
+                        }    
+                    } 
+                } 
+                %>
+                >
+                <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
+                        if (info[i].display == 'false' ){ %>
+                            <script>legalDisclaimerBoolean = false;</script>
+                        <%
+                        }else{ %>
+                            <script>legalDisclaimerBoolean = true;</script>
+                        <%
+                        }    
+                    } 
+                } 
+                %>
+                    
+                    Consumer advisory: consumption of undercooked meat, poultry, eggs, 
+                    or seafood may increase the risk of food-borne illnesses. Please 
+                    alert your server if you have special dietary requirements.
+                
+                </div><!--#legal-disclaimer-->
+         
+                    
+            </div><!--.quarter-->
+        
+        
+        </div><!--#specials-->
+
+        
+
+        </main>
+        <footer class="no-print">
+            <ul>
+              <li>Specials</li>
+              <li>Dinner</li>
+              <li>Dessert</li>
+              <li>Wine/Drinks</li>
+              <li>Archive</li>
+          </ul>
+          </footer>
+      
+        </div><!--#content-->
+        </div><!--#wrapper-->
+        <script src="main.js"></script>
+        </body>
+        </html>
