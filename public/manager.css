@@ -26,28 +26,21 @@ nav a{
 nav a:visited{
     color:black;
 }
-h1{
-    font-family: FuturaLight;
-}
+
 .name{
     font-family: FuturaMedium;
 }
 h2{
     font-family: FuturaHeavy;
 }
-.del, .edit, .archive{
-    cursor:pointer;
-    font-size:20px;
-}
+
 .allergies{
     color:red;
 }
 .edit{
     color:rgb(183, 183, 0);
 }
-.archive{
-    color:blue;
-}
+
 ul{
     list-style-type:none;
 }
@@ -66,26 +59,6 @@ button, #save-changes{
     margin: 0 auto;
     margin-bottom:20px;
 }
-h2{
-    font-family: FuturaHeavy;
-}
-.del, .edit, .archive{
-    cursor:pointer;
-    font-size:20px;
-}
-.allergies{
-    color:red;
-}
-.edit{
-    color:rgb(183, 183, 0);
-}
-.archive{
-    color:blue;
-}
-
-.name, .price{
-    font-weight:900;
-}
 
 #wrapper{
     position: relative;
@@ -94,14 +67,12 @@ h2{
     display:grid;
     place-content: center;
 }
+
 h1{
+    font-family: FuturaLight;
     text-align: center;
     font-size: 40px;
     font-weight: 100;
-}
-h2{
-    /* margin-bottom: 10px; */
-    /* text-align: center; */
 }
 
 nav li{
@@ -115,11 +86,11 @@ nav li{
 
 nav ul{
     width:100%;
-  
     display:flex;
     width:60ch;
 }
-
+.unarchive,
+.delete-archive,
 .del,
 .edit,
 .archive,
@@ -128,9 +99,9 @@ nav ul{
 .move-down {
 cursor: pointer;
 font-size: 20px;
-transform:scaleX(3);
 }
 .move-up, .move-down{
+transform:scaleX(3);
 color:green;
 width:100%;
 text-align: center;
@@ -138,17 +109,12 @@ text-align: center;
 .transfer {
 color: blue;
 }
-.del {
+.del, .delete-archive {
 color: red;
 }
-.edit {
-color: rgb(183, 183, 0);
-}
-.archive {
+
+.archive, .unarchive {
 color: #654321;
-}
-.special {
-/* margin-bottom: 20px; */
 }
 
 li {
