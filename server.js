@@ -41,6 +41,12 @@ app.get('/', (request, response) =>{
         response.render('index.ejs', {info: data})
     })
 })
+app.get('/riojas', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('riojas.ejs', {info: data})
+    })
+})
 app.get('/dinnerLayout', (request, response) =>{
     db.collection('Specials').find().sort({sequence:1}).toArray()
     .then(data => {
