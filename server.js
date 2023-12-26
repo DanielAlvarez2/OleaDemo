@@ -322,8 +322,8 @@ app.post('/addWine', async(request,response)=>{
         description: `${request.body.description}`,
         producer: `${request.body.producer}`,
         region: `${request.body.region}`,
-        // price: Number(`${request.body.price}`)
-        price: 100
+        price: {$toInt:(`${request.body.price}`)}
+        
     },{
         $set:{
             timestamp: new Date()
