@@ -286,7 +286,12 @@ app.get('/dinnerPrintPreview', (request, response) =>{
         response.render('dinnerPrintPreview.ejs', {info: data})
     })
 })
-
+app.get('/riojasFormatLayout', (req,res)=>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        res.render('riojasFormatLayout.ejs', {info:data})
+    })
+})
 app.post('/addSpecial', async(request,response)=>{
     await db.collection('Specials').insertOne(request.body)
     .then(result =>{
@@ -326,7 +331,6 @@ app.post('/addWine', async(request,response)=>{
     })
     response.redirect(request.get('referer'))
 })
-
 app.delete('/deleteSpecial', async (request,response) => {
     let count = 0;
     await db.collection('Specials').find().toArray()
