@@ -63,6 +63,19 @@ app.get('/debug', (request, response) =>{
         response.render('debug.ejs', {info: data})
     })
 })
+
+app.post('/saveChangesRiojas', async(req,res)=>{
+    if (req.body.riojasPaddingTop != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("658db8c6020f08a1825ede0b")},{
+            $set:{
+                pixels: `${req.body.riojasPaddingTop}px`
+            }
+        })
+    }
+    res.redirect(req.get('referer'))    
+
+})
+
 app.post('/saveChanges', async (request,response)=>{
     if (request.body.paddingSides != ""){
     await db.collection('Specials').updateOne({_id: new ObjectId("6552683e620b78c09f6ad4ee")},{

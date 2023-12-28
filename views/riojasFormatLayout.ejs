@@ -20,7 +20,7 @@
             line-height:30px;
             font-size:19px;
         }
-        #specials, #controls{
+        #riojas, #controls{
             width:5in;
             height:8in;
             background:white;
@@ -29,17 +29,14 @@
             display:inline-block;
             
         }
-        #specials{
+        #riojas{
             position: relative;
         }
-        #specials h1{
-            text-align: left;
-        }
-        #specials{
+        #riojas{
             padding-top:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'padding-top'){ 
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-top'){ 
                         
                         %>
                         <%= info[i].pixels %>
@@ -244,22 +241,7 @@
 
 
 
-<% 
-let appetizerCount=0
-let entreeCount=0
-let dessertCount=0
-for (let i=0; i<info.length; i++){
-    if (info[i].category == "SPECIALS: Appetizer" && info[i].sequence != "0") appetizerCount++ 
-    if (info[i].category == "SPECIALS: Entrée" && info[i].sequence != "0") entreeCount++ 
-    if (info[i].category == "SPECIALS: Dessert" && info[i].sequence != "0") dessertCount++ 
-}
 
-%>
-<script>
-let appetizerCount = <%=appetizerCount%>
-let entreeCount = <%=entreeCount%>
-let dessertCount = <%=dessertCount%>
-</script>
 
 
 
@@ -283,91 +265,27 @@ let dessertCount = <%=dessertCount%>
             <a href="/manager"><li id="specials-edit">Edit Menu Items</li></a>
             <li class="active-page" id="specials-format-layout">Format Layout</li>
             <a href="/specialsPrintPreview"><li id="specials-print-preview">Print Preview</li></a>
-        </ul>
+            </ul>
     </nav>
     
-        
     
-        <div id="flexbox">    
+    
+    <h1 id="page-title">riojas</h1>
+    <div id="flexbox">    
 
             <div id="controls">
-                <form method="POST" action="/saveChanges">
+                <form method="POST" action="/saveChangesRiojas">
                     FORMAT PAGE LAYOUT<br>
-                    Page Space Left & Right: <input name="paddingSides" id="padding-sides" type="text" size="2"> px <br>
-                    Page Space Top: <input name="paddingTop" id="padding-top" type="text" size="2"> px <br>
+                    Page Space Left & Right: <input name="riojasPaddingSides" id="padding-sides" type="text" size="2"> px <br>
+                    Page Space Top: <input name="riojasPaddingTop" id="riojas-padding-top" type="text" size="2"> px <br>
                     "today's specials" Space Bottom: <input name="h1paddingBottom" id="todays-specials-padding-bottom" type="text" size="2"> px <br>
                     Space between sections: <input name="headingsPadding" id="headings-padding" type="text" size="2"> px <br>
                     Space between menu items: <input name="menuItemsPadding" id="menu-items-padding" type="text" size="2"> px <br>
                     Space between lines of menu items: <input name="lineHeight" id="menu-items-line-height" type="text" size="2"> px <br>
                     Space below headings: <input name="headingsPaddingBottom" id="headings-padding-bottom" type="text" size="2"> px <br>
-                    Legal Disclaimer: SHOW 
-                    <span id="legal-toggle">
-                        <i id="on" class="fa-solid fa-toggle-on 
-                        <%             
-                        for (let i=0; i<info.length; i++){
-                            if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
-                                if (info[i].display == 'true'){ %>
-                                    remove
-                                <%
-                                }    
-                            } 
-                        } 
-                        %>                
-                        "></i>
-                        <i id="off" class="fa-solid fa-toggle-off
-                        <% 
-                        for (let i=0; i<info.length; i++){
-                            if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
-                                if (info[i].display == 'false'){ 
-                                    %>
-                                    remove
-                                <%
-                                }    
-                            } 
-                        } 
-                        %>
-                        "></i>
-                    </span> 
-                    HIDE<br>
-                    <% 
-                    for (let i=0; i<info.length; i++){
-                        if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
-                            if (info[i].display == 'true'){ 
-                                %>
-                                <input type="hidden" name="legalDisclaimer" id="legal-disclaimer-switch" value="true">
-                            <%
-                            }    
-                        } 
-                    } 
-                    %>
-                    <% 
-                    for (let i=0; i<info.length; i++){
-                        if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
-                            if (info[i].display == 'false'){ 
-                                %>
-                                <input type="hidden" name="legalDisclaimer" id="legal-disclaimer-switch" value="false">
-                            <%
-                            }    
-                        } 
-                    } 
-                    %>
-            
+                  
                     
-                    
-                    <div id="padding-bottom-control"
-                    <% 
-                    for (let i=0; i<info.length; i++){
-                        if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
-                            if (info[i].display == 'false' ){ %>
-                                class="hidden"
-                            <%
-                            }    
-                        } 
-                    } 
-                    %>    
-                    >
-                    Legal Disclaimer Space Bottom: <input name="paddingBottom" id="padding-bottom" type="text" size="2"> px<br> 
-                    </div>
+                   
                     <hr>
             
                     FONT-SIZES<br>
@@ -409,8 +327,7 @@ let dessertCount = <%=dessertCount%>
 
 
                 
-            <div id="specials">
-                <h1 id="todays-specials">riojas</h1>
+            <div id="riojas">
             
                 <ul>
                 <% for(let i=0; i<info.length;i++){ %>
@@ -427,7 +344,7 @@ let dessertCount = <%=dessertCount%>
                 <% } %>
                 </ul>
                 
-            </div><!--#specials-->
+            </div><!--#riojas-->
             
             
             </div><!--#flexbox-->
@@ -446,8 +363,8 @@ let dessertCount = <%=dessertCount%>
             <script src="main.js"></script>
             
             <script>
-                let specialsPage = document.querySelector('#specials')
-                let paddingTop = document.querySelector('#padding-top')
+                let riojasPage = document.querySelector('#riojas')
+                let riojasPaddingTop = document.querySelector('#riojas-padding-top')
                 let paddingSides = document.querySelector('#padding-sides')
                 let paddingBottom = document.querySelector('#padding-bottom')
                 let headingsPadding = document.querySelector('#headings-padding')
@@ -480,8 +397,8 @@ let dessertCount = <%=dessertCount%>
                     event.preventDefault()
                     location.reload()
                 })
-                paddingTop.addEventListener('input', function(evt){
-                    specialsPage.style.paddingTop = `${Number(this.value)}px`
+                riojasPaddingTop.addEventListener('input', function(evt){
+                    riojasPage.style.paddingTop = `${Number(this.value)}px`
                     
                 })
                 paddingSides.addEventListener('input', function(evt){
