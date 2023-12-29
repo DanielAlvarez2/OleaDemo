@@ -48,7 +48,7 @@
             padding-left:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'padding-sides'){ %>
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -58,7 +58,7 @@
             padding-right:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'padding-sides'){ %>
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -276,7 +276,7 @@
             <div id="controls">
                 <form method="POST" action="/saveChangesRiojas">
                     FORMAT PAGE LAYOUT<br>
-                    Page Space Left & Right: <input name="riojasPaddingSides" id="padding-sides" type="text" size="2"> px <br>
+                    Page Space Left & Right: <input name="riojasPaddingSides" id="riojas-padding-sides" type="text" size="2"> px <br>
                     Page Space Top: <input name="riojasPaddingTop" id="riojas-padding-top" type="text" size="2"> px <br>
                     "today's specials" Space Bottom: <input name="h1paddingBottom" id="todays-specials-padding-bottom" type="text" size="2"> px <br>
                     Space between sections: <input name="headingsPadding" id="headings-padding" type="text" size="2"> px <br>
@@ -365,7 +365,7 @@
             <script>
                 let riojasPage = document.querySelector('#riojas')
                 let riojasPaddingTop = document.querySelector('#riojas-padding-top')
-                let paddingSides = document.querySelector('#padding-sides')
+                let riojasPaddingSides = document.querySelector('#riojas-padding-sides')
                 let paddingBottom = document.querySelector('#padding-bottom')
                 let headingsPadding = document.querySelector('#headings-padding')
                 let menuItemsPadding = document.querySelector('#menu-items-padding')
@@ -401,9 +401,9 @@
                     riojasPage.style.paddingTop = `${Number(this.value)}px`
                     
                 })
-                paddingSides.addEventListener('input', function(evt){
-                    specialsPage.style.paddingLeft = `${Number(this.value)}px`
-                    specialsPage.style.paddingRight = `${Number(this.value)}px`
+                riojasPaddingSides.addEventListener('input', function(evt){
+                    riojasPage.style.paddingLeft = `${Number(this.value)}px`
+                    riojasPage.style.paddingRight = `${Number(this.value)}px`
                 })
                 todaysSpecialsPaddingBottom.addEventListener('input', function(evt){
                     todaysSpecials.style.paddingBottom = `${Number(this.value)}px`

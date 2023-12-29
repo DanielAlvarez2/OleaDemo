@@ -72,6 +72,15 @@ app.post('/saveChangesRiojas', async(req,res)=>{
             }
         })
     }
+    if (req.body.riojasPaddingSides != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("658f12b967ed9ab85d618ed8")},{
+            $set:{
+                pixels: `${req.body.riojasPaddingSides}px`
+            }
+        })
+    }
+
+
     res.redirect(req.get('referer'))    
 
 })
