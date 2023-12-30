@@ -71,57 +71,6 @@
             font-family:serif;
         }
         
-        #specials h1{
-            padding-bottom:
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'h1paddingBottom'){ %>
-                        <%= info[i].pixels%>
-            <%
-                    } 
-                } 
-            %>;
-            font-size:
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'todaysSpecialsFontSize'){ %>
-                        <%= info[i].pixels%>
-            <%
-                    } 
-                } 
-            %>;
-        }
-        #specials h2{
-            padding-bottom:
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'headingsPaddingBottom'){ %>
-                        <%= info[i].pixels%>
-            <%
-                    } 
-                } 
-            %>;
-            font-size:
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'headingsFontSize'){ %>
-                        <%= info[i].pixels%>
-            <%
-                    } 
-                } 
-            %>;
-        }
-        #entree-heading, #dessert-heading{
-            padding-top: 
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'headingsPadding'){ %>
-                        <%= info[i].pixels%>
-            <%
-                    } 
-                } 
-            %>;
-        }
         #specials li{
             padding-top:            
             <% 
@@ -157,7 +106,7 @@
             font-size:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'menuItemsFontSize'){ %>
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -286,26 +235,8 @@
                   
                     
                    
-                    <hr>
-            
-                    FONT-SIZES<br>
-                    <div id="legal-font-size-control"
-                    <% 
-                    for (let i=0; i<info.length; i++){
-                        if (info[i].category == 'controls' && info[i].name == 'legalDisclaimer'){ 
-                            if (info[i].display == 'false' ){ %>
-                                class="hidden"
-                            <%
-                            }    
-                        } 
-                    } 
-                    %>
-                    >
-                    Legal Disclaimer Font Size: <input name="legalDisclaimerFontSize" id="legal-font-size" type="text" size="2"> px<br>
-                    </div>
-                    "today's specials" Font Size: <input name="todaysSpecialsFontSize" id="todays-specials-font-size" type="text" size="2"> px<br>
-                    Headings Font Size: <input name="headingsFontSize" id="headings-font-size" type="text" size="2"> px<br>
-                    Menu Items Font Size: <input name="menuItemsFontSize" id="menu-items-font-size" type="text" size="2"> px<br>
+
+                    Font Size: <input name="riojasFontSize" id="riojas-font-size" type="text" size="2"> px<br>
                     <button id="clear-changes">Clear Changes</button> 
                     <input type="submit" id="save-changes" value="Save Changes"> 
                     <button id="print-preview">Print Preview</button>
@@ -366,7 +297,6 @@
                 let riojasPage = document.querySelector('#riojas')
                 let riojasPaddingTop = document.querySelector('#riojas-padding-top')
                 let riojasPaddingSides = document.querySelector('#riojas-padding-sides')
-                let paddingBottom = document.querySelector('#padding-bottom')
                 let headingsPadding = document.querySelector('#headings-padding')
                 let menuItemsPadding = document.querySelector('#menu-items-padding')
                 let menuItemsLineHeight = document.querySelector('#menu-items-line-height')
@@ -379,7 +309,7 @@
                 let legalFontSize = document.querySelector('#legal-font-size')
                 let todaysSpecialsFontSize = document.querySelector('#todays-specials-font-size')
                 let headingsFontSize = document.querySelector('#headings-font-size')
-                let menuItemsFontSize = document.querySelector('#menu-items-font-size')
+                let riojasFontSize = document.querySelector('#riojas-font-size')
                 let p = document.querySelectorAll('.special')
                 let appetizerHeading = document.querySelector('#appetizer-heading')
                 let entreeHeading = document.querySelector('#entree-heading')
@@ -442,10 +372,9 @@
                     entreeHeading.style.fontSize = `${Number(this.value)}px`
                     dessertHeading.style.fontSize = `${Number(this.value)}px`
                 })
-                menuItemsFontSize.addEventListener('input', function(evt){
-                    p.forEach((special,i)=>{
-                        special.style.fontSize = `${Number(this.value)}px`
-                    })
+                riojasFontSize.addEventListener('input', function(evt){
+                    alert('working')
+                        riojasPage.style.fontSize = `${Number(this.value)}px`
                 })
                 legalToggle.addEventListener('click', function(evt){
                     if (legalDisclaimerBoolean){

@@ -79,6 +79,13 @@ app.post('/saveChangesRiojas', async(req,res)=>{
             }
         })
     }
+    if (req.body.riojasFontSize != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("65905f64f08a10527e5617fb")},{
+            $set:{
+                pixels: `${req.body.riojasFontSize}px`
+            }
+        })
+    }
 
 
     res.redirect(req.get('referer'))    
