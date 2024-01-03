@@ -306,7 +306,6 @@
                 let paddingBottomControl = document.querySelector('#padding-bottom-control')
                 let legalToggle = document.querySelector('#legal-toggle')
                 let legalDisclaimer = document.querySelector('#legal-disclaimer')
-                let headingsFontSize = document.querySelector('#headings-font-size')
                 let riojasFontSize = document.querySelector('#riojas-font-size')
                 let p = document.querySelectorAll('.special')
                 let appetizerHeading = document.querySelector('#appetizer-heading')
@@ -355,11 +354,6 @@
                     appetizerHeading.style.paddingBottom = `${Number(this.value)}px`
                     entreeHeading.style.paddingBottom = `${Number(this.value)}px`
                     dessertHeading.style.paddingBottom = `${Number(this.value)}px`
-                })
-                headingsFontSize.addEventListener('input', function(evt){
-                    appetizerHeading.style.fontSize = `${Number(this.value)}px`
-                    entreeHeading.style.fontSize = `${Number(this.value)}px`
-                    dessertHeading.style.fontSize = `${Number(this.value)}px`
                 })
                 riojasFontSize.addEventListener('input', function(evt){
                     alert('working')
