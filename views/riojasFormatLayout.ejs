@@ -298,7 +298,6 @@
                 let riojasPage = document.querySelector('#riojas')
                 let riojasPaddingTop = document.querySelector('#riojas-padding-top')
                 let riojasPaddingSides = document.querySelector('#riojas-padding-sides')
-                let headingsPadding = document.querySelector('#headings-padding')
                 let menuItemsPadding = document.querySelector('#menu-items-padding')
                 let menuItemsLineHeight = document.querySelector('#menu-items-line-height')
                 let headingsPaddingBottom = document.querySelector('#headings-padding-bottom')
@@ -341,10 +340,6 @@
                     p.forEach((special,i)=>{
                         special.style.lineHeight = `${Number(this.value)}px`
                     })
-                })
-                headingsPadding.addEventListener('input', function(evt){
-                    entreeHeading.style.paddingTop = `${Number(this.value)}px`
-                    dessertHeading.style.paddingTop = `${Number(this.value)}px`
                 })
                 headingsPaddingBottom.addEventListener('input', function(evt){
                     appetizerHeading.style.paddingBottom = `${Number(this.value)}px`
