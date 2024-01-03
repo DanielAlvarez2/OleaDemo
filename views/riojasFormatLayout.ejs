@@ -304,7 +304,6 @@
                 let todaysSpecials = document.querySelector('#todays-specials')
                 let todaysSpecialsPaddingBottom = document.querySelector('#todays-specials-padding-bottom')
                 let paddingBottomControl = document.querySelector('#padding-bottom-control')
-                let legalToggle = document.querySelector('#legal-toggle')
                 let legalDisclaimer = document.querySelector('#legal-disclaimer')
                 let riojasFontSize = document.querySelector('#riojas-font-size')
                 let p = document.querySelectorAll('.special')
@@ -358,18 +357,6 @@
                 riojasFontSize.addEventListener('input', function(evt){
                     alert('working')
                         riojasPage.style.fontSize = `${Number(this.value)}px`
-                })
-                legalToggle.addEventListener('click', function(evt){
-                    if (legalDisclaimerBoolean){
-                        legalDisclaimerSwitch.value = 'false';
-                    }else{
-                        legalDisclaimerSwitch.value = 'true';
-                    }
-                    legalDisclaimer.classList.toggle('hidden')
-                    paddingBottomControl.classList.toggle('hidden')
-                    legalFontSizeControl.classList.toggle('hidden')
-                    on.classList.toggle('remove')
-                    off.classList.toggle('remove')
                 })
             
             </script>
