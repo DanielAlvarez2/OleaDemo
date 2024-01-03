@@ -71,7 +71,19 @@
             font-family:serif;
         }
         
-        #specials li{
+        #riojas{
+            font-size:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+
+        }
+        #riojas li{
             padding-top:            
             <% 
                 for (let i=0; i<info.length; i++){
@@ -98,15 +110,6 @@
             <% 
                 for (let i=0; i<info.length; i++){
                     if (info[i].category == 'controls' && info[i].name == 'lineHeight'){ %>
-                        <%= info[i].pixels%>
-            <%
-                    } 
-                } 
-            %>;
-            font-size:
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
                         <%= info[i].pixels%>
             <%
                     } 

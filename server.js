@@ -65,6 +65,7 @@ app.get('/debug', (request, response) =>{
 })
 
 app.post('/saveChangesRiojas', async(req,res)=>{
+    console.log(req.body);
     if (req.body.riojasPaddingTop != ""){
         await db.collection('Specials').updateOne({_id: new ObjectId("658db8c6020f08a1825ede0b")},{
             $set:{
