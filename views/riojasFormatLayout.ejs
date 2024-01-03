@@ -303,7 +303,6 @@
                 let menuItemsLineHeight = document.querySelector('#menu-items-line-height')
                 let headingsPaddingBottom = document.querySelector('#headings-padding-bottom')
                 let todaysSpecials = document.querySelector('#todays-specials')
-                let todaysSpecialsPaddingBottom = document.querySelector('#todays-specials-padding-bottom')
                 let paddingBottomControl = document.querySelector('#padding-bottom-control')
                 let legalDisclaimer = document.querySelector('#legal-disclaimer')
                 let riojasFontSize = document.querySelector('#riojas-font-size')
@@ -331,9 +330,6 @@
                 riojasPaddingSides.addEventListener('input', function(evt){
                     riojasPage.style.paddingLeft = `${Number(this.value)}px`
                     riojasPage.style.paddingRight = `${Number(this.value)}px`
-                })
-                todaysSpecialsPaddingBottom.addEventListener('input', function(evt){
-                    todaysSpecials.style.paddingBottom = `${Number(this.value)}px`
                 })
                 menuItemsPadding.addEventListener('input', function(evt){
                     p.forEach((special,i)=>{
