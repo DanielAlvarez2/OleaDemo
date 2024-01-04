@@ -87,6 +87,13 @@ app.post('/saveChangesRiojas', async(req,res)=>{
             }
         })
     }
+    if (req.body.riojasPaddingBetween != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("658db8c6020f08a1825ede0b")},{
+            $set:{
+                pixels: `${req.body.riojasPaddingBetween}px`
+            }
+        })
+    }
 
 
     res.redirect(req.get('referer'))    

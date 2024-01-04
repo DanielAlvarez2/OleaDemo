@@ -87,7 +87,7 @@
             padding-top:            
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'menuItemsPadding'){ 
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-between'){ 
                         let half=(info[i].pixels).substring(0,info[i].pixels.length-2)/2
                         %>
                         <%= half%>px
@@ -98,19 +98,10 @@
             padding-bottom:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'menuItemsPadding'){ 
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-between'){ 
                         let half=(info[i].pixels).substring(0,info[i].pixels.length-2)/2
                         %>
                         <%= half%>px
-            <%
-                    } 
-                } 
-            %>;
-            line-height:
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'lineHeight'){ %>
-                        <%= info[i].pixels%>
             <%
                     } 
                 } 
@@ -118,51 +109,6 @@
         }
         input{
             text-align: center;
-        }
-        #legal-disclaimer{
-            position:absolute;
-            bottom:0;
-            padding-bottom:
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'legalBottomPadding'){ 
-                        
-                        %>
-                        <%= info[i].pixels %>
-            <%
-                    } 
-                } 
-            %>;
-
-            left:0px;
-            padding-left: inherit;
-            padding-right: inherit;
-            font-size:
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls' && info[i].name == 'legalDisclaimerFontSize'){ 
-                        
-                        %>
-                        <%= info[i].pixels %>
-            <%
-                    } 
-                } 
-            %>;
-
-        }
-        #legal-toggle{
-            cursor:pointer;
-            font-size:25px;
-        }
-        .hidden{
-            visibility:hidden;
-        }
-        .remove{
-            display:none;
-        }
-        #flexbox{
-            display:flex;
-            margin: 0 auto;
         }
      
         @media (orientation: landscape){
@@ -231,7 +177,7 @@
                 <form method="POST" action="/saveChangesRiojas">
                     FORMAT PAGE LAYOUT<br>
                     Page Space Left & Right: <input name="riojasPaddingSides" id="riojas-padding-sides" type="text" size="2"> px <br>
-                    Space between menu items: <input name="menuItemsPadding" id="menu-items-padding" type="text" size="2"> px <br>
+                    Space between menu items: <input name="riojasPaddingBetween" id="riojas-padding-between" type="text" size="2"> px <br>
                   
                     
                    
@@ -295,7 +241,7 @@
             <script>
                 let riojasPage = document.querySelector('#riojas')
                 let riojasPaddingSides = document.querySelector('#riojas-padding-sides')
-                let menuItemsPadding = document.querySelector('#menu-items-padding')
+                let riojasPaddingBetween = document.querySelector('#riojas-padding-between')
                 let todaysSpecials = document.querySelector('#todays-specials')
                 let paddingBottomControl = document.querySelector('#padding-bottom-control')
                 let legalDisclaimer = document.querySelector('#legal-disclaimer')
@@ -308,7 +254,8 @@
                 let clearChanges = document.querySelector('#clear-changes')
                 let printPreview = document.querySelector('#print-preview')
                 let legalDisclaimerSwitch = document.querySelector('#legal-disclaimer-switch')
-            
+                let special = document.querySelectorAll('.special')
+
                 printPreview.addEventListener('click',(event)=>{
                     event.preventDefault()
                     location.replace('/specialsPrintPreview')
@@ -321,7 +268,7 @@
                     riojasPage.style.paddingLeft = `${Number(this.value)}px`
                     riojasPage.style.paddingRight = `${Number(this.value)}px`
                 })
-                menuItemsPadding.addEventListener('input', function(evt){
+                riojasPaddingBetween.addEventListener('input', function(evt){
                     p.forEach((special,i)=>{
                         special.style.paddingTop = `${(Number(this.value))/2}px`
                         special.style.paddingBottom = `${(Number(this.value))/2}px`
