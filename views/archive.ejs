@@ -48,7 +48,7 @@ let dessertCount = <%=dessertCount%>
                 
                 <ul>
                     <a href="/manager"><li id="specials">Specials</li></a>
-                    <li id="dinner">Dinner</li>
+                    <a href="/dinnerUpdateCuredMeats"><li id="dinner">Dinner</li></a>
                     <li id="dessert">Dessert</li>
                     <li id="wine">Wine/Drinks</li>
                 <li class="active-page">Archive</li>
@@ -95,11 +95,5 @@ let dessertCount = <%=dessertCount%>
       </div><!--#wrapper-->
     
         <script src="main.js"></script>
-        <script>
-          document.querySelector('#dinner').addEventListener('click',()=>{
-            location.replace('/dinnerUpdateCuredMeats')
-          })    
-
-        </script>
 </body>
 </html>
