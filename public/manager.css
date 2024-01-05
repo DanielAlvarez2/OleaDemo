@@ -37,7 +37,7 @@ h2{
 .allergies{
     color:red;
 }
-.edit{
+.edit, .edit-wine{
     color:rgb(183, 183, 0);
 }
 
@@ -93,6 +93,7 @@ nav ul{
 .delete-archive,
 .del,
 .edit,
+.edit-wine,
 .archive,
 .transfer,
 .move-up,
@@ -159,4 +160,17 @@ footer{
     margin-top:auto;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+@media print{
+    .no-print{
+        display: none !important;
+    }
+}
+#printer-dead-space{
+                width:5in;
+                height:75px;
+                position:absolute;
+                bottom:0;
+                left:0;
+                background:#ccccccdd;
 }

@@ -145,7 +145,7 @@
     <div id="wrapper">
     <div id="content">
 
-    <nav>
+    <nav class="no-print">
         <h1>olea<span id="content-manager">Content Manager</span></h1>
         <ul>
             <li class="active-page">Specials</li>
@@ -155,33 +155,17 @@
             <a href="/archive"><li id="archive">Archive</li></a>
         </ul>
         <ul id="nav-ul-bottom">
-            <a href="/manager"><li id="specials-edit">Edit Menu Items</li></a>
-            <li class="active-page" id="specials-format-layout">Format Layout</li>
-            <a href="/riojasPrintPreview"><li id="riojas-print-preview">Print Preview</li></a>
+            <a href="/riojas"><li id="specials-edit">Edit Menu Items</li></a>
+            <a href="/riojasFormatLayout"><li id="specials-format-layout">Format Layout</li></a>
+            <a href="/riojasPrintPreview"><li class="active-page" id="riojas-print-preview">Print Preview</li></a>
             </ul>
     </nav>
     
     
     
-    <h1 id="page-title">riojas</h1>
     <div id="flexbox">    
 
-            <div id="controls">
-                <form method="POST" action="/saveChangesRiojas">
-                    FORMAT PAGE LAYOUT<br>
-                    Page Space Left & Right: <input name="riojasPaddingSides" id="riojas-padding-sides" type="text" size="2"> px min10px<br>
-                    Space between menu items: <input name="riojasPaddingBetween" id="riojas-padding-between" type="text" size="2"> px <br>
-                  
-                    
-                   
-
-                    Font Size: <input name="riojasFontSize" id="riojas-font-size" type="text" size="2"> px<br>
-                    <button id="clear-changes">Clear Changes</button> 
-                    <input type="submit" id="save-changes" value="Save Changes"> 
-                    <button id="riojas-print-preview-button">Print Preview</button>
-                </form>
-            </div><!--#controls-->
-
+          
 
 
 
@@ -197,7 +181,7 @@
 
 
                 
-            <div id="riojas">
+            <div id="riojas" style="position:relative;">
             
                 <ul>
                 <% for(let i=0; i<info.length;i++){ %>
@@ -214,13 +198,12 @@
                 <% } %>
                 </ul>
                 <div id="printer-dead-space" class="no-print"></div>
-
             </div><!--#riojas-->
             
             
             </div><!--#flexbox-->
 
-            <footer>
+            <footer class="no-print">
                 <ul>
                     <li>Specials</li>
                     <li>Dinner</li>
@@ -246,11 +229,11 @@
                 let dessertHeading = document.querySelector('#dessert-heading')
                 let legalFontSizeControl = document.querySelector('#legal-font-size-control')
                 let clearChanges = document.querySelector('#clear-changes')
-                let riojasPrintPreviewButton = document.querySelector('#riojas-print-preview-button')
+                let printPreview = document.querySelector('#riojas-print-preview')
                 let legalDisclaimerSwitch = document.querySelector('#legal-disclaimer-switch')
                 let special = document.querySelectorAll('.special')
 
-                riojasPrintPreviewButton.addEventListener('click',(event)=>{
+                printPreview.addEventListener('click',(event)=>{
                     event.preventDefault()
                     location.replace('/riojasPrintPreview')
                 })

@@ -63,7 +63,12 @@ app.get('/debug', (request, response) =>{
         response.render('debug.ejs', {info: data})
     })
 })
-
+app.get('/riojasPrintPreview', (req,res)=>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        res.render('riojasPrintPreview.ejs',{info:data})
+    })
+})
 app.post('/saveChangesRiojas', async(req,res)=>{
     console.log(req.body);
     if (req.body.riojasPaddingTop != ""){
@@ -281,6 +286,12 @@ app.get('/specialsUpdate', (request, response) =>{
         response.render('specialsUpdate.ejs', {info: data})
     })
 })
+app.get('/dessertsUpdateDesserts', (request, response) =>{
+    db.collection('Specials').find().sort({sequence:1}).toArray()
+    .then(data => {
+        response.render('dessertsUpdateDesserts.ejs', {info: data})
+    })
+})
 app.get('/dinnerUpdateCuredMeats', (request, response) =>{
     db.collection('Specials').find().sort({sequence:1}).toArray()
     .then(data => {
@@ -367,6 +378,26 @@ app.post('/addWine', async(request,response)=>{
         console.log(request.body)
     })
     response.redirect(request.get('referer'))
+})
+app.post('/editWine', async(request,response)=>{
+    await db.collection('Specials').updateOne({
+            _id: new ObjectId(`${request.body._id}`)
+    },{
+        $set:{
+            category: `${request.body.category}`,
+            grapes: `${request.body.grapes}`,
+            name: `${request.body.name}`,
+            vintage: `${request.body.vintage}`,
+            description: `${request.body.description}`,
+            producer: `${request.body.producer}`,
+            region: `${request.body.region}`,
+            price: Number(request.body.price),
+            timestamp: new Date()    
+        }
+    })
+    .then(result=>{
+        response.redirect(request.get('referer'))
+    })
 })
 app.delete('/deleteSpecial', async (request,response) => {
     let count = 0;
