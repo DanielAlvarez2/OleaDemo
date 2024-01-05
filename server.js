@@ -53,6 +53,12 @@ app.get('/dinnerLayout', (request, response) =>{
         response.render('dinnerLayout.ejs', {info: data})
     })
 })
+app.get('/dessertsLayout', (request,response) =>{
+    db.collection('Specials').find().sort({sequence:1}).toArray()
+    .then(data=>{
+        response.render('dessertsLayout.ejs', {info:data})
+    })
+})
 app.get('/debug', (request, response) =>{
     db.collection('Specials').find({
         category: "SPECIALS: Appetizer",
