@@ -433,6 +433,13 @@ app.delete('/deleteSpecial', async (request,response) => {
         response.json('Special Deleted')
     })
 })
+app.delete('/deleteWine', async(req, res)=>{
+    await db.collection('Specials').deleteOne({_id: new ObjectId(req.body._id)})
+    .then(result=>{
+        console.log('Wine Deleted')
+        res.json('Wine Deleted')
+    })
+})
 app.delete('/deleteArchive', async(req, res)=>{
     // console.log(req.body);
     await db.collection('Specials').deleteOne({_id: new ObjectId(req.body._id)})

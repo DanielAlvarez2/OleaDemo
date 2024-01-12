@@ -162,6 +162,22 @@ async function deleteSpecial(){
         console.log(error)
     }
 }
+async function deleteWine(){
+    const _id = this.parentNode.childNodes[1].innerText
+    try{
+        const response = await fetch('deleteWine',{
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                '_id': _id,
+            })
+        })
+        const data = await response.json()
+        location.reload() 
+    }catch(error){
+        console.log(error)
+    }
+}
 async function deleteArchive(){
     console.log('1'+this.parentNode.childNodes[1].innerText);
     console.log('2'+this.parentNode.childNodes[2].innerText);

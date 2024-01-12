@@ -192,7 +192,9 @@
             Array.from(deleteText).forEach((element)=>{
               element.removeEventListener('click', deleteSpecial)
             })
-
+            Array.from(deleteText).forEach((element)=>{
+              element.addEventListener('click', deleteWine)
+            })
         </script>
        
 </body>
