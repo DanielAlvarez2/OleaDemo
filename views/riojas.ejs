@@ -189,6 +189,9 @@
                 document.querySelector('#edit-producer').value = this.parentNode.childNodes[11].innerText;
                 document.querySelector('#edit-price').value = this.parentNode.childNodes[13].innerText;
             }
+            Array.from(deleteText).forEach((element)=>{
+              element.removeEventListener('click', deleteSpecial)
+            })
 
         </script>
        
