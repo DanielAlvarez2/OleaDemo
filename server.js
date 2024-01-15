@@ -59,6 +59,12 @@ app.get('/gin', (request, response) =>{
         response.render('gin.ejs', {info: data})
     })
 })
+app.get('/rum', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('rum.ejs', {info: data})
+    })
+})
 app.get('/dinnerLayout', (request, response) =>{
     db.collection('Specials').find().sort({sequence:1}).toArray()
     .then(data => {
