@@ -53,6 +53,12 @@ app.get('/liquors', (request, response) =>{
         response.render('vodka.ejs', {info: data})
     })
 })
+app.get('/vodka', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('vodka.ejs', {info: data})
+    })
+})
 app.get('/gin', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
@@ -63,6 +69,12 @@ app.get('/rum', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
         response.render('rum.ejs', {info: data})
+    })
+})
+app.get('/bourbon', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('bourbon.ejs', {info: data})
     })
 })
 app.get('/dinnerLayout', (request, response) =>{

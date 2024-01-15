@@ -46,11 +46,11 @@
                 <ul id="nav-ul-liquors">
                     <li>Vodka</li>
                     <li>Gin</li>
-                    <li class="active-page">Rum</li>
+                    <li>Rum</li>
                     <li>Tequila</li>
                 </ul>
                 <ul id="nav-ul-liquors-bottom">
-                    <li>Bourbon</li>
+                    <li class="active-page">Bourbon</li>
                     <li>Rye</li>
                     <li>Scotch</li>
                     <li>Japanese Whisky</li>
@@ -58,14 +58,14 @@
                 
     </nav>
     <main>        
-            <h1>liquors</h1>
+            <h1>bourbon</h1>
            
        
         
         <ul class="specials-appetizers">
           <% for(let i=0; i<info.length;i++){ 
             if( info[i].category == "Liquor" && 
-                info[i].type == "Rum"){ %>
+                info[i].type == "Bourbon"){ %>
           <li class="special">
             
             <div><%= info[i]._id %></div>
