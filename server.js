@@ -50,7 +50,7 @@ app.get('/riojas', (request, response) =>{
 app.get('/liquors', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
-        response.render('liquors.ejs', {info: data})
+        response.render('vodka.ejs', {info: data})
     })
 })
 app.get('/dinnerLayout', (request, response) =>{
