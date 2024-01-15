@@ -53,6 +53,12 @@ app.get('/liquors', (request, response) =>{
         response.render('vodka.ejs', {info: data})
     })
 })
+app.get('/gin', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('gin.ejs', {info: data})
+    })
+})
 app.get('/dinnerLayout', (request, response) =>{
     db.collection('Specials').find().sort({sequence:1}).toArray()
     .then(data => {

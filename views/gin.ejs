@@ -44,8 +44,8 @@
                     <a href="/riojasPrintPreview"><li id="specials-print-preview">Print Preview</li></a>
                 </ul>
                 <ul id="nav-ul-liquors">
-                    <li class="active-page">Vodka</li>
-                    <li><a href="/gin">Gin</a></li>
+                    <li>Vodka</li>
+                    <li class="active-page">Gin</li>
                     <li>Rum</li>
                     <li>Tequila</li>
                 </ul>
@@ -65,7 +65,7 @@
         <ul class="specials-appetizers">
           <% for(let i=0; i<info.length;i++){ 
             if( info[i].category == "Liquor" && 
-                info[i].type == "Vodka"){ %>
+                info[i].type == "Gin"){ %>
           <li class="special">
             
             <div><%= info[i]._id %></div>
