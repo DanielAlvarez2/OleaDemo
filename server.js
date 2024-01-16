@@ -47,6 +47,12 @@ app.get('/riojas', (request, response) =>{
         response.render('riojas.ejs', {info: data})
     })
 })
+app.get('/liquorFormat', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('liquorFormat.ejs', {info: data})
+    })
+})
 app.get('/liquors', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
@@ -71,10 +77,34 @@ app.get('/rum', (request, response) =>{
         response.render('rum.ejs', {info: data})
     })
 })
+app.get('/tequila', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('tequila.ejs', {info: data})
+    })
+})
 app.get('/bourbon', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
         response.render('bourbon.ejs', {info: data})
+    })
+})
+app.get('/rye', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('rye.ejs', {info: data})
+    })
+})
+app.get('/scotch', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('scotch.ejs', {info: data})
+    })
+})
+app.get('/japaneseWhisky', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('japaneseWhisky.ejs', {info: data})
     })
 })
 app.get('/dinnerLayout', (request, response) =>{
@@ -132,6 +162,35 @@ app.post('/saveChangesRiojas', async(req,res)=>{
         await db.collection('Specials').updateOne({_id: new ObjectId("658db8c6020f08a1825ede0b")},{
             $set:{
                 pixels: `${req.body.riojasPaddingBetween}px`
+            }
+        })
+    }
+
+
+    res.redirect(req.get('referer'))    
+
+})
+
+app.post('/saveChangesLiquor', async(req,res)=>{
+    console.log(req.body);
+    if (req.body.liquorPaddingSides != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("65a5facee2f0509d3eee6aa4")},{
+            $set:{
+                pixels: `${req.body.liquorPaddingSides}px`
+            }
+        })
+    }
+    if (req.body.liquorFontSize != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("65a5f9fae2f0509d3eee6aa3")},{
+            $set:{
+                pixels: `${req.body.liquorFontSize}px`
+            }
+        })
+    }
+    if (req.body.liquorPaddingBetween != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("65a5f073e2f0509d3eee6aa2")},{
+            $set:{
+                pixels: `${req.body.liquorPaddingBetween}px`
             }
         })
     }
