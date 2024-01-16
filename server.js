@@ -135,6 +135,12 @@ app.get('/riojasPrintPreview', (req,res)=>{
         res.render('riojasPrintPreview.ejs',{info:data})
     })
 })
+app.get('/liquorPrint', (req,res)=>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        res.render('liquorPrint.ejs',{info:data})
+    })
+})
 app.post('/saveChangesRiojas', async(req,res)=>{
     console.log(req.body);
     if (req.body.riojasPaddingTop != ""){

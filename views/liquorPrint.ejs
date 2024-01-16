@@ -149,7 +149,7 @@
     <div id="wrapper">
     <div id="content">
 
-    <nav>
+    <nav class="no-print">
         <h1>olea<span id="content-manager">Content Manager</span></h1>
         <ul>
             <li class="active-page">Specials</li>
@@ -160,28 +160,16 @@
         </ul>
         <ul id="nav-ul-bottom">
             <a href="/manager"><li id="specials-edit">Edit Menu Items</li></a>
-            <li class="active-page" id="specials-format-layout">Format Layout</li>
-            <a href="/liquorPrint"><li id="liquor-print">Print Preview</li></a>
+            <li id="specials-format-layout">Format Layout</li>
+            <a href="/liquorPrint"><li class="active-page" id="liquor-print-preview">Print Preview</li></a>
             </ul>
     </nav>
     
     
     
-    <h1 id="page-title">liquor</h1>
-    <div id="flexbox">    
+    <div id="flexbox" style="display:grid;place-content: center;">    
 
-            <div id="controls">
-                <form method="POST" action="/saveChangesLiquor">
-                    FORMAT PAGE LAYOUT<br>
-                    Page Space Left & Right: <input name="liquorPaddingSides" id="liquor-padding-sides" type="text" size="2"> px min10px<br>
-                    Space between menu items: <input name="liquorPaddingBetween" id="liquor-padding-between" type="text" size="2"> px <br>
-                    Font Size: <input name="liquorFontSize" id="liquor-font-size" type="text" size="2"> px<br>
-                    <button id="clear-changes">Clear Changes</button> 
-                    <input type="submit" id="save-changes" value="Save Changes"> 
-                    <button id="liquor-print-preview-button">Print Preview</button>
-                </form>
-            </div><!--#controls-->
-
+           
 
 
 
@@ -197,7 +185,7 @@
 
 
                 
-            <div id="riojas" style="display:flex;">
+            <div id="riojas" style="display:flex;padding-top:10px;">
             <div id="left">
                 <div class="liquor">VODKA</div>
                 <ul>
@@ -351,7 +339,7 @@
             
             </div><!--#flexbox-->
 
-            <footer>
+            <footer class="no-print">
                 <ul>
                     <li>Specials</li>
                     <li>Dinner</li>
@@ -363,40 +351,6 @@
             </div><!--#content-->
             </div><!--#wrapper-->
             
-            <script>
-                let riojasPage = document.querySelector('#riojas')
-                let liquorPaddingSides = document.querySelector('#liquor-padding-sides')
-                let liquorPaddingBetween = document.querySelector('#liquor-padding-between')
-                let liquorFontSize = document.querySelector('#liquor-font-size')
-                let p = document.querySelectorAll('.special')
-                let clearChanges = document.querySelector('#clear-changes')
-                let liquorPrintPreviewButton = document.querySelector('#liquor-print-preview-button')
-                let special = document.querySelectorAll('.special')
-
-                liquorPrintPreviewButton.addEventListener('click',(event)=>{
-                    event.preventDefault()
-                    location.replace('/riojasPrintPreview')
-                })
-                clearChanges.addEventListener('click',(event)=>{
-                    event.preventDefault()
-                    location.reload()
-                })
-                liquorPaddingSides.addEventListener('input', function(evt){
-                    riojasPage.style.paddingLeft = `${Number(this.value)}px`
-                    riojasPage.style.paddingRight = `${Number(this.value)}px`
-                })
-                liquorPaddingBetween.addEventListener('input', function(evt){
-                    p.forEach((special,i)=>{
-                        special.style.paddingTop = `${(Number(this.value))/2}px`
-                        special.style.paddingBottom = `${(Number(this.value))/2}px`
-                    })
-                })
-                liquorFontSize.addEventListener('input', function(evt){
-                    
-                        riojasPage.style.fontSize = `${Number(this.value)}px`
-                })
-            
-            </script>
         <script src="main.js"></script>
        
 </body>
