@@ -480,6 +480,19 @@ app.post('/addWine', async(request,response)=>{
     })
     response.redirect(request.get('referer'))
 })
+app.post('/addLiquor', async(request,response)=>{
+    await db.collection('Specials').insertOne({
+        category: `${request.body.category}`,
+        type: `${request.body.type}`,
+        name: `${request.body.name}`,
+        price: Number(request.body.price)
+    })
+    .then(result =>{
+        console.log('New Liquor Added')
+        console.log(request.body)
+    })
+    response.redirect(request.get('referer'))
+})
 app.post('/editWine', async(request,response)=>{
     await db.collection('Specials').updateOne({
             _id: new ObjectId(`${request.body._id}`)
@@ -533,6 +546,14 @@ app.delete('/deleteWine', async(req, res)=>{
     .then(result=>{
         console.log('Wine Deleted')
         res.json('Wine Deleted')
+    })
+})
+app.delete('/deleteLiquor', async(req, res)=>{
+    console.log(req.body);
+    await db.collection('Specials').deleteOne({_id: new ObjectId(req.body._id)})
+    .then(result=>{
+        console.log('Liquor Deleted')
+        res.json('Liquor Deleted')
     })
 })
 app.delete('/deleteArchive', async(req, res)=>{

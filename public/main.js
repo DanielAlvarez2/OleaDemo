@@ -178,12 +178,24 @@ async function deleteWine(){
         console.log(error)
     }
 }
+async function deleteLiquor(){
+    console.log('running deleteLiquor() in main.js');
+    const _id = this.parentNode.childNodes[1].innerText
+    try{
+        const response = await fetch('deleteLiquor',{
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                '_id': _id,
+            })
+        })
+        const data = await response.json()
+        location.reload() 
+    }catch(error){
+        console.log(error)
+    }
+}
 async function deleteArchive(){
-    console.log('1'+this.parentNode.childNodes[1].innerText);
-    console.log('2'+this.parentNode.childNodes[2].innerText);
-    console.log('3'+this.parentNode.childNodes[3].innerText);
-    console.log('4'+this.parentNode.childNodes[4].innerText);
-    console.log('5'+this.parentNode.childNodes[5].innerText);
     const _id = this.parentNode.childNodes[1].innerText
 
     const response = await fetch('deleteArchive',{
