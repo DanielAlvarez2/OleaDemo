@@ -38,6 +38,16 @@
             position: relative;
         }
         #riojas{
+            line-height: 
+            <%
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls-liquor' && info[i].name == 'lineHeight'){ %>
+                        <%= info[i].pixels %>
+            <%
+                    }
+                }
+            %>; 
+
             padding-top:
             <% 
                 for (let i=0; i<info.length; i++){

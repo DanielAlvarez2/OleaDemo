@@ -178,7 +178,6 @@ app.post('/saveChangesRiojas', async(req,res)=>{
 })
 
 app.post('/saveChangesLiquor', async(req,res)=>{
-    console.log(req.body);
     if (req.body.liquorPaddingSides != ""){
         await db.collection('Specials').updateOne({_id: new ObjectId("65a5facee2f0509d3eee6aa4")},{
             $set:{
@@ -197,6 +196,13 @@ app.post('/saveChangesLiquor', async(req,res)=>{
         await db.collection('Specials').updateOne({_id: new ObjectId("65a5f073e2f0509d3eee6aa2")},{
             $set:{
                 pixels: `${req.body.liquorPaddingBetween}px`
+            }
+        })
+    }
+    if (req.body.lineHeight != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("65a95661c09c3534a640bc5e")},{
+            $set:{
+                pixels: `${req.body.lineHeight}px`
             }
         })
     }

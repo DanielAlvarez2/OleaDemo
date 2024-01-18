@@ -38,18 +38,15 @@
             position: relative;
         }
         #riojas{
-            padding-top:
-            <% 
+            line-height: 
+            <%
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-top'){ 
-                        
-                        %>
+                    if (info[i].category == 'controls-liquor' && info[i].name == 'lineHeight'){ %>
                         <%= info[i].pixels %>
             <%
-                    } 
-                } 
-            %>;
-
+                    }
+                }
+            %>; 
             padding-left:
             <% 
                 for (let i=0; i<info.length; i++){
@@ -176,6 +173,7 @@
                     Page Space Left & Right: <input name="liquorPaddingSides" id="liquor-padding-sides" type="text" size="2"> px min10px<br>
                     Space between menu items: <input name="liquorPaddingBetween" id="liquor-padding-between" type="text" size="2"> px <br>
                     Font Size: <input name="liquorFontSize" id="liquor-font-size" type="text" size="2"> px<br>
+                    Line Height: <input name="lineHeight" id="line-height" type="text" size="2"> px <br>
                     <button id="clear-changes">Clear Changes</button> 
                     <input type="submit" id="save-changes" value="Save Changes"> 
                     <button id="liquor-print-preview-button">Print Preview</button>
@@ -197,7 +195,7 @@
 
 
                 
-            <div id="riojas" style="display:flex;">
+            <div id="riojas" style="display:flex;padding-top:10px;">
             <div id="left">
                 <div class="liquor">VODKA</div>
                 <ul>
@@ -372,6 +370,11 @@
                 let clearChanges = document.querySelector('#clear-changes')
                 let liquorPrintPreviewButton = document.querySelector('#liquor-print-preview-button')
                 let special = document.querySelectorAll('.special')
+                let lineHeight = document.querySelector('#line-height')
+
+                lineHeight.addEventListener('input', function(evt){
+                    riojasPage.style.lineHeight = `${Number(this.value)}px`
+                })
 
                 liquorPrintPreviewButton.addEventListener('click',(event)=>{
                     event.preventDefault()
