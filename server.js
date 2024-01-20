@@ -548,6 +548,9 @@ app.delete('/deleteSpecial', async (request,response) => {
     })
 })
 app.delete('/deleteWine', async(req, res)=>{
+    console.log(req.body);
+    console.log(typeof(req.body._id));
+    console.log(req.body._id.length);
     await db.collection('Specials').deleteOne({_id: new ObjectId(req.body._id)})
     .then(result=>{
         console.log('Wine Deleted')
@@ -556,6 +559,8 @@ app.delete('/deleteWine', async(req, res)=>{
 })
 app.delete('/deleteLiquor', async(req, res)=>{
     console.log(req.body);
+    console.log(typeof(req.body._id));
+    console.log(req.body._id.length);
     await db.collection('Specials').deleteOne({_id: new ObjectId(req.body._id)})
     .then(result=>{
         console.log('Liquor Deleted')
