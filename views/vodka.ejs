@@ -69,12 +69,14 @@
           <li class="special">
             
             <div><%= info[i]._id %></div>
+            <div><%= info[i].category %></div>
+            <div><%= info[i].type %></div>
             <span><%= info[i].name %></span> / 
             <span><%= info[i].price %></span>
 
             <br>
 
-            <span class="edit-wine"><i class="fa-solid fa-pencil"></i> Edit</span
+            <span class="edit-liquor"><i class="fa-solid fa-pencil"></i> Edit</span
                 >&nbsp;&nbsp;
                 
                 <span class="del"><i class="fa-solid fa-trash-can"></i> Delete</span
@@ -145,20 +147,24 @@
     
         <script src="main.js"></script>
         <script>
-            const editWine = document.querySelectorAll('.edit-wine')   
+            const editLiquor = document.querySelectorAll('.edit-liquor')   
             
-            Array.from(editWine).forEach((element)=>{
+            Array.from(editLiquor).forEach((element)=>{
                 element.addEventListener('click', populateLiquorForm)
             })
             function populateLiquorForm(){
-
                 const editID = this.parentNode.childNodes[1].innerText
                 document.querySelector('#display-ID').innerText = editID;
                 document.querySelector('#edit-id').value = editID;
-                document.querySelector('#edit-category').value = this.parentNode.childNodes[15].innerText;
-                document.querySelector('#edit-name').value = this.parentNode.childNodes[5].innerText;
-                document.querySelector('#edit-price').value = this.parentNode.childNodes[13].innerText;
+                document.querySelector('#edit-category').value = this.parentNode.childNodes[3].innerText;
+                document.querySelector('#edit-type').value = this.parentNode.childNodes[5].innerText;
+                document.querySelector('#edit-name').value = this.parentNode.childNodes[7].innerText;
+                document.querySelector('#edit-price').value = this.parentNode.childNodes[9].innerText;
             }
+
+            Array.from(deleteText).forEach((element)=>{
+              element.removeEventListener('click', deleteSpecial)
+            })
             Array.from(deleteText).forEach((element)=>{
               element.addEventListener('click', deleteLiquor)
             })

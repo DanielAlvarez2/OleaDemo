@@ -519,6 +519,21 @@ app.post('/editWine', async(request,response)=>{
         response.redirect(request.get('referer'))
     })
 })
+app.post('/editLiquor', async(request,response)=>{
+    await db.collection('Specials').updateOne({
+            _id: new ObjectId(`${request.body._id}`)
+    },{
+        $set:{
+            category: `${request.body.category}`,
+            type: `${request.body.type}`,
+            name: `${request.body.name}`,
+            price: Number(request.body.price)
+        }
+    })
+    .then(result=>{
+        response.redirect(request.get('referer'))
+    })
+})
 app.delete('/deleteSpecial', async (request,response) => {
     let count = 0;
     await db.collection('Specials').find().toArray()

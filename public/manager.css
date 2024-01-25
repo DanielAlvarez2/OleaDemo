@@ -37,7 +37,7 @@ h2{
 .allergies{
     color:red;
 }
-.edit, .edit-wine{
+.edit, .edit-wine, .edit-liquor{
     color:rgb(183, 183, 0);
 }
 
@@ -94,6 +94,7 @@ nav ul{
 .del,
 .edit,
 .edit-wine,
+.edit-liquor,
 .archive,
 .transfer,
 .move-up,
