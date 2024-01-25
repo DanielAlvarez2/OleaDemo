@@ -180,6 +180,10 @@ async function deleteWine(){
 }
 async function deleteLiquor(){
     console.log('running deleteLiquor() in main.js');
+    console.log('0: '+this.parentNode.childNodes[0].innerText);
+    console.log('1: '+this.parentNode.childNodes[1].innerText);
+    console.log('2: '+this.parentNode.childNodes[2].innerText);
+    console.log('3: '+this.parentNode.childNodes[3].innerText);
     const _id = this.parentNode.childNodes[1].innerText
     try{
         const response = await fetch('deleteLiquor',{
