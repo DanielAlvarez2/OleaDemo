@@ -546,10 +546,12 @@ app.delete('/deleteSpecial', async (request,response) => {
                 for (let i=Number(request.body.sequence)+1;i<=count;i++){
                     await db.collection('Specials').updateOne({
                         category: `${request.body.category}`,
-                        sequence: `${i}`
+                        // sequence: `${i}`
+                        sequence: i
                     },{
                         $set:{
-                            sequence: `${new String(i-1)}`
+                            // sequence: `${new String(i-1)}`
+                            sequence: i-1
                         }
                     })                
                 }
