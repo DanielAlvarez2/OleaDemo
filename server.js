@@ -448,7 +448,14 @@ app.get('/riojasFormatLayout', (req,res)=>{
     })
 })
 app.post('/addSpecial', async(request,response)=>{
-    await db.collection('Specials').insertOne(request.body)
+    await db.collection('Specials').insertOne({
+        category: `${request.body.category}`,
+        name: `${request.body.name}`,
+        description: `${request.body.description}`,
+        price: `${request.body.price}`,
+        allergies: `${request.body.allergies}`,
+        sequence: Number(request.body.sequence)
+    })
     .then(result =>{
         console.log('New Special Added')
         console.log(request.body)
