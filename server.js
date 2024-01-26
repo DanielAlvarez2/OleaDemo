@@ -660,7 +660,7 @@ app.post('/editSpecial', (request, response) => {
     db.collection('Specials').updateOne({_id: new ObjectId(request.body._id)},{
         $set:{
             category: request.body.category,
-            sequence: request.body.sequence,
+            sequence: Number(request.body.sequence),
             name: request.body.name,
             description: request.body.description,
             price: request.body.price,
