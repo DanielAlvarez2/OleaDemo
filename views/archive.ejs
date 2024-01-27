@@ -60,13 +60,12 @@ let dessertCount = <%=dessertCount%>
 
     <ul class="specials-appetizers">
       <% for(let i=0; i<info.length;i++){ 
-        if( info[i].sequence &&
-            info[i].sequence != "" && 
-            info[i].sequence == "0" ){ %>
+        if( info[i].sequence == 0){ %>
       <li class="special">
         <div><%= info[i]._id %></div>
         <div><%= info[i].category %></div>
         <div><%= info[i].sequence %></div>
+        <div><%= typeof info[i].sequence %></div>
         <div><%= info[i].name %></div>
         <div><%= info[i].description %></div>
         <div><%= info[i].price %></div>
@@ -77,6 +76,7 @@ let dessertCount = <%=dessertCount%>
         >&nbsp;&nbsp;
         <span class="delete-archive"><i class="fa-solid fa-trash-can"></i> Delete</span
         >&nbsp;&nbsp;
+        <br><br>
       </li>
       <% } } %>
     </ul>

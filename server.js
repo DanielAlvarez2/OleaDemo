@@ -603,6 +603,10 @@ app.delete('/deleteArchive', async(req, res)=>{
         res.json('Archive Deleted')
     })
 })
+
+
+
+
 app.post('/archiveSpecial', async (request,response)=>{
     console.log('archive()');
     let totalCount = 0;
@@ -614,23 +618,21 @@ app.post('/archiveSpecial', async (request,response)=>{
             
         });
     })
-    // if (request.body.category == "SPECIALS: Appetizer"){totalCount=request.body.appetizerCount}
-    // if (request.body.category == "SPECIALS: Entrée"){totalCount=request.body.entreeCount}
-    // if (request.body.category == "SPECIALS: Dessert"){totalCount=request.body.dessertCount}
 
     for (let i=Number(request.body.sequence)+1;i<=totalCount;i++){
         await db.collection('Specials').updateOne({
             category: `${request.body.category}`,
-            sequence: `${i}`
+            sequence: i
         },{
             $set:{
-                sequence: `${new String(i-1)}`
+                sequence: i-1
             }
         })
     }
     await db.collection('Specials').updateOne({_id: new ObjectId(request.body._id)},{
         $set:{
-            sequence: "0",
+            // sequence: "0",
+            sequence: Number(0),
             timestamp: new Date()
         }
     })
@@ -640,6 +642,12 @@ app.post('/archiveSpecial', async (request,response)=>{
         response.json('Special Archived')
     })
 })
+
+
+
+
+
+
 
 app.post('/unarchiveSpecial', async (request,response)=>{
     let count=0;
@@ -654,7 +662,7 @@ app.post('/unarchiveSpecial', async (request,response)=>{
     // console.log(request);
     db.collection('Specials').updateOne({_id: new ObjectId(request.body._id)},{
         $set:{
-            sequence: `${count+1}`,
+            sequence: count + 1,
             timestamp: new Date()
         }
     })
