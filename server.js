@@ -26,7 +26,7 @@ async function connectToMongoDB(){
 }
 connectToMongoDB();
 // app.set('view engine','ejs')
-// app.use(express.static('public'))
+app.use(express.static('public'))
 // app.use(express.urlencoded({ extended: true }))
 // app.use(express.json())
 
@@ -752,3 +752,6 @@ app.post('/moveDown', (request,response)=>{
     })
 })
 
+app.all('/*', (req,res)=>{
+    res.send('404 ERROR: File not found')
+})
