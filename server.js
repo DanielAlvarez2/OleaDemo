@@ -25,10 +25,13 @@ async function connectToMongoDB(){
     }
 }
 connectToMongoDB();
-// app.set('view engine','ejs')
 app.use(express.static('public'))
-// app.use(express.urlencoded({ extended: true }))
-// app.use(express.json())
+
+
+
+app.set('view engine','ejs')
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 app.get('/checklist', (request,response)=>{
     response.render('checklist.ejs')
@@ -607,6 +610,22 @@ app.delete('/deleteArchive', async(req, res)=>{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.post('/archiveSpecial', async (request,response)=>{
     console.log('archive()');
     let totalCount = 0;
@@ -614,12 +633,15 @@ app.post('/archiveSpecial', async (request,response)=>{
     .then(data =>{
         data.forEach(element => { 
             if (element.category == request.body.category &&
-                element.sequence != "0") totalCount++
+                element.sequence != 0) totalCount++
             
         });
     })
-
+    console.log('sequence: '+request.body.sequence + typeof(request.body.sequence));
+console.log('totalCount: '+totalCount);
     for (let i=Number(request.body.sequence)+1;i<=totalCount;i++){
+        console.log('request.body.category: '+request.body.category);
+        console.log('i: '+i);
         await db.collection('Specials').updateOne({
             category: `${request.body.category}`,
             sequence: i
@@ -629,10 +651,12 @@ app.post('/archiveSpecial', async (request,response)=>{
             }
         })
     }
-    await db.collection('Specials').updateOne({_id: new ObjectId(request.body._id)},{
+    await db.collection('Specials').updateOne({
+        _id: new ObjectId(request.body._id)
+    },{
         $set:{
             // sequence: "0",
-            sequence: Number(0),
+            sequence: 0,
             timestamp: new Date()
         }
     })
@@ -649,6 +673,16 @@ app.post('/archiveSpecial', async (request,response)=>{
 
 
 
+
+
+
+
+
+
+
+
+
+
 app.post('/unarchiveSpecial', async (request,response)=>{
     let count=0;
     await db.collection('Specials').find().toArray()
@@ -656,11 +690,13 @@ app.post('/unarchiveSpecial', async (request,response)=>{
         data.forEach(element=>{
             if (element.category == request.body.category &&
                 element.sequence &&
-                element.sequence != "0") count++
+                element.sequence != 0) count++
         })
     })
     // console.log(request);
-    db.collection('Specials').updateOne({_id: new ObjectId(request.body._id)},{
+    db.collection('Specials').updateOne({
+        _id: new ObjectId(request.body._id)
+    },{
         $set:{
             sequence: count + 1,
             timestamp: new Date()
@@ -672,8 +708,36 @@ app.post('/unarchiveSpecial', async (request,response)=>{
     })
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.post('/editSpecial', (request, response) => {
-    console.log(request);
+    // console.log(request);
     db.collection('Specials').updateOne({_id: new ObjectId(request.body._id)},{
         $set:{
             category: request.body.category,
