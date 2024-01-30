@@ -770,17 +770,18 @@ app.post('/moveUp', (request,response)=>{
     
     db.collection('Specials').updateOne({
         category: request.body.category,
-        sequence: `${request.body.sequence-1}`
+        sequence: Number(request.body.sequence)-1
     },
     {
         $set:{
-            sequence: `${request.body.sequence}`
+            sequence: Number(request.body.sequence)
         }})
 
-    db.collection('Specials').updateOne({_id: new ObjectId(request.body._id)},
-    {
+    db.collection('Specials').updateOne({
+        _id: new ObjectId(request.body._id)
+    },{
         $set:{
-            sequence: `${request.body.sequence - 1}`
+            sequence: Number(request.body.sequence) - 1
         }
     })
 
@@ -795,17 +796,18 @@ app.post('/moveDown', (request,response)=>{
     
     db.collection('Specials').updateOne({
         category: request.body.category,
-        sequence: `${Number(request.body.sequence) + 1}`
+        sequence: Number(request.body.sequence) + 1
     },
     {
         $set:{
-            sequence: `${request.body.sequence}`
+            sequence: Number(request.body.sequence)
         }})
 
-    db.collection('Specials').updateOne({_id: new ObjectId(request.body._id)},
-    {
+    db.collection('Specials').updateOne({
+        _id: new ObjectId(request.body._id)
+    },{
         $set:{
-            sequence: `${Number(request.body.sequence) + 1}`
+            sequence: Number(request.body.sequence) + 1
         }
     })
 
@@ -816,6 +818,6 @@ app.post('/moveDown', (request,response)=>{
     })
 })
 
-app.all('/*', (req,res)=>{
+app.all('*', (req,res)=>{
     res.send('404 ERROR: File not found')
 })
