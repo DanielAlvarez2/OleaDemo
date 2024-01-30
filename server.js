@@ -402,6 +402,12 @@ app.get('/dessertsUpdateDesserts', (request, response) =>{
         response.render('dessertsUpdateDesserts.ejs', {info: data})
     })
 })
+app.get('/dessertsBack', (request, response) =>{
+    db.collection('Specials').find().sort({sequence:1}).toArray()
+    .then(data => {
+        response.render('dessertsBack.ejs', {info: data})
+    })
+})
 app.get('/dessertsPrint', (request, response) =>{
     db.collection('Specials').find().sort({sequence:1}).toArray()
     .then(data => {
@@ -484,6 +490,32 @@ app.post('/addSpecial', async(request,response)=>{
     })
     response.redirect(request.get('referer'))
 })
+app.post('/addAfterDinnerDrink', async(request,response)=>{
+    await db.collection('Specials').insertOne({
+        category: `${request.body.category}`,
+        type: `${request.body.type}`,
+        name: `${request.body.name}`,
+        price: `${request.body.price}`,
+        sequence: Number(request.body.sequence)
+    })
+    .then(result =>{
+        console.log('New Special Added')
+        console.log(request.body)
+    })
+    await db.collection('Specials').updateOne({
+        category: `${request.body.category}`,
+        type: `${request.body.type}`,
+        name: `${request.body.name}`,
+        price: `${request.body.price}`,
+        sequence: Number(request.body.sequence)
+    },{
+        $set:{
+            timestamp: new Date()
+            
+        }
+    })
+    response.redirect(request.get('referer'))
+})
 
 app.post('/addWine', async(request,response)=>{
     await db.collection('Specials').insertOne({
@@ -551,6 +583,25 @@ app.post('/editLiquor', async(request,response)=>{
         response.redirect(request.get('referer'))
     })
 })
+app.post('/editAfterDinnerDrink', async(request,response)=>{
+    await db.collection('Specials').updateOne({
+            _id: new ObjectId(`${request.body._id}`)
+    },{
+        $set:{
+            category: `${request.body.category}`,
+            type: `${request.body.type}`,
+            sequence: Number(request.body.sequence),
+            name: `${request.body.name}`,
+            price: `${request.body.price}`,
+            timestamp: new Date()
+        }
+    })
+    .then(result=>{
+        response.redirect(request.get('referer'))
+    })
+})
+
+
 app.delete('/deleteSpecial', async (request,response) => {
     let count = 0;
     await db.collection('Specials').find().toArray()
