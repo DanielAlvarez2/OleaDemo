@@ -67,12 +67,58 @@
             %>;
             
         }
-        
+        .pastry-chef{
+
+            padding-left:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+            
+            padding-right:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+
+            font-size: 
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
+                        <%= info[i].pixels.slice(0,-2)*0.75 %>px
+            <%
+                    } 
+                } 
+            %>
+            ;
+        }
+
+        .legal{
+            font-size: 
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
+                        <%= info[i].pixels.slice(0,-2)*0.6 %>px
+            <%
+                    } 
+                } 
+            %>
+            ;
+        }
+
         ul{
             font-family:serif;
         }
         
-        #riojas,#riojas2{
+        #riojas,#riojas2,h2{
             font-size:
             <% 
                 for (let i=0; i<info.length; i++){
@@ -181,7 +227,23 @@
                     <% } %>
                 <% } %>
                 </ul>
+                <br>
+                <h2 class="coffee-title">coffee <span class="decaf">(decaffeinated available)</span></h2>
+                coffee <b>2.5</b> / cappuccino <b>5</b> / cortado <b>3.5</b><br>
+                espresso <b>3.5</b> / double espresso <b>5</b><br><br>
+
+                <h2 class="coffee-title">organic-artisan whole leaf tea <span class="decaf">(pouch) <span style="font-weight: 900;">3.75</span></span> </h2>
+                black: english breakfast, decaf earl grey<br>
+                green: white orchard, spring jasmine, tropical<br>
+                herbal (caffeine free): chamomille-citrus, mint
+
+
                 <div style="width:5.5in;" id="printer-dead-space" class="no-print"></div>
+                <div class="pastry-chef" style="position:absolute;left:0;bottom:80px;width:100%;">
+                    jessica delgado, pastry chef
+                    <hr style="margin-top:2px;">
+                    <span class="legal">please alert your server if you have special dietary requirements</span>    
+                </div><!--#pastry-chef-->
 
             </div><!--#riojas-->
 
@@ -200,7 +262,23 @@
                     <% } %>
                 <% } %>
                 </ul>
+                <br>
+                <h2 class="coffee-title">coffee <span class="decaf">(decaffeinated available)</span></h2>
+                coffee <b>2.5</b> / cappuccino <b>5</b> / cortado <b>3.5</b><br>
+                espresso <b>3.5</b> / double espresso <b>5</b><br><br>
+
+                <h2 class="coffee-title">organic-artisan whole leaf tea <span class="decaf">(pouch) <span style="font-weight: 900;">3.75</span></span> </h2>
+                black: english breakfast, decaf earl grey<br>
+                green: white orchard, spring jasmine, tropical<br>
+                herbal (caffeine free): chamomille-citrus, mint
+
+
                 <div style="width:5.5in;" id="printer-dead-space" class="no-print"></div>
+                <div class="pastry-chef" style="position:absolute;left:0;bottom:80px;width:100%;">
+                    jessica delgado, pastry chef
+                    <hr style="margin-top:2px;">
+                    <span class="legal">please alert your server if you have special dietary requirements</span>    
+                </div><!--#pastry-chef-->
 
             </div><!--#riojas2-->
 
