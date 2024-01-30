@@ -402,6 +402,13 @@ app.get('/dessertsUpdateDesserts', (request, response) =>{
         response.render('dessertsUpdateDesserts.ejs', {info: data})
     })
 })
+app.get('/dessertsPrint', (request, response) =>{
+    db.collection('Specials').find().sort({sequence:1}).toArray()
+    .then(data => {
+        response.render('dessertsPrint.ejs', {info: data})
+    })
+})
+
 app.get('/dinnerUpdateCuredMeats', (request, response) =>{
     db.collection('Specials').find().sort({sequence:1}).toArray()
     .then(data => {
