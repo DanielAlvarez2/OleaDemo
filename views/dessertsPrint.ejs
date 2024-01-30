@@ -201,9 +201,9 @@
             <a href="/archive"><li id="archive">Archive</li></a>
         </ul>
         <ul id="nav-ul-bottom">
-            <a href="/manager"><li id="specials-edit">Edit Menu Items</li></a>
-            <li id="specials-format-layout">Format Layout</li>
-            <a href="/riojasPrintPreview"><li class="active-page" id="riojas-print-preview">Print Preview</li></a>
+            <a href="/dessertsUpdateDesserts"><li id="specials-edit">Edit Menu Items</li></a>
+            <a href="/dessertsLayout"><li id="specials-format-layout">Format Layout</li></a>
+            <li class="active-page" id="riojas-print-preview">Print Preview</li>
             </ul>
     </nav>
     
@@ -299,44 +299,17 @@
             
             <script>
                 let riojasPage = document.querySelector('#riojas')
-                let riojasPaddingSides = document.querySelector('#riojas-padding-sides')
-                let riojasPaddingBetween = document.querySelector('#riojas-padding-between')
                 let todaysSpecials = document.querySelector('#todays-specials')
                 let paddingBottomControl = document.querySelector('#padding-bottom-control')
                 let legalDisclaimer = document.querySelector('#legal-disclaimer')
-                let riojasFontSize = document.querySelector('#riojas-font-size')
                 let p = document.querySelectorAll('.special')
                 let appetizerHeading = document.querySelector('#appetizer-heading')
                 let entreeHeading = document.querySelector('#entree-heading')
                 let dessertHeading = document.querySelector('#dessert-heading')
                 let legalFontSizeControl = document.querySelector('#legal-font-size-control')
-                let clearChanges = document.querySelector('#clear-changes')
-                let riojasPrintPreviewButton = document.querySelector('#riojas-print-preview-button')
                 let legalDisclaimerSwitch = document.querySelector('#legal-disclaimer-switch')
                 let special = document.querySelectorAll('.special')
 
-                riojasPrintPreviewButton.addEventListener('click',(event)=>{
-                    event.preventDefault()
-                    location.replace('/riojasPrintPreview')
-                })
-                clearChanges.addEventListener('click',(event)=>{
-                    event.preventDefault()
-                    location.reload()
-                })
-                riojasPaddingSides.addEventListener('input', function(evt){
-                    riojasPage.style.paddingLeft = `${Number(this.value)}px`
-                    riojasPage.style.paddingRight = `${Number(this.value)}px`
-                })
-                riojasPaddingBetween.addEventListener('input', function(evt){
-                    p.forEach((special,i)=>{
-                        special.style.paddingTop = `${(Number(this.value))/2}px`
-                        special.style.paddingBottom = `${(Number(this.value))/2}px`
-                    })
-                })
-                riojasFontSize.addEventListener('input', function(evt){
-                    
-                        riojasPage.style.fontSize = `${Number(this.value)}px`
-                })
             
             </script>
         <script src="main.js"></script>
