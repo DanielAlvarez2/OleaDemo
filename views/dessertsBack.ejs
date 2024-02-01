@@ -152,6 +152,8 @@ let dessertWinesCount = <%=dessertWinesCount%>
     
         <script src="main.js"></script>
         <script>
+            Array.from(document.querySelectorAll('.move-up')).forEach(element=>element.removeEventListener('click',moveUp))
+            Array.from(document.querySelectorAll('.move-up')).forEach(element=>element.addEventListener('click',moveUpAfterDinnerDrink))
             Array.from(document.querySelectorAll('.edit')).forEach(element=>element.removeEventListener('click',populateEditForm))
             Array.from(document.querySelectorAll('.edit')).forEach(element=>element.addEventListener('click',populateAfterDinnerDrinkForm))
             function populateAfterDinnerDrinkForm(){

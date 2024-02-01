@@ -849,6 +849,31 @@ app.post('/moveUp', (request,response)=>{
         response.json('Special Moved Up')
     })
 })
+app.post('/moveUpAfterDinnerDrink', (request,response)=>{
+    
+    db.collection('Specials').updateOne({
+        type: request.body.type,
+        sequence: Number(request.body.sequence)-1
+    },
+    {
+        $set:{
+            sequence: Number(request.body.sequence)
+        }})
+
+    db.collection('Specials').updateOne({
+        _id: new ObjectId(request.body._id)
+    },{
+        $set:{
+            sequence: Number(request.body.sequence) - 1
+        }
+    })
+
+        
+    .then(result =>{
+        console.log('After Dinner Drink Moved Up')
+        response.json('After Dinner Drink Moved Up')
+    })
+})
 
 app.post('/moveDown', (request,response)=>{
     

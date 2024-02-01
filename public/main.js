@@ -43,10 +43,24 @@ async function moveUp(){
         body: JSON.stringify({
             '_id': _id,
             sequence: sequence,
-            category: category
-            // appetizerCount: appetizerCount,
-            // entreeCount: entreeCount,
-            // dessertCount: dessertCount
+            category: category          
+        })
+    })
+    const data = await response.json()
+    location.reload()
+}
+async function moveUpAfterDinnerDrink(){
+    const _id = this.parentNode.childNodes[3].innerText
+    const type = this.parentNode.childNodes[7].innerText
+    const sequence = this.parentNode.childNodes[9].innerText
+
+    const response = await fetch('moveUpAfterDinnerDrink',{
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            '_id': _id,
+            sequence: sequence,
+            type: type          
         })
     })
     const data = await response.json()
@@ -64,9 +78,6 @@ async function moveDown(){
             '_id': _id,
             sequence: sequence,
             category: category
-            // appetizerCount: appetizerCount,
-            // entreeCount: entreeCount,
-            // dessertCount:dessertCount
         })
     })
     const data = await response.json()
