@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="manager.css">
+    <script
+      src="https://kit.fontawesome.com/21ef82ed30.js"
+      crossorigin="anonymous"
+    ></script>
+    
+</head>
+
+
+
+<% 
+let dessertWinesCount=0
+for (let i=0; i<info.length; i++){
+    if (info[i].type == "Dessert Wine" && info[i].sequence != 0) dessertWinesCount++ 
+}
+
+%>
+<script>
+let dessertWinesCount = <%=dessertWinesCount%>
+</script>
+
+
+
+
+
+
+<body>
+  <div id="wrapper">
+    <div id="content">
+    <nav>
+        <h1>olea<span id="content-manager">Content Manager</span></h1>
+                
+                
+                <ul>
+                    <a href="/manager"><li id="specials">Specials</li></a>
+                    <a href="/dinnerUpdateCuredMeats"><li>Dinner</li></a>
+                    <li class="active-page">Dessert</li>
+                    <li>Wine/Drinks</li>
+                    <a href="/archive"><li id="archive">Archive</li></a>
+                </ul>
+                <ul>
+                    <li class="active-page">Edit Menu Items</li>
+                    <a href="/dessertsLayout"><li id="dinner-format-layout">Format Layout</li></a>
+                    <a href="/dessertsPrint"><li id="dinner-print-preview">Print Preview</li></a>
+                </ul>
+                <ul style="align-items: center;">
+                    <li class="active-page">Wines</li>
+                    <li>Cocktails</li>
+                    <li>Japanese Whisky</li>
+                    <li>Scotch</li>
+                    <li>Brandy</li>
+                    <li>Grappa</li>
+                </ul>
+                
+                <div id="flip" style="width:100%;text-align: center;">
+                    <a href="/dessertsUpdateDesserts">
+                        <span>front</span>
+                        <i class="fa-solid fa-rotate"></i>
+                    </a>
+                  <span class="active-page" style="padding: 5px;border-radius: 20px;">
+                    BACK
+                  </span>
+              </div><!--#flip-->
+
+            </nav>
+            
+            <main>
+            
+             
+                  <h2>AFTER DINNER DRINKS</h2>
+                  <h2>dessert wines</h2>
+              
+              <ul>
+                <% for(let i=0; i<info.length;i++){ 
+                  if( 
+                      info[i].sequence != 0 && 
+                      info[i].type == "Dessert Wine" && 
+                      info[i].category == "After Dinner Drink"){ %>
+                <li class="special">
+                  <% if(info[i].sequence == 1){ %>
+                      <div class="move-up" style="visibility:hidden"><i class="fa-solid fa-sort-up"></i></div>
+                  <% }else{ %>
+                      <div class="move-up"><i class="fa-solid fa-sort-up"></i></div>
+                  <% } %>
+                  <div><%= info[i]._id %></div>
+                  <div><%= info[i].category %></div>
+                  <div><%= info[i].type %></div>
+                  <div><%= info[i].sequence %></div>
+                  <div><%= info[i].name %></div>
+                  <div><%= info[i].price %></div>
+                  <div><%- `${info[i].timestamp}`.substring(0,24) %></div>
+      
+                  <span class="edit"><i class="fa-solid fa-pencil"></i> Edit</span
+                      >&nbsp;&nbsp;
+                      <span class="del"><i class="fa-solid fa-trash-can"></i> Delete</span>
+                  <% if(info[i].sequence != dessertWinesCount){ %>
+                      <div class="move-down"><i class="fa-solid fa-sort-down"></i></div>
+                  <% } %>
+                 </li>
+                <% } } %>
+              </ul>
+          
+          
+              <br>
+              <h2>Add New Dessert Wine:</h2>
+          
+              <form action="/addAfterDinnerDrink" method="POST">
+                <input type="text" placeholder="Category" name="category" /><br />
+                <input type="text" placeholder="Type" name="type" /><br />
+                <input type="text" placeholder="Sequence" name="sequence" /><br />
+                <input type="text" placeholder="Name" name="name" /><br />
+                <input type="text" placeholder="Price" name="price" /><br />
+                <input type="submit" id="update-button" value="Create" />
+              </form>
+          
+
+
+
+              <h2>Edit Exisiting Dessert Wine:</h2>
+          
+              <form action="/editAfterDinnerDrink" method="POST">
+                <div name="_id" id="display-ID"></div>
+                <input id="edit-ID" type="text" placeholder="ID" name="_id" /><br />
+                <input id="edit-category" type="text" placeholder="Category" name="category" /><br />
+                <input id="edit-type" type="text" placeholder="Type" name="type" /><br />
+                <input id="edit-sequence" type="text" placeholder="Sequence" name="sequence" /><br />
+                <input id="edit-name" type="text" placeholder="Name" name="name" /><br />
+                <input id="edit-price" type="text" placeholder="Price" name="price" /><br />
+                    
+                <input type="submit" value="Update" />
+              </form>
+            </main>
+            
+        <footer>
+          <ul>
+            <li>Specials</li>
+            <li>Dinner</li>
+            <li>Dessert</li>
+            <li>Wine/Drinks</li>
+            <li>Archive</li>
+        </ul>
+        </footer>
+      </div><!--#content-->
+      </div><!--#wrapper-->
+    
+        <script src="main.js"></script>
+        <script>
+            Array.from(document.querySelectorAll('.move-up')).forEach(element=>element.removeEventListener('click',moveUp))
+            Array.from(document.querySelectorAll('.move-up')).forEach(element=>element.addEventListener('click',moveUpAfterDinnerDrink))
+            Array.from(document.querySelectorAll('.move-down')).forEach(element=>element.removeEventListener('click',moveDown))
+            Array.from(document.querySelectorAll('.move-down')).forEach(element=>element.addEventListener('click',moveDownAfterDinnerDrink))
+            Array.from(document.querySelectorAll('.edit')).forEach(element=>element.removeEventListener('click',populateEditForm))
+            Array.from(document.querySelectorAll('.edit')).forEach(element=>element.addEventListener('click',populateAfterDinnerDrinkForm))
+            function populateAfterDinnerDrinkForm(){
+                console.log('0: '+this.parentNode.childNodes[0].innerText);
+            console.log('1: '+this.parentNode.childNodes[1].innerText);
+            console.log('2: '+this.parentNode.childNodes[2].innerText);
+            console.log('3: '+this.parentNode.childNodes[3].innerText);
+            console.log('4: '+this.parentNode.childNodes[4].innerText);
+            console.log('5: '+this.parentNode.childNodes[5].innerText);
+
+
+                document.querySelector('#display-ID').innerText = this.parentNode.childNodes[3].innerText
+                document.querySelector('#edit-ID').value = this.parentNode.childNodes[3].innerText
+                document.querySelector('#edit-category').value = this.parentNode.childNodes[5].innerText
+                document.querySelector('#edit-type').value = this.parentNode.childNodes[7].innerText
+                document.querySelector('#edit-sequence').value = this.parentNode.childNodes[9].innerText
+                document.querySelector('#edit-name').value = this.parentNode.childNodes[11].innerText
+                document.querySelector('#edit-price').value = this.parentNode.childNodes[13].innerText
+            }
+        </script>
+</body>
+</html>
