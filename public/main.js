@@ -66,6 +66,23 @@ async function moveUpAfterDinnerDrink(){
     const data = await response.json()
     location.reload()
 }
+async function moveDownAfterDinnerDrink(){
+    const _id = this.parentNode.childNodes[3].innerText
+    const type = this.parentNode.childNodes[7].innerText
+    const sequence = this.parentNode.childNodes[9].innerText
+
+    const response = await fetch('moveDownAfterDinnerDrink',{
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            '_id': _id,
+            sequence: sequence,
+            type: type          
+        })
+    })
+    const data = await response.json()
+    location.reload()
+}
 async function moveDown(){
     const _id = this.parentNode.childNodes[3].innerText
     const category = this.parentNode.childNodes[5].innerText
