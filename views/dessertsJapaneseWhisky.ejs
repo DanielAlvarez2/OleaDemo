@@ -16,14 +16,16 @@
 
 
 <% 
-let dessertWinesCount=0
+let dessertJapaneseWhiskyCount=0
 for (let i=0; i<info.length; i++){
-    if (info[i].type == "Dessert Wine" && info[i].sequence != 0) dessertWinesCount++ 
+    if (info[i].category == "After Dinner Drink" &&
+        info[i].type == "Japanese Whisky" && 
+        info[i].sequence != 0) dessertJapaneseWhiskyCount++ 
 }
 
 %>
 <script>
-let dessertWinesCount = <%=dessertWinesCount%>
+let dessertJapaneseWhiskyCount = <%=dessertJapaneseWhiskyCount%>
 </script>
 
 
@@ -51,9 +53,9 @@ let dessertWinesCount = <%=dessertWinesCount%>
                     <a href="/dessertsPrint"><li id="dinner-print-preview">Print Preview</li></a>
                 </ul>
                 <ul style="align-items: center;">
-                    <li class="active-page">Wines</li>
+                    <a href="/dessertsBack"><li>Wines</li></a>
                     <a href ="/dessertsCocktails"><li>Cocktails</li></a>
-                    <li>Japanese Whisky</li>
+                    <li class="active-page">Japanese Whisky</li>
                     <li>Scotch</li>
                     <li>Brandy</li>
                     <li>Grappa</li>
@@ -81,7 +83,7 @@ let dessertWinesCount = <%=dessertWinesCount%>
                 <% for(let i=0; i<info.length;i++){ 
                   if( 
                       info[i].sequence != 0 && 
-                      info[i].type == "Dessert Wine" && 
+                      info[i].type == "Japanese Whisky" && 
                       info[i].category == "After Dinner Drink"){ %>
                 <li class="special">
                   <% if(info[i].sequence == 1){ %>
@@ -100,7 +102,7 @@ let dessertWinesCount = <%=dessertWinesCount%>
                   <span class="edit"><i class="fa-solid fa-pencil"></i> Edit</span
                       >&nbsp;&nbsp;
                       <span class="del"><i class="fa-solid fa-trash-can"></i> Delete</span>
-                  <% if(info[i].sequence != dessertWinesCount){ %>
+                  <% if(info[i].sequence != dessertJapaneseWhiskyCount){ %>
                       <div class="move-down"><i class="fa-solid fa-sort-down"></i></div>
                   <% } %>
                  </li>

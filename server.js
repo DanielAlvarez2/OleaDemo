@@ -414,6 +414,12 @@ app.get('/dessertsCocktails', (request, response) =>{
         response.render('dessertsCocktails.ejs', {info: data})
     })
 })
+app.get('/dessertsJapaneseWhisky', (request, response) =>{
+    db.collection('Specials').find().sort({sequence:1}).toArray()
+    .then(data => {
+        response.render('dessertsJapaneseWhisky.ejs', {info: data})
+    })
+})
 
 app.get('/dessertsPrint', (request, response) =>{
     db.collection('Specials').find().sort({sequence:1}).toArray()
