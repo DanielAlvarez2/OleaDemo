@@ -37,7 +37,7 @@
             padding-top:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-top'){ 
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-top'){ 
                         
                         %>
                         <%= info[i].pixels %>
@@ -49,7 +49,7 @@
             padding-left:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-sides'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -59,7 +59,7 @@
             padding-right:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-sides'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -72,7 +72,7 @@
             padding-left:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-sides'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -82,7 +82,7 @@
             padding-right:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-sides'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -92,7 +92,7 @@
             font-size: 
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'dessertsFontSize'){ %>
                         <%= info[i].pixels.slice(0,-2)*0.75 %>px
             <%
                     } 
@@ -105,7 +105,7 @@
             font-size: 
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'dessertsFontSize'){ %>
                         <%= info[i].pixels.slice(0,-2)*0.6 %>px
             <%
                     } 
@@ -122,7 +122,7 @@
             font-size:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'dessertsFontSize'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -134,7 +134,7 @@
             padding-top:            
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-between'){ 
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-between'){ 
                         let half=(info[i].pixels).substring(0,info[i].pixels.length-2)/2
                         %>
                         <%= half%>px
@@ -145,7 +145,7 @@
             padding-bottom:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-between'){ 
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-between'){ 
                         let half=(info[i].pixels).substring(0,info[i].pixels.length-2)/2
                         %>
                         <%= half%>px

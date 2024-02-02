@@ -79,60 +79,6 @@
             %>;
             
         }
-        #pastry-chef{
-            padding-left:
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
-                        <%= info[i].pixels%>
-            <%
-                    } 
-                } 
-            %>;
-            
-            padding-right:
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
-                        <%= info[i].pixels%>
-            <%
-                    } 
-                } 
-            %>;
-            
-
-        }
-        
-        ul{
-            font-family:serif;
-        }
-        
-
-        #pastry-chef{
-            font-size: 
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
-                        <%= info[i].pixels.slice(0,-2)*0.75 %>px
-            <%
-                    } 
-                } 
-            %>
-            ;
-        }
-
-        .legal{
-            font-size: 
-            <% 
-                for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
-                        <%= info[i].pixels.slice(0,-2)*0.6 %>px
-            <%
-                    } 
-                } 
-            %>
-            ;
-        }
 
         #riojas, h2{
             font-size:

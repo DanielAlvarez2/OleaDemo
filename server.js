@@ -185,6 +185,34 @@ app.post('/saveChangesRiojas', async(req,res)=>{
     res.redirect(req.get('referer'))    
 
 })
+app.post('/saveChangesDesserts', async(req,res)=>{
+    console.log(req.body);
+    if (req.body.dessertsPaddingSides != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("65bcf816878fcf9e145f160a")},{
+            $set:{
+                pixels: `${req.body.dessertsPaddingSides}px`
+            }
+        })
+    }
+    if (req.body.dessertsFontSize != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("65bcf844878fcf9e145f160b")},{
+            $set:{
+                pixels: `${req.body.dessertsFontSize}px`
+            }
+        })
+    }
+    if (req.body.dessertsPaddingBetween != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("65bcf7d2878fcf9e145f1609")},{
+            $set:{
+                pixels: `${req.body.dessertsPaddingBetween}px`
+            }
+        })
+    }
+
+
+    res.redirect(req.get('referer'))    
+
+})
 
 app.post('/saveChangesLiquor', async(req,res)=>{
     if (req.body.liquorPaddingSides != ""){

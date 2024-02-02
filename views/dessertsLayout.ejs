@@ -37,7 +37,7 @@
             padding-top:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-top'){ 
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-top'){ 
                         
                         %>
                         <%= info[i].pixels %>
@@ -49,7 +49,7 @@
             padding-left:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-sides'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -59,7 +59,7 @@
             padding-right:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-sides'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -71,7 +71,7 @@
             padding-left:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-sides'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -81,7 +81,7 @@
             padding-right:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-sides'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -100,7 +100,7 @@
             font-size: 
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'dessertsFontSize'){ %>
                         <%= info[i].pixels.slice(0,-2)*0.75 %>px
             <%
                     } 
@@ -113,7 +113,7 @@
             font-size: 
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'dessertsFontSize'){ %>
                         <%= info[i].pixels.slice(0,-2)*0.6 %>px
             <%
                     } 
@@ -126,7 +126,7 @@
             font-size:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'dessertsFontSize'){ %>
                         <%= info[i].pixels%>
             <%
                     } 
@@ -138,7 +138,7 @@
             padding-top:            
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-between'){ 
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-between'){ 
                         let half=(info[i].pixels).substring(0,info[i].pixels.length-2)/2
                         %>
                         <%= half%>px
@@ -149,7 +149,7 @@
             padding-bottom:
             <% 
                 for (let i=0; i<info.length; i++){
-                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-between'){ 
+                    if (info[i].category == 'controls-desserts' && info[i].name == 'padding-between'){ 
                         let half=(info[i].pixels).substring(0,info[i].pixels.length-2)/2
                         %>
                         <%= half%>px
@@ -221,15 +221,15 @@
     <div id="flexbox">    
 
             <div id="controls">
-                <form method="POST" action="/saveChangesRiojas">
+                <form method="POST" action="/saveChangesDesserts">
                     FORMAT PAGE LAYOUT<br>
-                    Page Space Left & Right: <input name="riojasPaddingSides" id="riojas-padding-sides" type="text" size="2"> px (min10px)<br>
-                    Space between menu items: <input name="riojasPaddingBetween" id="riojas-padding-between" type="text" size="2"> px <br>
+                    Page Space Left & Right: <input name="dessertsPaddingSides" id="desserts-padding-sides" type="text" size="2"> px (min10px)<br>
+                    Space between menu items: <input name="dessertsPaddingBetween" id="desserts-padding-between" type="text" size="2"> px <br>
                   
                     
                    
 
-                    Font Size: <input name="riojasFontSize" id="riojas-font-size" type="text" size="2"> px<br>
+                    Font Size: <input name="dessertsFontSize" id="desserts-font-size" type="text" size="2"> px<br>
                     <button id="clear-changes">Clear Changes</button> 
                     <input type="submit" id="save-changes" value="Save Changes"> 
                     <button id="desserts-print-button">Print Preview</button>
@@ -304,20 +304,12 @@
             
             <script>
                 let riojasPage = document.querySelector('#riojas')
-                let riojasPaddingSides = document.querySelector('#riojas-padding-sides')
-                let riojasPaddingBetween = document.querySelector('#riojas-padding-between')
-                let todaysSpecials = document.querySelector('#todays-specials')
-                let paddingBottomControl = document.querySelector('#padding-bottom-control')
-                let legalDisclaimer = document.querySelector('#legal-disclaimer')
-                let riojasFontSize = document.querySelector('#riojas-font-size')
+                let dessertsPaddingSides = document.querySelector('#desserts-padding-sides')
+                let dessertsPaddingBetween = document.querySelector('#desserts-padding-between')
+                let dessertsFontSize = document.querySelector('#desserts-font-size')
                 let p = document.querySelectorAll('.special')
-                let appetizerHeading = document.querySelector('#appetizer-heading')
-                let entreeHeading = document.querySelector('#entree-heading')
-                let dessertHeading = document.querySelector('#dessert-heading')
-                let legalFontSizeControl = document.querySelector('#legal-font-size-control')
                 let clearChanges = document.querySelector('#clear-changes')
                 let dessertsPrintButton = document.querySelector('#desserts-print-button')
-                let legalDisclaimerSwitch = document.querySelector('#legal-disclaimer-switch')
                 let special = document.querySelectorAll('.special')
                 let coffeeTitle = document.querySelectorAll('.coffee-title')
                 let pastryChef = document.querySelector('#pastry-chef')
@@ -331,19 +323,19 @@
                     event.preventDefault()
                     location.reload()
                 })
-                riojasPaddingSides.addEventListener('input', function(evt){
+                dessertsPaddingSides.addEventListener('input', function(evt){
                     riojasPage.style.paddingLeft = `${Number(this.value)}px`
                     pastryChef.style.paddingLeft = `${Number(this.value)}px`
                     riojasPage.style.paddingRight = `${Number(this.value)}px`
                     pastryChef.style.paddingRight = `${Number(this.value)}px`
                 })
-                riojasPaddingBetween.addEventListener('input', function(evt){
+                dessertsPaddingBetween.addEventListener('input', function(evt){
                     p.forEach((special,i)=>{
                         special.style.paddingTop = `${(Number(this.value))/2}px`
                         special.style.paddingBottom = `${(Number(this.value))/2}px`
                     })
                 })
-                riojasFontSize.addEventListener('input', function(evt){
+                dessertsFontSize.addEventListener('input', function(evt){
                     riojasPage.style.fontSize = `${Number(this.value)}px`
                     coffeeTitle[0].style.fontSize = `${Number(this.value)}px`
                     coffeeTitle[1].style.fontSize = `${Number(this.value)}px`
