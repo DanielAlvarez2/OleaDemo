@@ -128,6 +128,12 @@ app.get('/dessertsLayoutBack', (request,response) =>{
         response.render('dessertsLayoutBack.ejs', {info:data})
     })
 })
+app.get('/dessertsBackPrint', (request,response) =>{
+    db.collection('Specials').find().sort({sequence:1}).toArray()
+    .then(data=>{
+        response.render('dessertsBackPrint.ejs', {info:data})
+    })
+})
 app.get('/debug', (request, response) =>{
     db.collection('Specials').find({
         category: "SPECIALS: Appetizer",
@@ -205,6 +211,34 @@ app.post('/saveChangesDesserts', async(req,res)=>{
         await db.collection('Specials').updateOne({_id: new ObjectId("65bcf7d2878fcf9e145f1609")},{
             $set:{
                 pixels: `${req.body.dessertsPaddingBetween}px`
+            }
+        })
+    }
+
+
+    res.redirect(req.get('referer'))    
+
+})
+app.post('/saveChangesDessertsBack', async(req,res)=>{
+    console.log(req.body);
+    if (req.body.dessertsBackPaddingSides != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("65bcfdb1878fcf9e145f160d")},{
+            $set:{
+                pixels: `${req.body.dessertsBackPaddingSides}px`
+            }
+        })
+    }
+    if (req.body.dessertsBackFontSize != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("65bcfde6878fcf9e145f160e")},{
+            $set:{
+                pixels: `${req.body.dessertsBackFontSize}px`
+            }
+        })
+    }
+    if (req.body.dessertsBackPaddingBetween != ""){
+        await db.collection('Specials').updateOne({_id: new ObjectId("65bcfd76878fcf9e145f160c")},{
+            $set:{
+                pixels: `${req.body.dessertsBackPaddingBetween}px`
             }
         })
     }

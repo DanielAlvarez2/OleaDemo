@@ -37,7 +37,7 @@
         #riojas, #controls{
             width:5.5in;
             background:white;
-            border:solid 1px black;
+            /* border:solid 1px black; */
             display:inline-block;
             
         }
@@ -147,7 +147,7 @@
     <div id="wrapper">
     <div id="content">
 
-    <nav>
+    <nav class="no-print">
         <h1>olea<span id="content-manager">Content Manager</span></h1>
         <ul>
             <a href="/manager"><li>Specials</li></a>
@@ -158,30 +158,14 @@
         </ul>
         <ul id="nav-ul-bottom">
             <a href="/dessertsBack"><li id="specials-edit">Edit Menu Items</li></a>
-            <li class="active-page" id="specials-format-layout">Format Layout</li>
-            <a href="/dessertsBackPrint"><li id="desserts-print">Print Preview</li></a>
+            <a href="/dessertsLayoutBack"><li id="specials-format-layout">Format Layout</li></a>
+            <li class="active-page" id="desserts-print">Print Preview</li>
             </ul>
     </nav>
     
     
     
-    <div id="flexbox">    
-
-            <div id="controls">
-                <form method="POST" action="/saveChangesDessertsBack">
-                    FORMAT PAGE LAYOUT<br>
-                    Page Space Left & Right: <input name="dessertsBackPaddingSides" id="desserts-back-padding-sides" type="text" size="2"> px (min10px)<br>
-                    Space between menu items: <input name="dessertsBackPaddingBetween" id="desserts-back-padding-between" type="text" size="2"> px <br>
-                  
-                    
-                   
-
-                    Font Size: <input name="dessertsBackFontSize" id="desserts-back-font-size" type="text" size="2"> px<br>
-                    <button id="clear-changes">Clear Changes</button> 
-                    <input type="submit" id="save-changes" value="Save Changes"> 
-                    <button id="desserts-back-print-button">Print Preview</button>
-                </form>
-            </div><!--#controls-->
+    <div id="flexbox" style="flex-direction: row;">    
 
 
 
@@ -196,8 +180,7 @@
 
 
 
-
-                
+            
             <div id="riojas">
             <span id="print-logo" style="font-size:50px;font-family: FuturaLight;">olea</span>
                 <hr>
@@ -312,11 +295,126 @@
 
 
             </div><!--#riojas-->
-            
+
+            <div id="riojas">
+            <span id="print-logo" style="font-size:50px;font-family: FuturaLight;">olea</span>
+                <hr>
+                <br>
+                <h2>dessert wines</h2>
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "After Dinner Drink" &&
+                           info[i].type == "Dessert Wine"
+                    ){ %>
+                    <li class="special">
+                        <div class="flx">
+                            <span class="left"><%= info[i].name %></span>
+                            <span class="right" style="font-weight: 900;width:5ch;"><%= info[i].price %></span>
+                        </div>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+                <br>
+                <h2>dessert cocktails</h2>
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "After Dinner Drink" &&
+                           info[i].type == "Dessert Cocktail"
+                    ){ %>
+                    <li class="special">
+                        <div class="flx">
+                            <span class="left">
+                                <span><b><%= info[i].name %></b></span>
+                                <span><%= info[i].description %></span>
+                            </span>
+                            <span class="right" style="font-weight: 900;width:5ch;"><%= info[i].price %></span>
+                        </div>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+                <br>
+                <h2>japanese whisky</h2>
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "After Dinner Drink" &&
+                           info[i].type == "Japanese Whisky"
+                    ){ %>
+                    <li class="special">
+                        <div class="flx">
+                            <span class="left"><%= info[i].name %></span>
+                            <span class="right" style="font-weight: 900;width:5ch;"><%= info[i].price %></span>
+                        </div>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+                <br>
+                <h2>single malt scotch</h2>
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "After Dinner Drink" &&
+                           info[i].type == "Scotch"
+                    ){ %>
+                    <li class="special">
+                        <div class="flx">
+                            <span class="left"><%= info[i].name %></span>
+                            <span class="right" style="font-weight: 900;width:5ch;"><%= info[i].price %></span>
+                        </div>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+                <br>
+                <h2>brandy de Jerez</h2>
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "After Dinner Drink" &&
+                           info[i].type == "Brandy"
+                    ){ %>
+                    <li class="special">
+                        <div class="flx">
+                            <span class="left"><%= info[i].name %></span>
+                            <span class="right" style="font-weight: 900;width:5ch;"><%= info[i].price %></span>
+                        </div>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+                <br>
+                <h2>grappa</h2>
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "After Dinner Drink" &&
+                           info[i].type == "Grappa"
+                    ){ %>
+                    <li class="special">
+                        <div class="flx">
+                            <span class="left"><%= info[i].name %></span>
+                            <span class="right" style="font-weight: 900;width:5ch;"><%= info[i].price %></span>
+                        </div>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+
+
+
+
+
+            </div><!--#riojas-->
+
             
             </div><!--#flexbox-->
 
-            <footer>
+            <footer class="no-print">
                 <ul>
                     <li>Specials</li>
                     <li>Dinner</li>
