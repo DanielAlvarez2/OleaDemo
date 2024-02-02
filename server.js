@@ -426,6 +426,18 @@ app.get('/dessertsScotch', (request, response) =>{
         response.render('dessertsScotch.ejs', {info: data})
     })
 })
+app.get('/dessertsBrandy', (request, response) =>{
+    db.collection('Specials').find().sort({sequence:1}).toArray()
+    .then(data => {
+        response.render('dessertsBrandy.ejs', {info: data})
+    })
+})
+app.get('/dessertsGrappa', (request, response) =>{
+    db.collection('Specials').find().sort({sequence:1}).toArray()
+    .then(data => {
+        response.render('dessertsGrappa.ejs', {info: data})
+    })
+})
 
 app.get('/dessertsPrint', (request, response) =>{
     db.collection('Specials').find().sort({sequence:1}).toArray()
