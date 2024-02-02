@@ -502,11 +502,12 @@ app.post('/addAfterDinnerDrink', async(request,response)=>{
         category: `${request.body.category}`,
         type: `${request.body.type}`,
         name: `${request.body.name}`,
+        description: `${request.body.description}`,
         price: `${request.body.price}`,
         sequence: Number(request.body.sequence)
     })
     .then(result =>{
-        console.log('New Special Added')
+        console.log('New After Dinner Drink Added')
         console.log(request.body)
     })
     await db.collection('Specials').updateOne({
@@ -599,6 +600,7 @@ app.post('/editAfterDinnerDrink', async(request,response)=>{
             type: `${request.body.type}`,
             sequence: Number(request.body.sequence),
             name: `${request.body.name}`,
+            description: `${request.body.description}`,
             price: `${request.body.price}`,
             timestamp: new Date()
         }
