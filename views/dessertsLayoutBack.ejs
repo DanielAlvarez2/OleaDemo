@@ -11,8 +11,20 @@
       crossorigin="anonymous"
     ></script>
     <style>
-      
-      .special{
+        .flx{
+            display:flex;
+            justify-content: space-between;
+            width:100%;
+            /* border:1px solid red; */
+        }
+        .left{
+            /* border:1px solid blue; */
+        }
+        .right{
+            /* border:1px solid green; */
+            min-width:5ch !important;
+        }
+        .special{
             margin-bottom: 0px;
         }
        
@@ -261,9 +273,10 @@
                            info[i].type == "Dessert Wine"
                     ){ %>
                     <li class="special">
-
-                        <span><%= info[i].name %></span>
-                        <span style="font-weight: 900;"><%= info[i].price %></span>
+                        <div class="flx">
+                            <span class="left"><%= info[i].name %></span>
+                            <span class="right" style="font-weight: 900;width:5ch;"><%= info[i].price %></span>
+                        </div>
                     </li>
                     <% } %>
                 <% } %>
@@ -276,10 +289,13 @@
                            info[i].type == "Dessert Cocktail"
                     ){ %>
                     <li class="special">
-
-                        <span class="name"><%= info[i].name %></span>
-                        <span><%= info[i].description %></span>
-                        <span style="font-weight: 900;"><%= info[i].price %></span>
+                        <div class="flx">
+                            <span class="left">
+                                <span><b><%= info[i].name %></b></span>
+                                <span><%= info[i].description %></span>
+                            </span>
+                            <span class="right" style="font-weight: 900;width:5ch;"><%= info[i].price %></span>
+                        </div>
                     </li>
                     <% } %>
                 <% } %>
@@ -292,9 +308,10 @@
                            info[i].type == "Japanese Whisky"
                     ){ %>
                     <li class="special">
-
-                        <span><%= info[i].name %></span>
-                        <span style="font-weight: 900;"><%= info[i].price %></span>
+                        <div class="flx">
+                            <span class="left"><%= info[i].name %></span>
+                            <span class="right" style="font-weight: 900;width:5ch;"><%= info[i].price %></span>
+                        </div>
                     </li>
                     <% } %>
                 <% } %>
@@ -307,9 +324,10 @@
                            info[i].type == "Scotch"
                     ){ %>
                     <li class="special">
-
-                        <span><%= info[i].name %></span>
-                        <span style="font-weight: 900;"><%= info[i].price %></span>
+                        <div class="flx">
+                            <span class="left"><%= info[i].name %></span>
+                            <span class="right" style="font-weight: 900;width:5ch;"><%= info[i].price %></span>
+                        </div>
                     </li>
                     <% } %>
                 <% } %>
@@ -322,9 +340,10 @@
                            info[i].type == "Brandy"
                     ){ %>
                     <li class="special">
-
-                        <span><%= info[i].name %></span>
-                        <span style="font-weight: 900;"><%= info[i].price %></span>
+                        <div class="flx">
+                            <span class="left"><%= info[i].name %></span>
+                            <span class="right" style="font-weight: 900;width:5ch;"><%= info[i].price %></span>
+                        </div>
                     </li>
                     <% } %>
                 <% } %>
@@ -338,9 +357,10 @@
                            info[i].type == "Grappa"
                     ){ %>
                     <li class="special">
-
-                        <span><%= info[i].name %></span>
-                        <span style="font-weight: 900;"><%= info[i].price %></span>
+                        <div class="flx">
+                            <span class="left"><%= info[i].name %></span>
+                            <span class="right" style="font-weight: 900;width:5ch;"><%= info[i].price %></span>
+                        </div>
                     </li>
                     <% } %>
                 <% } %>
