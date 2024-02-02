@@ -420,6 +420,12 @@ app.get('/dessertsJapaneseWhisky', (request, response) =>{
         response.render('dessertsJapaneseWhisky.ejs', {info: data})
     })
 })
+app.get('/dessertsScotch', (request, response) =>{
+    db.collection('Specials').find().sort({sequence:1}).toArray()
+    .then(data => {
+        response.render('dessertsScotch.ejs', {info: data})
+    })
+})
 
 app.get('/dessertsPrint', (request, response) =>{
     db.collection('Specials').find().sort({sequence:1}).toArray()
