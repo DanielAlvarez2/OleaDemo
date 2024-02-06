@@ -18,9 +18,6 @@
             gap:5ch;
             /* border:1px solid red; */
         }
-        .left{
-            /* border:1px solid blue; */
-        }
         .right{
             /* border:1px solid green; */
             min-width:5ch !important;
@@ -44,14 +41,13 @@
         #riojas{
             padding: 0px 0px;
             height:8.5in;
-            position: relative;
+            position: relative; 
         }
         #riojas{
             padding-left:
-            <% 
-                for (let i=0; i<info.length; i++){
+            <% for (let i=0; i<info.length; i++){
                     if (info[i].category == 'controls-desserts-back' && info[i].name == 'padding-sides'){ %>
-                        <%= info[i].pixels%>
+                        <%= info[i].pixels %>
             <%
                     } 
                 } 
