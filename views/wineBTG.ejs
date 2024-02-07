@@ -45,25 +45,25 @@
                 </ul>
     </nav>
     <main>        
-            <h1>wine by the glass</h1>
+            <h1>wine by the glass</h1><br>
+
+            <h2>Cava</h2>
            
        
         
         <ul class="specials-appetizers">
           <% for(let i=0; i<info.length;i++){ 
-            if( info[i].category == "Red - Spain" && 
-                info[i].region == "Rioja"){ %>
+            if( info[i].category == "BTG" && 
+                info[i].type == "Cava"){ %>
           <li class="special">
             
             <div><%= info[i]._id %></div>
             <div><%= info[i].grapes %></div>
             <div><%= info[i].name %></div>
-            <div><%= info[i].description %></div>
             <div><%= info[i].vintage %></div>
-            <div><%= info[i].producer %></div>
-            <div><%= info[i].price %></div>
-            <div><%= info[i].category %></div>
+            <div><%= info[i].description %></div>
             <div><%= info[i].region %></div>
+            <div><%= info[i].price %></div>
 
             <div><%- `${info[i].timestamp}`.substring(0,24) %></div>
             <span class="edit-wine"><i class="fa-solid fa-pencil"></i> Edit</span
@@ -79,7 +79,99 @@
           <% } } %>
         </ul>
     
-    
+        <h2>White</h2>
+
+        <ul class="specials-appetizers">
+            <% for(let i=0; i<info.length;i++){ 
+              if( info[i].category == "BTG" && 
+                  info[i].type == "White"){ %>
+            <li class="special">
+              
+              <div><%= info[i]._id %></div>
+              <div><%= info[i].grapes %></div>
+              <div><%= info[i].name %></div>
+              <div><%= info[i].vintage %></div>
+              <div><%= info[i].description %></div>
+              <div><%= info[i].region %></div>
+              <div><%= info[i].price %></div>
+  
+              <div><%- `${info[i].timestamp}`.substring(0,24) %></div>
+              <span class="edit-wine"><i class="fa-solid fa-pencil"></i> Edit</span
+                  >&nbsp;&nbsp;
+                  <span class="archive"
+                  ><i class="fa-solid fa-box-archive"></i> Archive</span
+                  >&nbsp;&nbsp;
+                  <span class="del"><i class="fa-solid fa-trash-can"></i> Delete</span
+                      >&nbsp;&nbsp;
+                      
+             </li>
+             <br>
+            <% } } %>
+          </ul>
+          
+          <h2>Rosé</h2>
+
+          <ul class="specials-appetizers">
+            <% for(let i=0; i<info.length;i++){ 
+              if( info[i].category == "BTG" && 
+                  info[i].type == "Rose"){ %>
+            <li class="special">
+              
+              <div><%= info[i]._id %></div>
+              <div><%= info[i].grapes %></div>
+              <div><%= info[i].name %></div>
+              <div><%= info[i].vintage %></div>
+              <div><%= info[i].description %></div>
+              <div><%= info[i].region %></div>
+              <div><%= info[i].price %></div>
+  
+              <div><%- `${info[i].timestamp}`.substring(0,24) %></div>
+              <span class="edit-wine"><i class="fa-solid fa-pencil"></i> Edit</span
+                  >&nbsp;&nbsp;
+                  <span class="archive"
+                  ><i class="fa-solid fa-box-archive"></i> Archive</span
+                  >&nbsp;&nbsp;
+                  <span class="del"><i class="fa-solid fa-trash-can"></i> Delete</span
+                      >&nbsp;&nbsp;
+                      
+             </li>
+             <br>
+            <% } } %>
+          </ul>
+
+          <h2>Red</h2>
+
+          <ul class="specials-appetizers">
+            <% for(let i=0; i<info.length;i++){ 
+              if( info[i].category == "BTG" && 
+                  info[i].type == "Red"){ %>
+            <li class="special">
+              
+              <div><%= info[i]._id %></div>
+              <div><%= info[i].grapes %></div>
+              <div><%= info[i].name %></div>
+              <div><%= info[i].vintage %></div>
+              <div><%= info[i].description %></div>
+              <div><%= info[i].region %></div>
+              <div><%= info[i].price %></div>
+  
+              <div><%- `${info[i].timestamp}`.substring(0,24) %></div>
+              <span class="edit-wine"><i class="fa-solid fa-pencil"></i> Edit</span
+                  >&nbsp;&nbsp;
+                  <span class="archive"
+                  ><i class="fa-solid fa-box-archive"></i> Archive</span
+                  >&nbsp;&nbsp;
+                  <span class="del"><i class="fa-solid fa-trash-can"></i> Delete</span
+                      >&nbsp;&nbsp;
+                      
+             </li>
+             <br>
+            <% } } %>
+          </ul>
+
+
+
+
         <h2>Add New Wine:</h2>
     
         <form action="/addWine" method="POST">
