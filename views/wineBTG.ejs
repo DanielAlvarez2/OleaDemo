@@ -58,6 +58,8 @@
           <li class="special">
             
             <div><%= info[i]._id %></div>
+            <div><%= info[i].category %></div>
+            <div><%= info[i].type %></div>
             <div><%= info[i].grapes %></div>
             <div><%= info[i].name %></div>
             <div><%= info[i].vintage %></div>
@@ -86,6 +88,8 @@
             <li class="special">
               
               <div><%= info[i]._id %></div>
+              <div><%= info[i].category %></div>
+              <div><%= info[i].type %></div>
               <div><%= info[i].grapes %></div>
               <div><%= info[i].name %></div>
               <div><%= info[i].vintage %></div>
@@ -114,6 +118,8 @@
             <li class="special">
               
               <div><%= info[i]._id %></div>
+              <div><%= info[i].category %></div>
+              <div><%= info[i].type %></div>
               <div><%= info[i].grapes %></div>
               <div><%= info[i].name %></div>
               <div><%= info[i].vintage %></div>
@@ -142,6 +148,8 @@
             <li class="special">
               
               <div><%= info[i]._id %></div>
+              <div><%= info[i].category %></div>
+              <div><%= info[i].type %></div>
               <div><%= info[i].grapes %></div>
               <div><%= info[i].name %></div>
               <div><%= info[i].vintage %></div>
@@ -164,7 +172,7 @@
 
 
 
-        <h2>Add New Wine:</h2>
+        <h2>Add New Wine BTG:</h2>
     
         <form action="/addWineBTG" method="POST">
           <input type="text" placeholder="Category" name="category" /><br />
@@ -178,9 +186,9 @@
           <input type="submit" id="update-button" value="Create" />
         </form>
     
-        <h2>Edit Exisiting Wine:</h2>
+        <h2>Edit Exisiting Wine BTG:</h2>
     
-        <form action="/editWine" method="POST">
+        <form action="/editWineBTG" method="POST">
           <div name="_id" id="display-ID"></div>
           <input type="text" id="edit-id" placeholder="ID#" name="_id" /><br />
           <input
@@ -189,6 +197,13 @@
             placeholder="Category"
             name="category"
           /><br />
+          <input
+            type="text"
+            id="edit-type"
+            placeholder="Type"
+            name="type"
+          /><br />
+          
           <input 
             type="text" 
             id="edit-grapes"
@@ -201,6 +216,12 @@
             placeholder="Name" 
             name="name" 
             /><br />
+            <input
+            type="text"
+            id="edit-vintage"
+            placeholder="Vintage"
+            name="vintage"
+          /><br />
           <textarea
             rows="5"
             cols="40"
@@ -211,23 +232,10 @@
           ><br />
           <input
             type="text"
-            id="edit-vintage"
-            placeholder="Vintage"
-            name="vintage"
-          /><br />
-          <input
-            type="text"
-            id="edit-producer"
-            placeholder="Producer"
-            name="producer"
-          /><br />
-          <input
-            type="text"
             id="edit-region"
             placeholder="Region"
             name="region"
           /><br />
-
           <input
             type="text"
             id="edit-price"
@@ -257,21 +265,21 @@
             const editWine = document.querySelectorAll('.edit-wine')   
             
             Array.from(editWine).forEach((element)=>{
-                element.addEventListener('click', populateWineForm)
+                element.addEventListener('click', populateWineBTGForm)
             })
-            function populateWineForm(){
-
+            function populateWineBTGForm(){
+              
                 const editID = this.parentNode.childNodes[1].innerText
                 document.querySelector('#display-ID').innerText = editID;
                 document.querySelector('#edit-id').value = editID;
-                document.querySelector('#edit-grapes').value = this.parentNode.childNodes[3].innerText;
-                document.querySelector('#edit-category').value = this.parentNode.childNodes[15].innerText;
-                document.querySelector('#edit-name').value = this.parentNode.childNodes[5].innerText;
-                document.querySelector('#edit-description').value = this.parentNode.childNodes[7].innerText;
-                document.querySelector('#edit-vintage').value = this.parentNode.childNodes[9].innerText;
-                document.querySelector('#edit-region').value = this.parentNode.childNodes[17].innerText;
-                document.querySelector('#edit-producer').value = this.parentNode.childNodes[11].innerText;
-                document.querySelector('#edit-price').value = this.parentNode.childNodes[13].innerText;
+                document.querySelector('#edit-category').value = this.parentNode.childNodes[3].innerText;
+                document.querySelector('#edit-type').value = this.parentNode.childNodes[5].innerText;
+                document.querySelector('#edit-grapes').value = this.parentNode.childNodes[7].innerText;
+                document.querySelector('#edit-name').value = this.parentNode.childNodes[9].innerText;
+                document.querySelector('#edit-vintage').value = this.parentNode.childNodes[11].innerText;
+                document.querySelector('#edit-description').value = this.parentNode.childNodes[13].innerText;
+                document.querySelector('#edit-region').value = this.parentNode.childNodes[15].innerText;
+                document.querySelector('#edit-price').value = this.parentNode.childNodes[17].innerText;
             }
             Array.from(deleteText).forEach((element)=>{
               element.removeEventListener('click', deleteSpecial)
