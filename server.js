@@ -642,6 +642,25 @@ app.post('/addWine', async(request,response)=>{
     })
     response.redirect(request.get('referer'))
 })
+app.post('/addWineBTG', async(request,response)=>{
+    await db.collection('Specials').insertOne({
+        category: `${request.body.category}`,
+        type: `${request.body.type}`,
+        grapes: `${request.body.grapes}`,
+        name: `${request.body.name}`,
+        vintage: `${request.body.vintage}`,
+        description: `${request.body.description}`,
+        region: `${request.body.region}`,
+        price: Number(request.body.price),
+        timestamp: new Date()
+    })
+    .then(result =>{
+        console.log('New Wine BTG Added')
+        console.log(request.body)
+        console.log(request.url)
+    })
+    response.redirect(request.get('referer'))
+})
 app.post('/addLiquor', async(request,response)=>{
     await db.collection('Specials').insertOne({
         category: `${request.body.category}`,
