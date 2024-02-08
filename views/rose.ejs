@@ -45,13 +45,14 @@
                 </ul>
     </nav>
     <main>        
-            <h1>cava & champagne</h1><br>
+            <h1>rosé</h1><br>
            
        
         
         <ul class="specials-appetizers">
           <% for(let i=0; i<info.length;i++){ 
-            if( info[i].type == "Sparkling"){ %>
+            if( info[i].category == "Wine" &&
+                info[i].type == "Rosé"){ %>
           <li class="special">
             
             <div><%= info[i]._id %></div>
@@ -77,7 +78,7 @@
         </ul>
     
     
-        <h2>Add New Cava/Champagne:</h2>
+        <h2>Add New Rosé:</h2>
     
         <form action="/addSparkling" method="POST">
           <input type="text" placeholder="Category" name="category" /><br />
@@ -91,7 +92,7 @@
           <input type="submit" id="update-button" value="Create" />
         </form>
     
-        <h2>Edit Exisiting Cava/Champagne:</h2>
+        <h2>Edit Exisiting Rosé:</h2>
     
         <form action="/editSparkling" method="POST">
           <div name="_id" id="display-ID"></div>

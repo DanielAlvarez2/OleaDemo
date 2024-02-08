@@ -50,6 +50,12 @@ app.get('/sparkling', (request, response) =>{
         response.render('sparkling.ejs', {info: data})
     })
 })
+app.get('/rose', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('rose.ejs', {info: data})
+    })
+})
 
 app.get('/btg', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
