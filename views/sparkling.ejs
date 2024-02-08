@@ -93,7 +93,7 @@
     
         <h2>Edit Exisiting Cava/Champagne:</h2>
     
-        <form action="/editWine" method="POST">
+        <form action="/editSparkling" method="POST">
           <div name="_id" id="display-ID"></div>
           <input type="text" id="edit-id" placeholder="ID#" name="_id" /><br />
           <input
@@ -101,6 +101,12 @@
             id="edit-category"
             placeholder="Category"
             name="category"
+          /><br />
+          <input
+            type="text"
+            id="edit-type"
+            placeholder="Type"
+            name="type"
           /><br />
           <input 
             type="text" 
@@ -114,26 +120,19 @@
             placeholder="Name" 
             name="name" 
             /><br />
-          <textarea
-            rows="5"
-            cols="40"
-            placeholder="Description"
-            id="edit-description"
-            name="description"
-          ></textarea
-          ><br />
-          <input
+            <input
             type="text"
             id="edit-vintage"
             placeholder="Vintage"
             name="vintage"
           /><br />
           <input
-            type="text"
-            id="edit-producer"
-            placeholder="Producer"
-            name="producer"
+          type="text"
+            placeholder="Description"
+            id="edit-description"
+            name="description"
           /><br />
+          
           <input
             type="text"
             id="edit-region"
@@ -177,14 +176,14 @@
                 const editID = this.parentNode.childNodes[1].innerText
                 document.querySelector('#display-ID').innerText = editID;
                 document.querySelector('#edit-id').value = editID;
-                document.querySelector('#edit-grapes').value = this.parentNode.childNodes[3].innerText;
-                document.querySelector('#edit-category').value = this.parentNode.childNodes[15].innerText;
-                document.querySelector('#edit-name').value = this.parentNode.childNodes[5].innerText;
-                document.querySelector('#edit-description').value = this.parentNode.childNodes[7].innerText;
-                document.querySelector('#edit-vintage').value = this.parentNode.childNodes[9].innerText;
-                document.querySelector('#edit-region').value = this.parentNode.childNodes[17].innerText;
-                document.querySelector('#edit-producer').value = this.parentNode.childNodes[11].innerText;
-                document.querySelector('#edit-price').value = this.parentNode.childNodes[13].innerText;
+                document.querySelector('#edit-category').value = this.parentNode.childNodes[3].innerText;
+                document.querySelector('#edit-type').value = this.parentNode.childNodes[5].innerText;
+                document.querySelector('#edit-grapes').value = this.parentNode.childNodes[7].innerText;
+                document.querySelector('#edit-name').value = this.parentNode.childNodes[9].innerText;
+                document.querySelector('#edit-vintage').value = this.parentNode.childNodes[11].innerText;
+                document.querySelector('#edit-description').value = this.parentNode.childNodes[13].innerText;
+                document.querySelector('#edit-region').value = this.parentNode.childNodes[15].innerText;
+                document.querySelector('#edit-price').value = this.parentNode.childNodes[17].innerText;
             }
             Array.from(deleteText).forEach((element)=>{
               element.removeEventListener('click', deleteSpecial)
