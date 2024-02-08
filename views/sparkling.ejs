@@ -45,25 +45,24 @@
                 </ul>
     </nav>
     <main>        
-            <h1>cava & champagne</h1>
+            <h1>cava & champagne</h1><br>
            
        
         
         <ul class="specials-appetizers">
           <% for(let i=0; i<info.length;i++){ 
-            if( info[i].category == "Red - Spain" && 
-                info[i].region == "Rioja"){ %>
+            if( info[i].type == "Sparkling"){ %>
           <li class="special">
             
             <div><%= info[i]._id %></div>
+            <div><%= info[i].category %></div>
+            <div><%= info[i].type %></div>
             <div><%= info[i].grapes %></div>
             <div><%= info[i].name %></div>
-            <div><%= info[i].description %></div>
             <div><%= info[i].vintage %></div>
-            <div><%= info[i].producer %></div>
-            <div><%= info[i].price %></div>
-            <div><%= info[i].category %></div>
+            <div><%= info[i].description %></div>
             <div><%= info[i].region %></div>
+            <div><%= info[i].price %></div>
 
             <div><%- `${info[i].timestamp}`.substring(0,24) %></div>
             <span class="edit-wine"><i class="fa-solid fa-pencil"></i> Edit</span
