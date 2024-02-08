@@ -44,6 +44,13 @@ app.get('/', (request, response) =>{
         response.render('index.ejs', {info: data})
     })
 })
+app.get('/sparkling', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('sparkling.ejs', {info: data})
+    })
+})
+
 app.get('/btg', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
