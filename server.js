@@ -719,6 +719,26 @@ app.post('/editWine', async(request,response)=>{
         response.redirect(request.get('referer'))
     })
 })
+app.post('/editSparkling', async(request,response)=>{
+    await db.collection('Specials').updateOne({
+            _id: new ObjectId(`${request.body._id}`)
+    },{
+        $set:{
+            category: `${request.body.category}`,
+            type: `${request.body.type}`,
+            grapes: `${request.body.grapes}`,
+            name: `${request.body.name}`,
+            vintage: `${request.body.vintage}`,
+            description: `${request.body.description}`,
+            region: `${request.body.region}`,
+            price: Number(request.body.price),
+            timestamp: new Date()    
+        }
+    })
+    .then(result=>{
+        response.redirect(request.get('referer'))
+    })
+})
 app.post('/editWineBTG', async(request,response)=>{
     await db.collection('Specials').updateOne({
             _id: new ObjectId(`${request.body._id}`)
