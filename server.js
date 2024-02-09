@@ -56,6 +56,18 @@ app.get('/whiteFrance', (request, response) =>{
         response.render('whiteFrance.ejs', {info: data})
     })
 })
+app.get('/whiteItaly', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('whiteItaly.ejs', {info: data})
+    })
+})
+app.get('/whiteGermany', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('whiteGermany.ejs', {info: data})
+    })
+})
 app.get('/sparkling', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {

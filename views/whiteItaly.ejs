@@ -45,7 +45,7 @@
                 </ul>
     </nav>
     <main>        
-            <h1>white wine / france</h1><br>
+            <h1>white wine / italy</h1><br>
            
        
         
@@ -53,7 +53,7 @@
           <% for(let i=0; i<info.length;i++){ 
             if( info[i].category == "Wine" &&
                 info[i].type == "White" &&
-                info[i].country == "France"){ %>
+                info[i].country == "Italy"){ %>
           <li class="special">
             
             <div><%= info[i]._id %></div>
@@ -80,7 +80,7 @@
         </ul>
     
     
-        <h2>Add New White Wine/France:</h2>
+        <h2>Add New White Wine/Italy:</h2>
     
         <form action="/addWineCountry" method="POST">
           <input type="text" placeholder="Category" name="category" /><br />
@@ -95,7 +95,7 @@
           <input type="submit" id="update-button" value="Create" />
         </form>
     
-        <h2>Edit Exisiting White Wine/France:</h2>
+        <h2>Edit Exisiting White Wine/Italy:</h2>
     
         <form action="/editWineCountry" method="POST">
           <div name="_id" id="display-ID"></div>
