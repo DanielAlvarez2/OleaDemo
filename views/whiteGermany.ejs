@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager</title>
+    
+    <link rel="stylesheet" href="manager.css">
+    <style>
+
+
+    </style>
+    <script
+      src="https://kit.fontawesome.com/21ef82ed30.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+
+
+
+
+
+
+
+<body>
+    <div id="wrapper">
+    <div id="content">
+    <nav>
+        <h1>
+                olea
+                <span id="content-manager">Content Manager</span></h1>
+                
+                
+                <ul>
+                    <li class="active-page">Specials</li>
+                    <a href="/dinnerUpdateCuredMeats"><li id="dinner">Dinner</li></a>
+                    <a href="dessertUpdateDesserts"><li>Dessert</li></a>
+                    <li>Wine/Drinks</li>
+                    <a href="/archive"><li id="archive">Archive</li></a>
+                </ul>
+                <ul id="nav-ul-bottom">
+                    <li class="active-page">Edit Menu Items</li>
+                    <a href="/riojasFormatLayout"><li id="specials-format-layout">Format Layout</li></a>
+                    <a href="/riojasPrintPreview"><li id="specials-print-preview">Print Preview</li></a>
+                </ul>
+    </nav>
+    <main>        
+            <h1>white wine / germany</h1><br>
+           
+       
+        
+        <ul class="specials-appetizers">
+          <% for(let i=0; i<info.length;i++){ 
+            if( info[i].category == "Wine" &&
+                info[i].type == "White" &&
+                info[i].country == "Germany"){ %>
+          <li class="special">
+            
+            <div><%= info[i]._id %></div>
+            <div><%= info[i].category %></div>
+            <div><%= info[i].type %></div>
+            <div><%= info[i].country %></div>
+            <div><%= info[i].grapes %></div>
+            <div><%= info[i].name %></div>
+            <div><%= info[i].vintage %></div>
+            <div><%= info[i].description %></div>
+            <div><%= info[i].region %></div>
+            <div><%= info[i].price %></div>
+
+            <div><%- `${info[i].timestamp}`.substring(0,24) %></div>
+            <span class="edit-wine"><i class="fa-solid fa-pencil"></i> Edit</span
+                >&nbsp;&nbsp;
+                
+                <span class="del"><i class="fa-solid fa-trash-can"></i> Delete</span
+                    >&nbsp;&nbsp;
+                    
+           </li>
+           <br>
+          <% } } %>
+        </ul>
+    
+    
+        <h2>Add New White Wine/Germany:</h2>
+    
+        <form action="/addWineCountry" method="POST">
+          <input type="text" placeholder="Category" name="category" /><br />
+          <input type="text" placeholder="Type" name="type" /><br />
+          <input type="text" placeholder="Country" name="country" /><br />
+          <input type="text" placeholder="Grapes" name="grapes" /><br />
+          <input type="text" placeholder="Name" name="name" /><br />
+          <input type="text" placeholder="Vintage" name="vintage" /><br />
+          <input type="text" placeholder="Description" name="description" /><br />
+          <input type="text" placeholder="Region" name="region" /><br />
+          <input type="text" placeholder="Price" name="price" /><br />
+          <input type="submit" id="update-button" value="Create" />
+        </form>
+    
+        <h2>Edit Exisiting White Wine/Germany:</h2>
+    
+        <form action="/editWineCountry" method="POST">
+          <div name="_id" id="display-ID"></div>
+          <input type="text" id="edit-id" placeholder="ID#" name="_id" /><br />
+          <input
+            type="text"
+            id="edit-category"
+            placeholder="Category"
+            name="category"
+          /><br />
+          <input
+            type="text"
+            id="edit-type"
+            placeholder="Type"
+            name="type"
+          /><br />
+          <input
+          type="text"
+          id="edit-country"
+          placeholder="Country"
+          name="country"
+        /><br />
+          <input 
+            type="text" 
+            id="edit-grapes"
+            placeholder="Grapes" 
+            name="grapes" 
+            /><br />
+            <input 
+            type="text" 
+            id="edit-name"
+            placeholder="Name" 
+            name="name" 
+            /><br />
+            <input
+            type="text"
+            id="edit-vintage"
+            placeholder="Vintage"
+            name="vintage"
+          /><br />
+          <input
+          type="text"
+            placeholder="Description"
+            id="edit-description"
+            name="description"
+          /><br />
+          
+          <input
+            type="text"
+            id="edit-region"
+            placeholder="Region"
+            name="region"
+          /><br />
+
+          <input
+            type="text"
+            id="edit-price"
+            placeholder="Price"
+            name="price"
+          /><br />
+    
+    
+          <input type="submit" value="Update" />
+        </form>
+        
+      </main>
+        <footer>
+            <ul>
+                <li>Specials</li>
+                <li>Dinner</li>
+                <li>Dessert</li>
+                <li>Wine/Drinks</li>
+                <li>Archive</li>
+            </ul>
+        </footer>
+    </div><!--#content-->
+    </div><!--#wrapper-->
+    
+        <script src="main.js"></script>
+        <script>
+            const editWine = document.querySelectorAll('.edit-wine')   
+            
+            Array.from(editWine).forEach((element)=>{
+                element.addEventListener('click', populateWineCountryForm)
+            })
+            function populateWineCountryForm(){
+
+                const editID = this.parentNode.childNodes[1].innerText
+                document.querySelector('#display-ID').innerText = editID;
+                document.querySelector('#edit-id').value = editID;
+                document.querySelector('#edit-category').value = this.parentNode.childNodes[3].innerText;
+                document.querySelector('#edit-type').value = this.parentNode.childNodes[5].innerText;
+                document.querySelector('#edit-country').value = this.parentNode.childNodes[7].innerText;
+                document.querySelector('#edit-grapes').value = this.parentNode.childNodes[9].innerText;
+                document.querySelector('#edit-name').value = this.parentNode.childNodes[11].innerText;
+                document.querySelector('#edit-vintage').value = this.parentNode.childNodes[13].innerText;
+                document.querySelector('#edit-description').value = this.parentNode.childNodes[15].innerText;
+                document.querySelector('#edit-region').value = this.parentNode.childNodes[17].innerText;
+                document.querySelector('#edit-price').value = this.parentNode.childNodes[19].innerText;
+            }
+            Array.from(deleteText).forEach((element)=>{
+              element.removeEventListener('click', deleteSpecial)
+            })
+            Array.from(deleteText).forEach((element)=>{
+              element.addEventListener('click', deleteWine)
+            })
+        </script>
+       
+</body>
+</html>
