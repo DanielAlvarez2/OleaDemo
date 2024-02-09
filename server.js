@@ -50,6 +50,12 @@ app.get('/whiteSpain', (request, response) =>{
         response.render('whiteSpain.ejs', {info: data})
     })
 })
+app.get('/whiteFrance', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('whiteFrance.ejs', {info: data})
+    })
+})
 app.get('/sparkling', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
