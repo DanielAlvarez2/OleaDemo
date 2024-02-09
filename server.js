@@ -44,6 +44,12 @@ app.get('/', (request, response) =>{
         response.render('index.ejs', {info: data})
     })
 })
+app.get('/whiteSpain', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('whiteSpain.ejs', {info: data})
+    })
+})
 app.get('/sparkling', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
@@ -645,6 +651,25 @@ app.post('/addWine', async(request,response)=>{
         vintage: `${request.body.vintage}`,
         description: `${request.body.description}`,
         producer: `${request.body.producer}`,
+        region: `${request.body.region}`,
+        price: Number(request.body.price),
+        timestamp: new Date()
+    })
+    .then(result =>{
+        console.log('New Wine Added')
+        console.log(request.body)
+    })
+    response.redirect(request.get('referer'))
+})
+app.post('/addWineCountry', async(request,response)=>{
+    await db.collection('Specials').insertOne({
+        category: `${request.body.category}`,
+        type: `${request.body.type}`,
+        country: `${request.body.country}`,
+        grapes: `${request.body.grapes}`,
+        name: `${request.body.name}`,
+        vintage: `${request.body.vintage}`,
+        description: `${request.body.description}`,
         region: `${request.body.region}`,
         price: Number(request.body.price),
         timestamp: new Date()
