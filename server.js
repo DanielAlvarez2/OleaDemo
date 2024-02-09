@@ -44,6 +44,24 @@ app.get('/', (request, response) =>{
         response.render('index.ejs', {info: data})
     })
 })
+app.get('/redSpain', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('redSpain.ejs', {info: data})
+    })
+})
+app.get('/redFrance', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('redFrance.ejs', {info: data})
+    })
+})
+app.get('/redItaly', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('redItaly.ejs', {info: data})
+    })
+})
 app.get('/whiteSpain', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
