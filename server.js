@@ -806,6 +806,23 @@ app.post('/editWine', async(request,response)=>{
         response.redirect(request.get('referer'))
     })
 })
+app.post('/editSangria', async(request,response)=>{
+    await db.collection('Specials').updateOne({
+            _id: new ObjectId(`${request.body._id}`)
+    },{
+        $set:{
+            category: `${request.body.category}`,
+            name: `${request.body.name}`,
+            sequence: Number(request.body.sequence),
+            description: `${request.body.description}`,
+            price: `${request.body.price}`,
+            timestamp: new Date()    
+        }
+    })
+    .then(result=>{
+        response.redirect(request.get('referer'))
+    })
+})
 app.post('/editWineCountry', async(request,response)=>{
     await db.collection('Specials').updateOne({
             _id: new ObjectId(`${request.body._id}`)
@@ -1125,6 +1142,31 @@ app.get('/specialsFormatLayout', (req,res)=>{
     })
 })
 app.post('/moveUp', (request,response)=>{
+    
+    db.collection('Specials').updateOne({
+        category: request.body.category,
+        sequence: Number(request.body.sequence)-1
+    },
+    {
+        $set:{
+            sequence: Number(request.body.sequence)
+        }})
+
+    db.collection('Specials').updateOne({
+        _id: new ObjectId(request.body._id)
+    },{
+        $set:{
+            sequence: Number(request.body.sequence) - 1
+        }
+    })
+
+        
+    .then(result =>{
+        console.log('Special Moved Up')
+        response.json('Special Moved Up')
+    })
+})
+app.post('/moveUpSangria', (request,response)=>{
     
     db.collection('Specials').updateOne({
         category: request.body.category,

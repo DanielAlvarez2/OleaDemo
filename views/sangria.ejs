@@ -163,5 +163,31 @@ let sangriaCount = <%=sangriaCount%>
       </div><!--#wrapper-->
     
         <script src="main.js"></script>
+        <script>
+            // Array.from(moveUpText).forEach((element)=>{
+            //     element.removeEventListener('click',moveUp)
+            // })
+            // Array.from(moveUpText).forEach((element)=>{
+            //     element.addEventListener('click',moveUpSangria)
+            // })
+            Array.from(editText).forEach((element)=>{
+                element.removeEventListener('click', populateEditForm)
+            })
+            Array.from(editText).forEach((element)=>{
+                element.addEventListener('click', populateSangriaEditForm)
+            })
+
+            function populateSangriaEditForm(){
+                const editID = this.parentNode.childNodes[3].innerText
+                document.querySelector('#display-ID').innerText = editID;
+                document.querySelector('#edit-id').value = editID;
+                document.querySelector('#edit-category').value = this.parentNode.childNodes[5].innerText;
+                document.querySelector('#edit-sequence').value = this.parentNode.childNodes[7].innerText;
+                document.querySelector('#edit-name').value = this.parentNode.childNodes[9].innerText;
+                document.querySelector('#edit-description').value = this.parentNode.childNodes[11].innerText;
+                document.querySelector('#edit-price').value = this.parentNode.childNodes[13].innerText;
+            }
+
+        </script>
 </body>
 </html>
