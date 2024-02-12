@@ -49,6 +49,40 @@ async function moveUp(){
     const data = await response.json()
     location.reload()
 }
+async function moveUpSangria(){
+    const _id = this.parentNode.childNodes[3].innerText
+    const category = this.parentNode.childNodes[5].innerText
+    const sequence = this.parentNode.childNodes[7].innerText
+
+    const response = await fetch('moveUpSangria',{
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            '_id': _id,
+            sequence: Number(sequence),
+            category: category          
+        })
+    })
+    const data = await response.json()
+    location.reload()
+}
+async function moveDownSangria(){
+    const _id = this.parentNode.childNodes[3].innerText
+    const category = this.parentNode.childNodes[5].innerText
+    const sequence = this.parentNode.childNodes[7].innerText
+
+    const response = await fetch('moveDownSangria',{
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            '_id': _id,
+            sequence: Number(sequence),
+            category: category          
+        })
+    })
+    const data = await response.json()
+    location.reload()
+}
 async function moveUpAfterDinnerDrink(){
     const _id = this.parentNode.childNodes[3].innerText
     const type = this.parentNode.childNodes[7].innerText

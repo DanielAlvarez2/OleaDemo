@@ -164,12 +164,12 @@ let sangriaCount = <%=sangriaCount%>
     
         <script src="main.js"></script>
         <script>
-            // Array.from(moveUpText).forEach((element)=>{
-            //     element.removeEventListener('click',moveUp)
-            // })
-            // Array.from(moveUpText).forEach((element)=>{
-            //     element.addEventListener('click',moveUpSangria)
-            // })
+            Array.from(moveUpText).forEach((element)=>{
+                element.removeEventListener('click',moveUp)
+            })
+            Array.from(moveUpText).forEach((element)=>{
+                element.addEventListener('click',moveUpSangria)
+            })
             Array.from(editText).forEach((element)=>{
                 element.removeEventListener('click', populateEditForm)
             })

@@ -1187,8 +1187,33 @@ app.post('/moveUpSangria', (request,response)=>{
 
         
     .then(result =>{
-        console.log('Special Moved Up')
-        response.json('Special Moved Up')
+        console.log('Sangria Moved Up')
+        response.json('Sangria Moved Up')
+    })
+})
+app.post('/moveDownSangria', (request,response)=>{
+    
+    db.collection('Specials').updateOne({
+        category: request.body.category,
+        sequence: Number(request.body.sequence)+1
+    },
+    {
+        $set:{
+            sequence: Number(request.body.sequence)
+        }})
+
+    db.collection('Specials').updateOne({
+        _id: new ObjectId(request.body._id)
+    },{
+        $set:{
+            sequence: Number(request.body.sequence) + 1
+        }
+    })
+
+        
+    .then(result =>{
+        console.log('Sangria Moved Down')
+        response.json('Sangria Moved Down')
     })
 })
 app.post('/moveUpAfterDinnerDrink', (request,response)=>{
