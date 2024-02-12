@@ -44,6 +44,12 @@ app.get('/', (request, response) =>{
         response.render('index.ejs', {info: data})
     })
 })
+app.get('/sangria', (request, response) =>{
+    db.collection('Specials').find().sort({sequence:1}).toArray()
+    .then(data => {
+        response.render('sangria.ejs', {info: data})
+    })
+})
 app.get('/redSpain', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
@@ -678,7 +684,21 @@ app.post('/addAfterDinnerDrink', async(request,response)=>{
     })
     response.redirect(request.get('referer'))
 })
-
+app.post('/addSangria', async(request,response)=>{
+    await db.collection('Specials').insertOne({
+        category: `${request.body.category}`,
+        sequence: Number(request.body.sequence),
+        name: `${request.body.name}`,
+        description: `${request.body.description}`,
+        price: `${request.body.price}`,
+        timestamp: new Date()
+    })
+    .then(result =>{
+        console.log('New Sangria Added')
+        console.log(request.body)
+    })
+    response.redirect(request.get('referer'))
+})
 app.post('/addWine', async(request,response)=>{
     await db.collection('Specials').insertOne({
         category: `${request.body.category}`,
