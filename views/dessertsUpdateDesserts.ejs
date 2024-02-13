@@ -16,14 +16,14 @@
 
 
 <% 
-let dinnerCuredMeatsCount=0
+let dessertsCount=0
 for (let i=0; i<info.length; i++){
-    if (info[i].category == "DINNER: Cured Meats" && info[i].sequence != "0") dinnerCuredMeatsCount++ 
+    if (info[i].category == "Dessert" && info[i].sequence != "0") dessertsCount++ 
 }
 
 %>
 <script>
-let dinnerCuredMeatsCount = <%=dinnerCuredMeatsCount%>
+let dessertsCount = <%=dessertsCount%>
 </script>
 
 
@@ -107,7 +107,7 @@ let dinnerCuredMeatsCount = <%=dinnerCuredMeatsCount%>
                           <span class="transfer"
                           ><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</span
                           >&nbsp;&nbsp;
-                  <% if(info[i].sequence != dinnerCuredMeatsCount){ %>
+                  <% if(info[i].sequence != dessertsCount){ %>
                       <div class="move-down"><i class="fa-solid fa-sort-down"></i></div>
                   <% } %>
                  </li>

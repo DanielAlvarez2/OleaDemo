@@ -16,14 +16,19 @@
 
 
 <% 
-let dinnerCuredMeatsCount=0
+let dinnerSidesLeftCount=0
+let dinnerSidesRightCount=0
 for (let i=0; i<info.length; i++){
-    if (info[i].category == "DINNER: Cured Meats" && info[i].sequence != "0") dinnerCuredMeatsCount++ 
+    if (info[i].category == "DINNER: Sides Left" && info[i].sequence != "0") dinnerSidesLeftCount++ 
+}
+for (let i=0; i<info.length; i++){
+  if (info[i].category == "DINNER: Sides Right" && info[i].sequence != "0") dinnerSidesRightCount++ 
 }
 
 %>
 <script>
-let dinnerCuredMeatsCount = <%=dinnerCuredMeatsCount%>
+let dinnerSidesLeftCount = <%=dinnerSidesLeftCount%>
+let dinnerSidesRightCount = <%=dinnerSidesRightCount%>
 </script>
 
 
@@ -95,7 +100,7 @@ let dinnerCuredMeatsCount = <%=dinnerCuredMeatsCount%>
                     <span class="transfer"
                     ><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</span
                     >&nbsp;&nbsp;
-            <% if(info[i].sequence != dinnerCuredMeatsCount){ %>
+            <% if(info[i].sequence != dinnerSidesLeftCount){ %>
                 <div class="move-down"><i class="fa-solid fa-sort-down"></i></div>
             <% } %>
            </li>
@@ -134,7 +139,7 @@ let dinnerCuredMeatsCount = <%=dinnerCuredMeatsCount%>
                       <span class="transfer"
                       ><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</span
                       >&nbsp;&nbsp;
-              <% if(info[i].sequence != dinnerCuredMeatsCount){ %>
+              <% if(info[i].sequence != dinnerSidesRightCount){ %>
                   <div class="move-down"><i class="fa-solid fa-sort-down"></i></div>
               <% } %>
              </li>
