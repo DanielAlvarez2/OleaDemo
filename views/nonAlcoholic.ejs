@@ -73,29 +73,6 @@
           <% } } %>
         </ul>
     
-
-        <ul class="specials-appetizers">
-            <% for(let i=0; i<info.length;i++){ 
-              if( info[i].category == "Non-Alcoholic"){ %>
-            <li class="special">
-              
-              <div><%= info[i]._id %></div>
-              <div><%= info[i].category %></div>
-              <div><%= info[i].name %></div>
-              <div><%= info[i].description %></div>
-              <div><%= info[i].price %></div>
-  
-              <div><%- `${info[i].timestamp}`.substring(0,24) %></div>
-              <span class="edit-wine"><i class="fa-solid fa-pencil"></i> Edit</span
-                  >&nbsp;&nbsp;
-                  
-                  <span class="del"><i class="fa-solid fa-trash-can"></i> Delete</span
-                      >&nbsp;&nbsp;
-                      
-             </li>
-             <br>
-            <% } } %>
-          </ul>
           
 
 
@@ -103,18 +80,15 @@
 
         <h2>Add New Non-Alcoholic:</h2>
     
-        <form action="/addWineBTG" method="POST">
+        <form action="/addNonAlcoholic" method="POST">
           <input type="text" placeholder="Category" name="category" /><br />
-          <input type="text" placeholder="Type" name="type" /><br />
-          <input type="text" placeholder="Grapes" name="grapes" /><br />
           <input type="text" placeholder="Name" name="name" /><br />
-          <input type="text" placeholder="Vintage" name="vintage" /><br />
           <input type="text" placeholder="Description" name="description" /><br />
-          <input type="text" placeholder="Region" name="region" /><br />
           <input type="text" placeholder="Price" name="price" /><br />
           <input type="submit" id="update-button" value="Create" />
         </form>
-    
+        
+        <br>
         <h2>Edit Exisiting Non-Alcoholic:</h2>
     
         <form action="/editWineBTG" method="POST">
@@ -126,45 +100,19 @@
             placeholder="Category"
             name="category"
           /><br />
-          <input
-            type="text"
-            id="edit-type"
-            placeholder="Type"
-            name="type"
-          /><br />
           
-          <input 
-            type="text" 
-            id="edit-grapes"
-            placeholder="Grapes" 
-            name="grapes" 
-            /><br />
             <input 
             type="text" 
             id="edit-name"
             placeholder="Name" 
             name="name" 
             /><br />
-            <input
-            type="text"
-            id="edit-vintage"
-            placeholder="Vintage"
-            name="vintage"
-          /><br />
-          <textarea
-            rows="5"
-            cols="40"
+          <input
+          type="text"
             placeholder="Description"
             id="edit-description"
             name="description"
-          ></textarea
           ><br />
-          <input
-            type="text"
-            id="edit-region"
-            placeholder="Region"
-            name="region"
-          /><br />
           <input
             type="text"
             id="edit-price"
