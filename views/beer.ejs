@@ -45,14 +45,15 @@
                 </ul>
     </nav>
     <main>        
-            <h1>non-alcoholic</h1><br>
+            <h1>beer</h1><br>
 
            
        
         
         <ul class="specials-appetizers">
           <% for(let i=0; i<info.length;i++){ 
-            if( info[i].category == "Non-Alcoholic"){ %>
+            if( info[i].category == "Beer" &&
+                info[i].type == "Bottle"){ %>
           <li class="special">
             
             <div><%= info[i]._id %></div>
@@ -72,7 +73,55 @@
            <br>
           <% } } %>
         </ul>
-    
+
+        <ul class="specials-appetizers">
+            <% for(let i=0; i<info.length;i++){ 
+              if( info[i].category == "Beer" &&
+                  info[i].type == "Can"){ %>
+            <li class="special">
+              
+              <div><%= info[i]._id %></div>
+              <div><%= info[i].category %></div>
+              <div><%= info[i].type %></div>
+              <div><%= info[i].name %></div>
+              <div><%= info[i].description %></div>
+              <div><%= info[i].price %></div>
+  
+              <div><%- `${info[i].timestamp}`.substring(0,24) %></div>
+              <span class="edit-nonAlcoholic"><i class="fa-solid fa-pencil"></i> Edit</span
+                  >&nbsp;&nbsp;
+                  
+                  <span class="del"><i class="fa-solid fa-trash-can"></i> Delete</span
+                      >&nbsp;&nbsp;
+                      
+             </li>
+             <br>
+            <% } } %>
+          </ul>
+          <ul class="specials-appetizers">
+            <% for(let i=0; i<info.length;i++){ 
+              if( info[i].category == "Beer" &&
+                  info[i].type == "Draft"){ %>
+            <li class="special">
+              
+              <div><%= info[i]._id %></div>
+              <div><%= info[i].category %></div>
+              <div><%= info[i].name %></div>
+              <div><%= info[i].description %></div>
+              <div><%= info[i].price %></div>
+  
+              <div><%- `${info[i].timestamp}`.substring(0,24) %></div>
+              <span class="edit-nonAlcoholic"><i class="fa-solid fa-pencil"></i> Edit</span
+                  >&nbsp;&nbsp;
+                  
+                  <span class="del"><i class="fa-solid fa-trash-can"></i> Delete</span
+                      >&nbsp;&nbsp;
+                      
+             </li>
+             <br>
+            <% } } %>
+          </ul>
+            
           
 
 
