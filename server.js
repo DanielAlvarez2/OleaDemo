@@ -743,6 +743,22 @@ app.post('/addWine', async(request,response)=>{
     })
     response.redirect(request.get('referer'))
 })
+app.post('/addBeer', async(request,response)=>{
+    await db.collection('Specials').insertOne({
+        category: `${request.body.category}`,
+        type: `${request.body.type}`,
+        name: `${request.body.name}`,
+        description: `${request.body.description}`,
+        price: Number(request.body.price),
+        timestamp: new Date()
+    })
+    .then(result =>{
+        console.log(`New Beer Added: `)
+        console.log(request.body.name)
+        console.log(' ')
+    })
+    response.redirect(request.get('referer'))
+})
 app.post('/addWineCountry', async(request,response)=>{
     await db.collection('Specials').insertOne({
         category: `${request.body.category}`,

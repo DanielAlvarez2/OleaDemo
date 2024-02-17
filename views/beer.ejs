@@ -58,6 +58,7 @@
             
             <div><%= info[i]._id %></div>
             <div><%= info[i].category %></div>
+            <div><%= info[i].type %></div>
             <div><%= info[i].name %></div>
             <div><%= info[i].description %></div>
             <div><%= info[i].price %></div>
@@ -106,6 +107,7 @@
               
               <div><%= info[i]._id %></div>
               <div><%= info[i].category %></div>
+              <div><%= info[i].type %></div>
               <div><%= info[i].name %></div>
               <div><%= info[i].description %></div>
               <div><%= info[i].price %></div>
@@ -127,10 +129,11 @@
 
 
 
-        <h2>Add New Non-Alcoholic:</h2>
+        <h2>Add New Beer:</h2>
     
-        <form action="/addNonAlcoholic" method="POST">
+        <form action="/addBeer" method="POST">
           <input type="text" placeholder="Category" name="category" /><br />
+          <input type="text" placeholder="Type" name="type" /><br />
           <input type="text" placeholder="Name" name="name" /><br />
           <input type="text" placeholder="Description" name="description" /><br />
           <input type="text" placeholder="Price" name="price" /><br />
@@ -138,7 +141,7 @@
         </form>
         
         <br>
-        <h2>Edit Exisiting Non-Alcoholic:</h2>
+        <h2>Edit Exisiting Beer:</h2>
     
         <form action="/editNonAlcoholic" method="POST">
           <div name="_id" id="display-ID"></div>
