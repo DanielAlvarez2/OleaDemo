@@ -16,7 +16,23 @@
     ></script>
 </head>
 
+<% 
+let bottleCount=0
+let canCount=0
+let draftCount=0
+for (let i=0; i<info.length; i++){
+    if (info[i].type == "Bottle") bottleCount++ 
+    if (info[i].type == "Can") canCount++ 
+    if (info[i].type == "Draft") draftCount++ 
+}
 
+%>
+<script>
+  let bottleCount = <%=bottleCount%>
+  let canCount = <%=canCount%>
+  let canCount = <%=draftCount%>
+  </script>
+  
 
 
 
@@ -48,8 +64,9 @@
             <h1>beer</h1><br>
 
            
-       
+       <% if (bottleCount > 0){%>
         <h2>bottle</h2>
+       <% } %>
         <ul class="specials-appetizers">
           <% for(let i=0; i<info.length;i++){ 
             if( info[i].category == "Beer" &&
@@ -75,7 +92,9 @@
           <% } } %>
         </ul>
 
+        <% if (canCount > 0){%>
         <h2>can</h2>
+        <% } %>
 
         <ul class="specials-appetizers">
             <% for(let i=0; i<info.length;i++){ 
@@ -102,8 +121,10 @@
             <% } } %>
           </ul>
 
+          <% if (canCount > 0){%>
           <h2>draft</h2>
-
+          <% } %>
+          
           <ul class="specials-appetizers">
             <% for(let i=0; i<info.length;i++){ 
               if( info[i].category == "Beer" &&
