@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager</title>
+    
+    <link rel="stylesheet" href="manager.css">
+    <script
+      src="https://kit.fontawesome.com/21ef82ed30.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      
+      .special{
+            margin-bottom: 0px;
+        }
+       
+        #controls{
+            line-height:30px;
+            font-size:19px;
+            padding-left:5px;
+        }
+        #riojas, #controls{
+            width:5in;
+            background:white;
+            border:solid 1px black;
+            display:inline-block;
+            
+        }
+        #riojas{
+            padding: 0px 0px;
+            height:8in;
+            position: relative;
+        }
+        #riojas{
+            padding-top:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-top'){ 
+                        
+                        %>
+                        <%= info[i].pixels %>
+            <%
+                    } 
+                } 
+            %>;
+
+            padding-left:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+            
+            padding-right:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-sides'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+            
+        }
+        
+        ul{
+            font-family:serif;
+        }
+        
+        #riojas{
+            font-size:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'riojasFontSize'){ %>
+                        <%= info[i].pixels%>
+            <%
+                    } 
+                } 
+            %>;
+
+        }
+        #riojas li{
+            padding-top:            
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-between'){ 
+                        let half=(info[i].pixels).substring(0,info[i].pixels.length-2)/2
+                        %>
+                        <%= half%>px
+            <%
+                    } 
+                } 
+            %>;
+            padding-bottom:
+            <% 
+                for (let i=0; i<info.length; i++){
+                    if (info[i].category == 'controls-riojas' && info[i].name == 'padding-between'){ 
+                        let half=(info[i].pixels).substring(0,info[i].pixels.length-2)/2
+                        %>
+                        <%= half%>px
+            <%
+                    } 
+                } 
+            %>;
+        }
+        input{
+            text-align: center;
+        }
+        #flexbox{display:flex;}
+        @media (orientation: landscape){
+            #flexbox{
+                flex-direction: row;
+            }
+          
+        }
+        @media (orientation: portrait){
+            #flexbox{
+                flex-direction: column;
+            }
+           
+
+        }
+        li{
+            max-width: none;
+        }
+    </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+<body>
+
+    <div id="wrapper">
+    <div id="content">
+
+    <nav>
+        <h1>olea<span id="content-manager">Content Manager</span></h1>
+        <ul>
+            <li class="active-page">Specials</li>
+            <a href="/dinnerUpdateCuredMeats"><li>Dinner</li></a>
+            <li>Dessert</li>
+            <li>Wine/Drinks</li>
+            <a href="/archive"><li id="archive">Archive</li></a>
+        </ul>
+        <ul id="nav-ul-bottom">
+            <a href="/manager"><li id="specials-edit">Edit Menu Items</li></a>
+            <li class="active-page" id="specials-format-layout">Format Layout</li>
+            <a href="/riojasPrintPreview"><li id="riojas-print-preview">Print Preview</li></a>
+            </ul>
+    </nav>
+    
+    
+    
+    <h1 id="page-title">riojas</h1>
+    <div id="flexbox">    
+
+            <div id="controls">
+                <form method="POST" action="/saveChangesRiojas">
+                    FORMAT PAGE LAYOUT<br>
+                    Page Space Left & Right: <input name="riojasPaddingSides" id="riojas-padding-sides" type="text" size="2"> px min10px<br>
+                    Space between menu items: <input name="riojasPaddingBetween" id="riojas-padding-between" type="text" size="2"> px <br>
+                  
+                    
+                   
+
+                    Font Size: <input name="riojasFontSize" id="riojas-font-size" type="text" size="2"> px<br>
+                    <button id="clear-changes">Clear Changes</button> 
+                    <input type="submit" id="save-changes" value="Save Changes"> 
+                    <button id="riojas-print-preview-button">Print Preview</button>
+                </form>
+            </div><!--#controls-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            <div id="riojas">
+            
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].region == "Rioja"){ %>
+                    <li class="special">
+
+                        <span>$<%= info[i].price %></span>
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].description %></span>
+                        <span><%= info[i].vintage %></span>
+                        <span><%= info[i].producer %></span>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+                <div id="printer-dead-space" class="no-print"></div>
+
+            </div><!--#riojas-->
+            
+            
+            </div><!--#flexbox-->
+
+            <footer>
+                <ul>
+                    <li>Specials</li>
+                    <li>Dinner</li>
+                    <li>Dessert</li>
+                    <li>Wine/Drinks</li>
+                    <li>Archive</li>
+                </ul>
+            </footer>
+            </div><!--#content-->
+            </div><!--#wrapper-->
+            
+            <script>
+                let riojasPage = document.querySelector('#riojas')
+                let riojasPaddingSides = document.querySelector('#riojas-padding-sides')
+                let riojasPaddingBetween = document.querySelector('#riojas-padding-between')
+                let todaysSpecials = document.querySelector('#todays-specials')
+                let paddingBottomControl = document.querySelector('#padding-bottom-control')
+                let legalDisclaimer = document.querySelector('#legal-disclaimer')
+                let riojasFontSize = document.querySelector('#riojas-font-size')
+                let p = document.querySelectorAll('.special')
+                let appetizerHeading = document.querySelector('#appetizer-heading')
+                let entreeHeading = document.querySelector('#entree-heading')
+                let dessertHeading = document.querySelector('#dessert-heading')
+                let legalFontSizeControl = document.querySelector('#legal-font-size-control')
+                let clearChanges = document.querySelector('#clear-changes')
+                let riojasPrintPreviewButton = document.querySelector('#riojas-print-preview-button')
+                let legalDisclaimerSwitch = document.querySelector('#legal-disclaimer-switch')
+                let special = document.querySelectorAll('.special')
+
+                riojasPrintPreviewButton.addEventListener('click',(event)=>{
+                    event.preventDefault()
+                    location.replace('/riojasPrintPreview')
+                })
+                clearChanges.addEventListener('click',(event)=>{
+                    event.preventDefault()
+                    location.reload()
+                })
+                riojasPaddingSides.addEventListener('input', function(evt){
+                    riojasPage.style.paddingLeft = `${Number(this.value)}px`
+                    riojasPage.style.paddingRight = `${Number(this.value)}px`
+                })
+                riojasPaddingBetween.addEventListener('input', function(evt){
+                    p.forEach((special,i)=>{
+                        special.style.paddingTop = `${(Number(this.value))/2}px`
+                        special.style.paddingBottom = `${(Number(this.value))/2}px`
+                    })
+                })
+                riojasFontSize.addEventListener('input', function(evt){
+                    
+                        riojasPage.style.fontSize = `${Number(this.value)}px`
+                })
+            
+            </script>
+        <script src="main.js"></script>
+       
+</body>
+</html>
