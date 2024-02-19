@@ -50,6 +50,12 @@ app.get('/beer', (request, response) =>{
         response.render('beer.ejs', {info: data})
     })
 })
+app.get('/sherry', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('sherry.ejs', {info: data})
+    })
+})
 app.get('/cocktails', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
