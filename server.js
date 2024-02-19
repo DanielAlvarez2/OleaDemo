@@ -924,6 +924,23 @@ app.post('/editBeer', async(request,response)=>{
         response.redirect(request.get('referer'))
     })
 })
+app.post('/editSherry', async(request,response)=>{
+    await db.collection('Specials').updateOne({
+            _id: new ObjectId(`${request.body._id}`)
+    },{
+        $set:{
+            category: `${request.body.category}`,
+            grapes: `${request.body.grapes}`,
+            name: `${request.body.name}`,
+            description: `${request.body.description}`,
+            price: Number(request.body.price),
+            timestamp: new Date()    
+        }
+    })
+    .then(result=>{
+        response.redirect(request.get('referer'))
+    })
+})
 app.post('/editCocktail', async(request,response)=>{
     await db.collection('Specials').updateOne({
             _id: new ObjectId(`${request.body._id}`)
