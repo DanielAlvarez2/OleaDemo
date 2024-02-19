@@ -41,6 +41,7 @@ h2{
 .edit-wine, 
 .edit-liquor,
 .edit-beer, 
+.edit-cocktail,
 .edit-nonAlcoholic{
     color:rgb(183, 183, 0);
 }
@@ -98,6 +99,7 @@ nav ul{
 .del,
 .edit,
 .edit-wine,
+.edit-cocktail,
 .edit-beer,
 .edit-liquor,
 .edit-nonAlcoholic,

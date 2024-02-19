@@ -50,6 +50,12 @@ app.get('/beer', (request, response) =>{
         response.render('beer.ejs', {info: data})
     })
 })
+app.get('/cocktails', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('cocktails.ejs', {info: data})
+    })
+})
 app.get('/nonAlcoholic', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
@@ -759,6 +765,21 @@ app.post('/addBeer', async(request,response)=>{
     })
     response.redirect(request.get('referer'))
 })
+app.post('/addCocktail', async(request,response)=>{
+    await db.collection('Specials').insertOne({
+        category: `${request.body.category}`,
+        name: `${request.body.name}`,
+        description: `${request.body.description}`,
+        price: Number(request.body.price),
+        timestamp: new Date()
+    })
+    .then(result =>{
+        console.log(`New Cocktail Added: `)
+        console.log(request.body.name)
+        console.log(' ')
+    })
+    response.redirect(request.get('referer'))
+})
 app.post('/addWineCountry', async(request,response)=>{
     await db.collection('Specials').insertOne({
         category: `${request.body.category}`,
@@ -871,6 +892,22 @@ app.post('/editBeer', async(request,response)=>{
         $set:{
             category: `${request.body.category}`,
             type: `${request.body.type}`,
+            name: `${request.body.name}`,
+            description: `${request.body.description}`,
+            price: Number(request.body.price),
+            timestamp: new Date()    
+        }
+    })
+    .then(result=>{
+        response.redirect(request.get('referer'))
+    })
+})
+app.post('/editCocktail', async(request,response)=>{
+    await db.collection('Specials').updateOne({
+            _id: new ObjectId(`${request.body._id}`)
+    },{
+        $set:{
+            category: `${request.body.category}`,
             name: `${request.body.name}`,
             description: `${request.body.description}`,
             price: Number(request.body.price),
