@@ -765,6 +765,22 @@ app.post('/addBeer', async(request,response)=>{
     })
     response.redirect(request.get('referer'))
 })
+app.post('/addSherry', async(request,response)=>{
+    await db.collection('Specials').insertOne({
+        category: `${request.body.category}`,
+        grapes: `${request.body.grapes}`,
+        name: `${request.body.name}`,
+        description: `${request.body.description}`,
+        price: Number(request.body.price),
+        timestamp: new Date()
+    })
+    .then(result =>{
+        console.log(`New Sherry Added: `)
+        console.log(request.body.name)
+        console.log(' ')
+    })
+    response.redirect(request.get('referer'))
+})
 app.post('/addCocktail', async(request,response)=>{
     await db.collection('Specials').insertOne({
         category: `${request.body.category}`,
