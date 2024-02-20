@@ -418,7 +418,48 @@
                    <br>
                   <% } } %>
                 </ul>                
-            
+
+                <h3>France</h3><br>
+                <ul class="specials-appetizers">
+                  <% for(let i=0; i<info.length;i++){ 
+                    if( info[i].type == "Red" &&
+                        info[i].country == "France"){ %>
+                  <li class="special">
+                    
+                    <span><%= info[i].grapes %></span>
+                    <span class="name"><%= info[i].name %></span>
+                    <span><%= info[i].vintage %></span>
+                    <span><%= info[i].description %></span>
+                    <span><%= info[i].region %></span>
+                    <span><%= info[i].price %></span>
+        
+                            
+                   </li>
+                   <br>
+                  <% } } %>
+                </ul>                
+
+                
+                <h3>Italy</h3><br>
+                <ul class="specials-appetizers">
+                  <% for(let i=0; i<info.length;i++){ 
+                    if( info[i].type == "Red" &&
+                        info[i].country == "Italy"){ %>
+                  <li class="special">
+                    
+                    <span><%= info[i].grapes %></span>
+                    <span class="name"><%= info[i].name %></span>
+                    <span><%= info[i].vintage %></span>
+                    <span><%= info[i].description %></span>
+                    <span><%= info[i].region %></span>
+                    <span><%= info[i].price %></span>
+        
+                            
+                   </li>
+                   <br>
+                  <% } } %>
+                </ul>                
+
                 
             </div><!--#riojas-->
             
