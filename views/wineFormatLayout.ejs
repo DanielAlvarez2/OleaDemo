@@ -465,6 +465,273 @@
             
             
             </div><!--#flexbox-->
+
+            <div id="riojas2" style="font-size:14px;width:14in;height:8.5in;columns:4;">
+            
+                <h2>wine by the glass</h2>
+
+                <h3>Cava</h3>
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "BTG" &&
+                           info[i].type == "Cava"){ %>
+                    <li class="special">
+
+                        <span><%= info[i].grapes %></span>
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].vintage %></span>
+                        <span><%= info[i].description %></span>
+                        <span><%= info[i].region %></span>
+                        <span><%= info[i].price %></span>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+                <h3>White</h3>
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "BTG" &&
+                           info[i].type == "White"){ %>
+                    <li class="special">
+
+                        <span><%= info[i].grapes %></span>
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].vintage %></span>
+                        <span><%= info[i].description %></span>
+                        <span><%= info[i].region %></span>
+                        <span><%= info[i].price %></span>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+                <h3>Rosé</h3>
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "BTG" &&
+                           info[i].type == "Rose"){ %>
+                    <li class="special">
+
+                        <span><%= info[i].grapes %></span>
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].vintage %></span>
+                        <span><%= info[i].description %></span>
+                        <span><%= info[i].region %></span>
+                        <span><%= info[i].price %></span>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+                <h3>Red</h3>
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "BTG" &&
+                           info[i].type == "Red"){ %>
+                    <li class="special">
+
+                        <span><%= info[i].grapes %></span>
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].vintage %></span>
+                        <span><%= info[i].description %></span>
+                        <span><%= info[i].region %></span>
+                        <span><%= info[i].price %></span>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+                <h2>cava & champagne</h2><br>
+        
+                <ul class="specials-appetizers">
+                  <% for(let i=0; i<info.length;i++){ 
+                    if( info[i].type == "Sparkling"){ %>
+                  <li class="special">
+                    
+                    <span><%= info[i].grapes %></span>
+                    <span class="name"><%= info[i].name %></span>
+                    <span><%= info[i].vintage %></span>
+                    <span><%= info[i].description %></span>
+                    <span><%= info[i].region %></span>
+                    <span><%= info[i].price %></span>
+        
+                            
+                   </li>
+                   <br>
+                  <% } } %>
+                </ul>
+
+
+                <h2>rosé</h2><br>
+                
+                <ul class="specials-appetizers">
+                  <% for(let i=0; i<info.length;i++){ 
+                    if( info[i].type == "Rosé"){ %>
+                  <li class="special">
+                    
+                    <span><%= info[i].grapes %></span>
+                    <span class="name"><%= info[i].name %></span>
+                    <span><%= info[i].vintage %></span>
+                    <span><%= info[i].description %></span>
+                    <span><%= info[i].region %></span>
+                    <span><%= info[i].price %></span>
+        
+                            
+                   </li>
+                   <br>
+                  <% } } %>
+                </ul>
+
+                <h2>white</h2><br>
+                <h3>Spain</h3><br>
+                <ul class="specials-appetizers">
+                  <% for(let i=0; i<info.length;i++){ 
+                    if( info[i].type == "White" &&
+                        info[i].country == "Spain"){ %>
+                  <li class="special">
+                    
+                    <span><%= info[i].grapes %></span>
+                    <span class="name"><%= info[i].name %></span>
+                    <span><%= info[i].vintage %></span>
+                    <span><%= info[i].description %></span>
+                    <span><%= info[i].region %></span>
+                    <span><%= info[i].price %></span>
+        
+                            
+                   </li>
+                   <br>
+                  <% } } %>
+                </ul>                
+
+                <h3>France</h3><br>
+                <ul class="specials-appetizers">
+                  <% for(let i=0; i<info.length;i++){ 
+                    if( info[i].type == "White" &&
+                        info[i].country == "France"){ %>
+                  <li class="special">
+                    
+                    <span><%= info[i].grapes %></span>
+                    <span class="name"><%= info[i].name %></span>
+                    <span><%= info[i].vintage %></span>
+                    <span><%= info[i].description %></span>
+                    <span><%= info[i].region %></span>
+                    <span><%= info[i].price %></span>
+        
+                            
+                   </li>
+                   <br>
+                  <% } } %>
+                </ul>                
+
+                <h3>Italy</h3><br>
+                <ul class="specials-appetizers">
+                  <% for(let i=0; i<info.length;i++){ 
+                    if( info[i].type == "White" &&
+                        info[i].country == "Italy"){ %>
+                  <li class="special">
+                    
+                    <span><%= info[i].grapes %></span>
+                    <span class="name"><%= info[i].name %></span>
+                    <span><%= info[i].vintage %></span>
+                    <span><%= info[i].description %></span>
+                    <span><%= info[i].region %></span>
+                    <span><%= info[i].price %></span>
+        
+                            
+                   </li>
+                   <br>
+                  <% } } %>
+                </ul>                
+
+
+                <h3>Germany</h3><br>
+                <ul class="specials-appetizers">
+                  <% for(let i=0; i<info.length;i++){ 
+                    if( info[i].type == "White" &&
+                        info[i].country == "Germany"){ %>
+                  <li class="special">
+                    
+                    <span><%= info[i].grapes %></span>
+                    <span class="name"><%= info[i].name %></span>
+                    <span><%= info[i].vintage %></span>
+                    <span><%= info[i].description %></span>
+                    <span><%= info[i].region %></span>
+                    <span><%= info[i].price %></span>
+        
+                            
+                   </li>
+                   <br>
+                  <% } } %>
+                </ul>                
+
+
+                <h2>red</h2><br>
+
+                <h3>Spain</h3><br>
+                <ul class="specials-appetizers">
+                  <% for(let i=0; i<info.length;i++){ 
+                    if( info[i].type == "Red" &&
+                        info[i].country == "Spain"){ %>
+                  <li class="special">
+                    
+                    <span><%= info[i].grapes %></span>
+                    <span class="name"><%= info[i].name %></span>
+                    <span><%= info[i].vintage %></span>
+                    <span><%= info[i].description %></span>
+                    <span><%= info[i].region %></span>
+                    <span><%= info[i].price %></span>
+        
+                            
+                   </li>
+                   <br>
+                  <% } } %>
+                </ul>                
+
+                <h3>France</h3><br>
+                <ul class="specials-appetizers">
+                  <% for(let i=0; i<info.length;i++){ 
+                    if( info[i].type == "Red" &&
+                        info[i].country == "France"){ %>
+                  <li class="special">
+                    
+                    <span><%= info[i].grapes %></span>
+                    <span class="name"><%= info[i].name %></span>
+                    <span><%= info[i].vintage %></span>
+                    <span><%= info[i].description %></span>
+                    <span><%= info[i].region %></span>
+                    <span><%= info[i].price %></span>
+        
+                            
+                   </li>
+                   <br>
+                  <% } } %>
+                </ul>                
+
+                
+                <h3>Italy</h3><br>
+                <ul class="specials-appetizers">
+                  <% for(let i=0; i<info.length;i++){ 
+                    if( info[i].type == "Red" &&
+                        info[i].country == "Italy"){ %>
+                  <li class="special">
+                    
+                    <span><%= info[i].grapes %></span>
+                    <span class="name"><%= info[i].name %></span>
+                    <span><%= info[i].vintage %></span>
+                    <span><%= info[i].description %></span>
+                    <span><%= info[i].region %></span>
+                    <span><%= info[i].price %></span>
+        
+                            
+                   </li>
+                   <br>
+                  <% } } %>
+                </ul>                
+
+                
+            </div><!--#riojas-->
+
 <br><br><br>
 
             <footer>
