@@ -128,6 +128,11 @@
         li{
             max-width: none;
         }
+
+        #wine-list-1,
+        #wine-list-2{
+            border:1px solid black;
+        }
     </style>
 </head>
 
@@ -197,7 +202,7 @@
 
 
                 
-            <div id="riojas" style="font-size:14px;width:14in;height:8.5in;columns:4;">
+            <div id="wine-list-1" style="font-size:14px;width:14in;height:8.5in;columns:4;">
             
                 <h2>wine by the glass</h2>
 
@@ -461,13 +466,14 @@
                 </ul>                
 
                 
-            </div><!--#riojas-->
+            </div><!--#wine-list-1-->
             
             
             </div><!--#flexbox-->
 
-            <span id="riojas2" style="font-size:14px;width:14in;height:8.5in;columns:4;">
-            
+            <div id="wine-list-2" style="font-size:14px;width:14in;height:8.5in;columns:4;">
+            <div id="wine-list-2-inner">
+                <span id="wines">
                 <h2>wine by the glass</h2>
 
                 <h3>Cava</h3>
@@ -729,15 +735,25 @@
                   <% } } %>
                 </ul>                
 
+            </span><!--#wines-->
                 
-            </span><!--#riojas2-->
-            <span id="sangria" style="width:3.5in;height:8.5in;border:1px solid red;">
-
-            </span>
-
-            <span id="drinks" style="width:3.5in;height:8.5in;border:1px solid red;">
-
-            </span>
+                <span id="sangria" 
+                style="width:3.5in;
+                        height:8.5in;
+                        border:1px solid red;
+                        display:inline-block;">
+                    
+                </span>
+                
+                <span id="drinks" 
+                style="width:3.5in;
+                        height:8.5in;
+                        border:1px solid red;
+                        display: inline-block;;">
+                    
+                </span>
+            </div><!--#wine-list-2-inner-->
+            </div><!--#wine-list-2-->
 
 <br><br><br>
 
