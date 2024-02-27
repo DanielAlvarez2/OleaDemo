@@ -132,10 +132,32 @@
         #wine-list-1,
         #wine-list-2{
             border:1px solid black;
+            font-size: 13px;
+            overflow: hidden;
+        }
+        #wine-list-2-inner{
+            position:relative;
+            right:14in;
         }
     </style>
 </head>
 
+<% 
+let bottleCount=0
+let canCount=0
+let draftCount=0
+for (let i=0; i<info.length; i++){
+    if (info[i].type == "Bottle") bottleCount++ 
+    if (info[i].type == "Can") canCount++ 
+    if (info[i].type == "Draft") draftCount++ 
+}
+
+%>
+<script>
+  let bottleCount = <%=bottleCount%>
+  let canCount = <%=canCount%>
+  let canCount = <%=draftCount%>
+  </script>
 
 
 
@@ -202,7 +224,10 @@
 
 
                 
-            <div id="wine-list-1" style="font-size:14px;width:14in;height:8.5in;columns:4;">
+            <div id="wine-list-1" 
+            style="width:14in;
+            height:8.5in;
+            columns:4;">
             
                 <h2>wine by the glass</h2>
 
@@ -471,7 +496,10 @@
             
             </div><!--#flexbox-->
 
-            <div id="wine-list-2" style="font-size:14px;width:14in;height:8.5in;columns:4;">
+            <div id="wine-list-2" 
+            style="width:14in;
+            height:8.5in;
+            columns:4;">
             <div id="wine-list-2-inner">
                 <span id="wines">
                 <h2>wine by the glass</h2>
@@ -742,7 +770,56 @@
                         height:8.5in;
                         border:1px solid red;
                         display:inline-block;">
-                    
+
+                <h2>sangría</h2>
+
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "Sangria"){ %>
+                    <li class="special">
+
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].description %></span>
+                        <span><%= info[i].price %></span>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+
+
+                <h2>non-alcoholic</h2>
+
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "Non-Alcoholic"){ %>
+                    <li class="special">
+
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].description %></span>
+                        <span><%= info[i].price %></span>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+
+                <h2>beer</h2>
+
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "Sangria"){ %>
+                    <li class="special">
+
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].description %></span>
+                        <span><%= info[i].price %></span>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+
                 </span>
                 
                 <span id="drinks" 
@@ -750,6 +827,39 @@
                         height:8.5in;
                         border:1px solid red;
                         display: inline-block;;">
+
+
+                <h2>specialty drinks</h2>
+
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "Cocktail"){ %>
+                    <li class="special">
+
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].description %></span>
+                        <span><%= info[i].price %></span>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
+
+                <h2>Jerez, Sanlúcar de Barrameda</h2>
+
+                <ul>
+                <% for(let i=0; i<info.length;i++){ %>
+                    <% if (info[i].category == "Sherry"){ %>
+                    <li class="special">
+
+                        <span class="name"><%= info[i].name %></span>
+                        <span><%= info[i].description %></span>
+                        <span><%= info[i].price %></span>
+                    </li>
+                    <% } %>
+                <% } %>
+                </ul>
+
                     
                 </span>
             </div><!--#wine-list-2-inner-->
