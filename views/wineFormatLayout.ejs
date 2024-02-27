@@ -129,13 +129,20 @@
             max-width: none;
         }
 
-        #wine-list-1,
-        #wine-list-2{
+        #wine-list-1-inner,
+        #wines{
             border:1px solid black;
             font-size: 13px;
-            overflow: hidden;
+            /* overflow: hidden; */
+            width:21in;
+            height: 8.5in;
+            columns:6;
+            column-rule:1px solid black;
+            
         }
         #wine-list-2-inner{
+            width:28in;
+            height: 8.5in;
             position:relative;
             right:14in;
         }
@@ -227,7 +234,9 @@ for (let i=0; i<info.length; i++){
             <div id="wine-list-1" 
             style="width:14in;
             height:8.5in;
-            columns:4;">
+            ">
+
+            <div id="wine-list-1-inner">
             
                 <h2>wine by the glass</h2>
 
@@ -490,7 +499,7 @@ for (let i=0; i<info.length; i++){
                   <% } } %>
                 </ul>                
 
-                
+            </div><!--#wine-list-1-inner-->
             </div><!--#wine-list-1-->
             
             
@@ -499,9 +508,16 @@ for (let i=0; i<info.length; i++){
             <div id="wine-list-2" 
             style="width:14in;
             height:8.5in;
-            columns:4;">
-            <div id="wine-list-2-inner">
-                <span id="wines">
+            ">
+            <div id="wine-list-2-inner"
+            style="width:28in;
+            height:8.5in;
+            position: relative;
+            
+            ">
+
+
+                <span id="wines" style="display: inline-block;">
                 <h2>wine by the glass</h2>
 
                 <h3>Cava</h3>
@@ -764,7 +780,6 @@ for (let i=0; i<info.length; i++){
                 </ul>                
 
             </span><!--#wines-->
-                
                 <span id="sangria" 
                 style="width:3.5in;
                         height:8.5in;
@@ -806,18 +821,67 @@ for (let i=0; i<info.length; i++){
 
                 <h2>beer</h2>
 
-                <ul>
-                <% for(let i=0; i<info.length;i++){ %>
-                    <% if (info[i].category == "Sangria"){ %>
+                <% if (bottleCount > 0){%>
+                    <h2>BOTTLE</h2>
+                   <% } %>
+            
+                   <ul class="specials-appetizers">
+                    <% for(let i=0; i<info.length;i++){ 
+                      if( info[i].category == "Beer" &&
+                          info[i].type == "Bottle"){ %>
                     <li class="special">
+                      
+                      <span><%= info[i].name %></span>
+                      <span><%= info[i].description %></span>
+                      <span><%= info[i].price %></span>
+          
+                              
+                     </li>
+                     <br>
+                    <% } } %>
+                  </ul>
 
-                        <span class="name"><%= info[i].name %></span>
+                  
+
+                  <% if (canCount > 0){%>
+                    <h2>CAN</h2>
+                   <% } %>
+            
+                   <ul class="specials-appetizers">
+                    <% for(let i=0; i<info.length;i++){ 
+                      if( info[i].category == "Beer" &&
+                          info[i].type == "Can"){ %>
+                    <li class="special">
+                      
+                        <span><%= info[i].name %></span>
                         <span><%= info[i].description %></span>
                         <span><%= info[i].price %></span>
-                    </li>
-                    <% } %>
-                <% } %>
-                </ul>
+                                
+                     </li>
+                     <br>
+                    <% } } %>
+                  </ul>
+
+
+
+                  <% if (draftCount > 0){%>
+                    <h2>DRAFT</h2>
+                   <% } %>
+            
+                   <ul class="specials-appetizers">
+                    <% for(let i=0; i<info.length;i++){ 
+                      if( info[i].category == "Beer" &&
+                          info[i].type == "Draft"){ %>
+                    <li class="special">
+                      
+                        <span><%= info[i].name %></span>
+                        <span><%= info[i].description %></span>
+                        <span><%= info[i].price %></span>
+                                
+                     </li>
+                     <br>
+                    <% } } %>
+                  </ul>
 
 
                 </span>
@@ -826,7 +890,7 @@ for (let i=0; i<info.length; i++){
                 style="width:3.5in;
                         height:8.5in;
                         border:1px solid red;
-                        display: inline-block;;">
+                        display: inline-block;">
 
 
                 <h2>specialty drinks</h2>
@@ -863,6 +927,7 @@ for (let i=0; i<info.length; i++){
                     
                 </span>
             </div><!--#wine-list-2-inner-->
+            
             </div><!--#wine-list-2-->
 
 <br><br><br>
