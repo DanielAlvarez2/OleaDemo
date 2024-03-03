@@ -186,7 +186,7 @@ for (let i=0; i<info.length; i++){
     <div id="wrapper">
     <div id="content">
 
-    <nav>
+    <nav class="no-print">
         <h1>olea<span id="content-manager">Content Manager</span></h1>
         <ul>
             <li class="active-page">Specials</li>
@@ -204,24 +204,7 @@ for (let i=0; i<info.length; i++){
     
     
     
-    <h1 id="page-title">wine menu</h1><br><br>
     <div id="flexbox">    
-
-            <div id="controls">
-                <form method="POST" action="/saveChangesRiojas">
-                    FORMAT PAGE LAYOUT<br>
-                    Page Space Left & Right: <input name="riojasPaddingSides" id="riojas-padding-sides" type="text" size="2"> px min10px<br>
-                    Space between menu items: <input name="riojasPaddingBetween" id="riojas-padding-between" type="text" size="2"> px <br>
-                  
-                    
-                   
-
-                    Font Size: <input name="riojasFontSize" id="riojas-font-size" type="text" size="2"> px<br>
-                    <button id="clear-changes">Clear Changes</button> 
-                    <input type="submit" id="save-changes" value="Save Changes"> 
-                    <button id="riojas-print-preview-button">Print Preview</button>
-                </form>
-            </div><!--#controls-->
 
 
 
@@ -241,6 +224,8 @@ for (let i=0; i<info.length; i++){
             <div id="wine-list-1" 
             style="width:14in;
             height:8.5in;
+            border-right:1px solid black; 
+
             overflow: hidden;
             ">
 
@@ -802,7 +787,7 @@ for (let i=0; i<info.length; i++){
                 <span id="sangria" 
                 style="width:3.5in;
                         height:8.5in;
-                        border-left:1px solid black;
+                        border-bottom:1px solid black; 
                         display:inline-block;
                         
                         ">
@@ -919,6 +904,9 @@ for (let i=0; i<info.length; i++){
                 style="width:3.5in;
                         height:8.5in;
                         border-left:1px solid black;
+                        border-bottom:1px solid black; 
+                        border-right:1px solid black; 
+
                         display: inline-block;
                         position: relative;">
 
@@ -967,7 +955,7 @@ for (let i=0; i<info.length; i++){
 
 <br><br><br>
 
-            <footer>
+            <footer class="no-print">
                 <ul>
                     <li>Specials</li>
                     <li>Dinner</li>

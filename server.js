@@ -50,6 +50,12 @@ app.get('/wineFormatLayout', (request, response) =>{
         response.render('wineFormatLayout.ejs', {info: data})
     })
 })
+app.get('/winePrintPreview', (request, response) =>{
+    db.collection('Specials').find().sort({price:1}).toArray()
+    .then(data => {
+        response.render('winePrintPreview.ejs', {info: data})
+    })
+})
 app.get('/beer', (request, response) =>{
     db.collection('Specials').find().sort({price:1}).toArray()
     .then(data => {
