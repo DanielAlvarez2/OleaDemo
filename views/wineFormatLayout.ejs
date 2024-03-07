@@ -138,7 +138,7 @@
         }
         #wine-list-1-inner,
         #wines{
-            border:1px solid black;
+          /* border:1px solid black; */
             /* overflow: hidden; */
             width:21in;
             height: 8.5in;
@@ -207,7 +207,7 @@ for (let i=0; i<info.length; i++){
     <h1 id="page-title">wine menu</h1><br><br>
     <div id="flexbox">    
 
-            <div id="controls">
+            <div id="controls" style="margin-bottom:10px;">
                 <form method="POST" action="/saveChangesRiojas">
                     FORMAT PAGE LAYOUT<br>
                     Page Space Left & Right: <input name="riojasPaddingSides" id="riojas-padding-sides" type="text" size="2"> px min10px<br>
@@ -242,7 +242,7 @@ for (let i=0; i<info.length; i++){
             style="width:14in;
             height:8.5in;
             overflow: hidden;
-            border-right:1px solid black;
+            border:1px solid black;
             ">
 
             <div id="wine-list-1-inner">
@@ -531,7 +531,11 @@ for (let i=0; i<info.length; i++){
             ">
 
 
-                <span id="wines" style="display: inline-block;">
+                <span id="wines" 
+                style="display: inline-block;
+                  border-bottom:1px solid black;
+                  border-right:1px solid black;
+                ">
             
                   <h2>wine by the glass</h2><br>
 
