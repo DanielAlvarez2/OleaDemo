@@ -1,10 +1,15 @@
 const express = require('express');
+const app = express();
+app.use(express.static('public'))
+
+
+
+
 const { MongoClient, Timestamp } = require('mongodb');
 const {ObjectId} = require('mongodb');
 const dotenv = require('dotenv');
 const saslprep = require('saslprep');
 dotenv.config();
-const app = express();
 const cors = require('cors');
 app.use(cors());
 const uri = process.env.ATLAS_URI;
@@ -25,7 +30,6 @@ async function connectToMongoDB(){
     }
 }
 connectToMongoDB();
-app.use(express.static('public'))
 
 
 
